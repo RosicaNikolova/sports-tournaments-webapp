@@ -1,14 +1,14 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
-a.navbar-brand {
+/*a.navbar-brand {
   white-space: normal;
   text-align: center;
   word-break: break-all;
-}
+}*/
 
 /* Provide sufficient contrast against white background */
-a {
+/*a {
   color: #0366d6;
 }
 
@@ -22,11 +22,11 @@ a {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
-}
+}*/
 
 /* Sticky footer styles
 -------------------------------------------------- */
-html {
+/*html {
   font-size: 14px;
 }
 @media (min-width: 768px) {
@@ -49,23 +49,101 @@ html {
 button.accept-policy {
   font-size: 1rem;
   line-height: inherit;
-}
+}*/
 
 /* Sticky footer styles
 -------------------------------------------------- */
-html {
+/*html {
   position: relative;
   min-height: 100%;
 }
 
-body {
+body {*/
   /* Margin bottom by footer height */
-  margin-bottom: 60px;
+  /*margin-bottom: 60px;
 }
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+  line-height: 60px;*/ /* Vertically center the text there */
+/*}*/
+
+
+
+/*Login Page*/
+
+.form_container {
+    display: block;
+    text-align: center;
 }
+
+form {
+    padding: 10px;
+    border: 1px solid white;
+    width: 40%;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    background-color: #A2D0EE;
+    color: white;
+    border-radius: 15px;
+}
+
+.container label {
+    font-size: 1.2vw;
+}
+
+.login_heading {
+    font-size: 2.3vw;
+    margin: 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 15px 0 30px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+
+.login_buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+    .login_buttons input {
+        background-color: #F2F2F5;
+        color: #1E1E35;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 20%;
+        font-size: 1vw;
+    }
+
+    .login_buttons button {
+        background-color: #F2F2F5;
+        color: #1E1E35;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 20%;
+        font-size: 1vw;
+    }
+
+    .login_buttons input:hover {
+        opacity: 0.8;
+    }
+
+    .login_buttons button:hover {
+        opacity: 0.8;
+    }

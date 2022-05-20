@@ -1,0 +1,34 @@
+﻿@page
+@model TournamentsWebApp.Pages.LoginModel
+@{
+    ViewData["Title"] = "Log in";
+    Layout = "_Layout";
+
+}
+@section scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<div class="form_container">
+
+    <form method="post">
+        <div class="container">
+            <h2 class="login_heading">Login</h2>
+            <label asp-for="Login.Email">E-mail:</label> <br />
+            <span asp-validation-for="Login.Email"></span>
+            <input asp-for="Login.Email" placeholder="Enter E-mail" type="text">
+
+            <label asp-for="Login.Password">Password:</label> <br />
+            <span asp-validation-for="Login.Password"></span>
+            <input asp-for="Login.Password" placeholder="Enter Password" type="password">
+        </div>
+        <div class="login_buttons">
+            <input type="submit" value="Log in" class="loginbtn">
+
+            <button type="reset" class="cancelbtn" value="Cancel">Cancel</button>
+            @*<input type="reset" class="cancelbtn" value="Cancel">*@
+        </div>
+    </form>
+
+    <div> @ViewData["Message"] </div>
+</div>

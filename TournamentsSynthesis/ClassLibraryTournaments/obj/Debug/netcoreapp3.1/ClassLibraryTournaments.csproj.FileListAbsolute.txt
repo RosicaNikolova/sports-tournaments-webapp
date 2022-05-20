@@ -1,0 +1,10 @@
+D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\ClassLibraryTournaments\bin\Debug\netcoreapp3.1\ClassLibraryTournaments.deps.json
+D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\ClassLibraryTournaments\bin\Debug\netcoreapp3.1\ClassLibraryTournaments.dll
+D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\ClassLibraryTournaments\bin\Debug\netcoreapp3.1\ClassLibraryTournaments.pdb
+D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\ClassLibraryTournaments\obj\Debug\netcoreapp3.1\ClassLibraryTournaments.csproj.AssemblyReference.cache
+D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\ClassLibraryTournaments\obj\Debug\netcoreapp3.1\ClassLibraryTournaments.GeneratedMSBuildEditorConfig.editorconfig
+D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\ClassLibraryTournaments\obj\Debug\netcoreapp3.1\ClassLibraryTournaments.AssemblyInfoInputs.cache
+D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\ClassLibraryTournaments\obj\Debug\netcoreapp3.1\ClassLibraryTournaments.AssemblyInfo.cs
+D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\ClassLibraryTournaments\obj\Debug\netcoreapp3.1\ClassLibraryTournaments.csproj.CoreCompileInputs.cache
+D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\ClassLibraryTournaments\obj\Debug\netcoreapp3.1\ClassLibraryTournaments.dll
+D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\ClassLibraryTournaments\obj\Debug\netcoreapp3.1\ClassLibraryTournaments.pdb
