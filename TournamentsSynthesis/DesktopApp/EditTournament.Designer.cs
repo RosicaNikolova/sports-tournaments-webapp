@@ -191,6 +191,7 @@ namespace DesktopApp
             this.btnEditCreate.TabIndex = 16;
             this.btnEditCreate.Text = "Create";
             this.btnEditCreate.UseVisualStyleBackColor = true;
+            this.btnEditCreate.Click += new System.EventHandler(this.btnEditCreate_Click);
             // 
             // EditTournament
             // 

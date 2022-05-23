@@ -15,5 +15,14 @@ namespace ClassLibraryTournaments.Business
         public int MinPlayers { get; set; }
         public int MaxPlayers { get; set; }
         public string Location { get; set; }
+
+
+        public override string ToString()
+        {
+            return $"{TournamentSystem.ToString()} Location: {Location}";
+        }
     }
+
+    
+
 }

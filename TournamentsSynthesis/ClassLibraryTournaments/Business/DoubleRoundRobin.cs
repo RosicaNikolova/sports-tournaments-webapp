@@ -4,15 +4,16 @@ using System.Text;
 
 namespace ClassLibraryTournaments.Business
 {
-    public class RoundRobin : ITournamentSystem
+    public class DoubleRoundRobin : ITournamentSystem
     {
         public List<Game> GenerateSchedule()
         {
             throw new NotImplementedException();
         }
+
         public override string ToString()
         {
-            return "Round Robin";
+            return "Double Round Robin";
         }
     }
 }

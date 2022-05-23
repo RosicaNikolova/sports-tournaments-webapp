@@ -93,6 +93,7 @@ namespace DesktopApp
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(814, 448);
             this.tabControl.TabIndex = 3;
+            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
             // Home
             // 
@@ -150,6 +151,7 @@ namespace DesktopApp
             this.btnEditTournament.TabIndex = 3;
             this.btnEditTournament.Text = "Edit";
             this.btnEditTournament.UseVisualStyleBackColor = true;
+            this.btnEditTournament.Click += new System.EventHandler(this.btnEditTournament_Click);
             // 
             // btnDeleteTournament
             // 
