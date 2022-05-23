@@ -44,5 +44,11 @@ namespace DesktopApp
         {
             tabControl.SelectedTab = Home;
         }
+
+        private void btnCreateTournament_Click(object sender, EventArgs e)
+        {
+            EditTournament editTournament = new EditTournament();
+            editTournament.Show();
+        }
     }
 }

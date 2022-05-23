@@ -35,10 +35,15 @@ namespace DesktopApp
             this.tabControl = new System.Windows.Forms.TabControl();
             this.Home = new System.Windows.Forms.TabPage();
             this.ManageTournaments = new System.Windows.Forms.TabPage();
-            this.GenerateSchedule = new System.Windows.Forms.TabPage();
-            this.AddResults = new System.Windows.Forms.TabPage();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnCreateTournament = new System.Windows.Forms.Button();
+            this.btnEditTournament = new System.Windows.Forms.Button();
+            this.btnDeleteTournament = new System.Windows.Forms.Button();
+            this.lbxTournaments = new System.Windows.Forms.ListBox();
             this.btnHome = new System.Windows.Forms.Button();
+            this.GenerateSchedule = new System.Windows.Forms.TabPage();
             this.btnHome1 = new System.Windows.Forms.Button();
+            this.AddResults = new System.Windows.Forms.TabPage();
             this.btnHome2 = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.Home.SuspendLayout();
@@ -104,6 +109,11 @@ namespace DesktopApp
             // 
             // ManageTournaments
             // 
+            this.ManageTournaments.Controls.Add(this.btnRefresh);
+            this.ManageTournaments.Controls.Add(this.btnCreateTournament);
+            this.ManageTournaments.Controls.Add(this.btnEditTournament);
+            this.ManageTournaments.Controls.Add(this.btnDeleteTournament);
+            this.ManageTournaments.Controls.Add(this.lbxTournaments);
             this.ManageTournaments.Controls.Add(this.btnHome);
             this.ManageTournaments.Location = new System.Drawing.Point(4, 29);
             this.ManageTournaments.Name = "ManageTournaments";
@@ -112,6 +122,62 @@ namespace DesktopApp
             this.ManageTournaments.TabIndex = 0;
             this.ManageTournaments.Text = "ManageTournaments";
             this.ManageTournaments.UseVisualStyleBackColor = true;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(84, 20);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(73, 29);
+            this.btnRefresh.TabIndex = 5;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            // 
+            // btnCreateTournament
+            // 
+            this.btnCreateTournament.Location = new System.Drawing.Point(73, 220);
+            this.btnCreateTournament.Name = "btnCreateTournament";
+            this.btnCreateTournament.Size = new System.Drawing.Size(94, 29);
+            this.btnCreateTournament.TabIndex = 4;
+            this.btnCreateTournament.Text = "Create";
+            this.btnCreateTournament.UseVisualStyleBackColor = true;
+            this.btnCreateTournament.Click += new System.EventHandler(this.btnCreateTournament_Click);
+            // 
+            // btnEditTournament
+            // 
+            this.btnEditTournament.Location = new System.Drawing.Point(73, 284);
+            this.btnEditTournament.Name = "btnEditTournament";
+            this.btnEditTournament.Size = new System.Drawing.Size(94, 29);
+            this.btnEditTournament.TabIndex = 3;
+            this.btnEditTournament.Text = "Edit";
+            this.btnEditTournament.UseVisualStyleBackColor = true;
+            // 
+            // btnDeleteTournament
+            // 
+            this.btnDeleteTournament.Location = new System.Drawing.Point(73, 355);
+            this.btnDeleteTournament.Name = "btnDeleteTournament";
+            this.btnDeleteTournament.Size = new System.Drawing.Size(94, 29);
+            this.btnDeleteTournament.TabIndex = 2;
+            this.btnDeleteTournament.Text = "Delete";
+            this.btnDeleteTournament.UseVisualStyleBackColor = true;
+            // 
+            // lbxTournaments
+            // 
+            this.lbxTournaments.FormattingEnabled = true;
+            this.lbxTournaments.ItemHeight = 20;
+            this.lbxTournaments.Location = new System.Drawing.Point(270, 20);
+            this.lbxTournaments.Name = "lbxTournaments";
+            this.lbxTournaments.Size = new System.Drawing.Size(389, 364);
+            this.lbxTournaments.TabIndex = 1;
+            // 
+            // btnHome
+            // 
+            this.btnHome.Location = new System.Drawing.Point(681, 18);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(94, 29);
+            this.btnHome.TabIndex = 0;
+            this.btnHome.Text = "Home";
+            this.btnHome.UseVisualStyleBackColor = true;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // GenerateSchedule
             // 
@@ -123,26 +189,6 @@ namespace DesktopApp
             this.GenerateSchedule.Text = "GenerateGames";
             this.GenerateSchedule.UseVisualStyleBackColor = true;
             // 
-            // AddResults
-            // 
-            this.AddResults.Controls.Add(this.btnHome2);
-            this.AddResults.Location = new System.Drawing.Point(4, 29);
-            this.AddResults.Name = "AddResults";
-            this.AddResults.Size = new System.Drawing.Size(806, 415);
-            this.AddResults.TabIndex = 3;
-            this.AddResults.Text = "Add Results";
-            this.AddResults.UseVisualStyleBackColor = true;
-            // 
-            // btnHome
-            // 
-            this.btnHome.Location = new System.Drawing.Point(619, 66);
-            this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(94, 29);
-            this.btnHome.TabIndex = 0;
-            this.btnHome.Text = "Home";
-            this.btnHome.UseVisualStyleBackColor = true;
-            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
-            // 
             // btnHome1
             // 
             this.btnHome1.Location = new System.Drawing.Point(519, 73);
@@ -152,6 +198,16 @@ namespace DesktopApp
             this.btnHome1.Text = "Home";
             this.btnHome1.UseVisualStyleBackColor = true;
             this.btnHome1.Click += new System.EventHandler(this.btnHome1_Click);
+            // 
+            // AddResults
+            // 
+            this.AddResults.Controls.Add(this.btnHome2);
+            this.AddResults.Location = new System.Drawing.Point(4, 29);
+            this.AddResults.Name = "AddResults";
+            this.AddResults.Size = new System.Drawing.Size(806, 415);
+            this.AddResults.TabIndex = 3;
+            this.AddResults.Text = "Add Results";
+            this.AddResults.UseVisualStyleBackColor = true;
             // 
             // btnHome2
             // 
@@ -167,7 +223,7 @@ namespace DesktopApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(807, 450);
             this.Controls.Add(this.tabControl);
             this.Name = "HomeForm";
             this.Text = "HomeForm";
@@ -193,5 +249,10 @@ namespace DesktopApp
         private System.Windows.Forms.Button btnHome;
         private System.Windows.Forms.Button btnHome1;
         private System.Windows.Forms.Button btnHome2;
+        private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Button btnCreateTournament;
+        private System.Windows.Forms.Button btnEditTournament;
+        private System.Windows.Forms.Button btnDeleteTournament;
+        private System.Windows.Forms.ListBox lbxTournaments;
     }
 }
