@@ -1,0 +1,7 @@
+D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\DesktopApp\obj\Debug\netcoreapp3.1\DesktopApp.csproj.AssemblyReference.cache
+D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\DesktopApp\obj\Debug\netcoreapp3.1\DesktopApp.Form1.resources
+D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\DesktopApp\obj\Debug\netcoreapp3.1\DesktopApp.csproj.GenerateResource.cache
+D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\DesktopApp\obj\Debug\netcoreapp3.1\DesktopApp.GeneratedMSBuildEditorConfig.editorconfig
+D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\DesktopApp\obj\Debug\netcoreapp3.1\DesktopApp.AssemblyInfoInputs.cache
+D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\DesktopApp\obj\Debug\netcoreapp3.1\DesktopApp.AssemblyInfo.cs
+D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\DesktopApp\obj\Debug\netcoreapp3.1\DesktopApp.csproj.CoreCompileInputs.cache

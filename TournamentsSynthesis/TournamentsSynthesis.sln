@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.32510.428
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TournamentsWebApp", "TournamentsWebApp\TournamentsWebApp.csproj", "{8A080D15-1E26-48DE-8EC0-8D32E3FD33FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibraryTournaments", "ClassLibraryTournaments\ClassLibraryTournaments.csproj", "{F87BE2F7-D0CF-491C-92D0-D4C311476131}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassLibraryTournaments", "ClassLibraryTournaments\ClassLibraryTournaments.csproj", "{F87BE2F7-D0CF-491C-92D0-D4C311476131}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopApp", "DesktopApp\DesktopApp.csproj", "{E8E805B8-D90E-488B-91C7-2B2E2B1B356B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{F87BE2F7-D0CF-491C-92D0-D4C311476131}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F87BE2F7-D0CF-491C-92D0-D4C311476131}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F87BE2F7-D0CF-491C-92D0-D4C311476131}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8E805B8-D90E-488B-91C7-2B2E2B1B356B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8E805B8-D90E-488B-91C7-2B2E2B1B356B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8E805B8-D90E-488B-91C7-2B2E2B1B356B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8E805B8-D90E-488B-91C7-2B2E2B1B356B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
