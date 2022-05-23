@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ClassLibraryTournaments.Business
+namespace ClassLibraryTournaments.Persistence
 {
-    public class Game
+    public interface IUserRepository
     {
-
 
     }
 }

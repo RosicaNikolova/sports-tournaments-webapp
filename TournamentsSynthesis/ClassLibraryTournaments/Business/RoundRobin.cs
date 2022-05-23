@@ -9,6 +9,7 @@ namespace ClassLibraryTournaments.Business
         public List<Game> GenerateSchedule()
         {
             throw new NotImplementedException();
+
         }
     }
 }

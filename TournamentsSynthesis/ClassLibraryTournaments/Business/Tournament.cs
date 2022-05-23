@@ -6,6 +6,7 @@ namespace ClassLibraryTournaments.Business
 {
     public class Tournament
     {
+        public int Id { get; set; }
         public string SportType { get; set; }
         public ITournamentSystem TournamentSystem { get; set; }
         public string Description { get; set; }
