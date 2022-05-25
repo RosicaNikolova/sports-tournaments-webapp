@@ -1,4 +1,5 @@
 ﻿using ClassLibraryTournaments.Business;
+using ClassLibraryTournaments.Persistence;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,6 +13,7 @@ namespace DesktopApp
     public partial class EditTournament : Form
     {
         Tournament tournament;
+        TournamentManager tournamentManager = new TournamentManager(new TournamentRepository());
         public EditTournament()
         {
             InitializeComponent();
@@ -48,13 +50,24 @@ namespace DesktopApp
 
         private void btnEditCreate_Click(object sender, EventArgs e)
         {
-            if(btnEditCreate.Text == "Edit")
-            {
+            string sportType = cmbxSportType.Text;
+            string tournamentSystem = cmbxTournamentSystem.Text;
+            string description = tbxDescription.Text;
+            DateTime startDate = dateTimeStartDate.Value;
+            DateTime endDate = dateTimeEndDate.Value;
+            int minimumPlayers = Convert.ToInt32(txbMinPlayers.Text);
+            int maximumPlayers = Convert.ToInt32(txbMaxPlayers.Text);
+            string location = tbxLocation.Text;
 
+            if (btnEditCreate.Text == "Edit")
+            {
+                tournamentManager.UpdateTournament(tournament.Id, sportType, tournamentSystem, description, startDate, endDate, minimumPlayers, maximumPlayers, location);
+                MessageBox.Show("Tournament is updated successfully");
             }
             else
             {
-
+                tournamentManager.CreateTournament(sportType, tournamentSystem, description, startDate, endDate, minimumPlayers, maximumPlayers, location);
+                MessageBox.Show("Tournament is created successfully");
             }
         }
     }

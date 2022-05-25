@@ -7,7 +7,7 @@ using System.Text;
 namespace ClassLibraryTournaments.Persistence
 {
     public class TournamentRepository : ITournamentRepository
-    {
+    {     
         public List<Tournament> GetAllTournaments()
         {
             try
@@ -51,5 +51,82 @@ namespace ClassLibraryTournaments.Persistence
                 throw new DataBaseException();
             }
         }
+
+        public void SaveTournament(Tournament tournament)
+        {
+            try
+            {
+                using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+                {
+                    List<Tournament> tournaments = new List<Tournament>();
+                    string sql = "insert into tournament (sportType, tournamentSystem, description, startDate, endDate, minPlayer, maxPlayers, location) values (@sportType,@tournamentSystem,@description,@startDate,@endDate,@minPlayer,@maxPlayers,@location)";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("sportType", tournament.SportType);
+                    cmd.Parameters.AddWithValue("tournamentSystem", tournament.TournamentSystem.ToString());
+                    cmd.Parameters.AddWithValue("description", tournament.Description);
+                    cmd.Parameters.AddWithValue("startDate", tournament.StartDate);
+                    cmd.Parameters.AddWithValue("endDate", tournament.EndDate);
+                    cmd.Parameters.AddWithValue("minPlayer", tournament.MinPlayers);
+                    cmd.Parameters.AddWithValue("maxPlayers", tournament.MaxPlayers);
+                    cmd.Parameters.AddWithValue("location", tournament.Location);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception)
+            {
+                throw new DataBaseException();
+            }
+        }
+
+        public void UpdateTournament(Tournament tournament)
+        {
+            try
+            {
+                using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+                {
+                    List<Tournament> tournaments = new List<Tournament>();
+                    string sql = "update tournament set sportType=@sportType, tournamentSystem=@tournamentSystem, description=@description, startDate=@startDate, endDate=@endDate, minPlayer=@minPlayer, maxPlayers=@maxPlayers, location=@location where idTournament=@idTournament;";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("idTournament", tournament.Id);
+                    cmd.Parameters.AddWithValue("sportType", tournament.SportType);
+                    cmd.Parameters.AddWithValue("tournamentSystem", tournament.TournamentSystem.ToString());
+                    cmd.Parameters.AddWithValue("description", tournament.Description);
+                    cmd.Parameters.AddWithValue("startDate", tournament.StartDate);
+                    cmd.Parameters.AddWithValue("endDate", tournament.EndDate);
+                    cmd.Parameters.AddWithValue("minPlayer", tournament.MinPlayers);
+                    cmd.Parameters.AddWithValue("maxPlayers", tournament.MaxPlayers);
+                    cmd.Parameters.AddWithValue("location", tournament.Location);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception)
+            {
+                throw new DataBaseException();
+            }
+        }
+
+        public void DeleteTournament(int id)
+        {
+            try
+            {
+                using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+                {
+                    string sql = "Delete from tournament where idTournament=@idTournament";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("idTournament", id);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception)
+            {
+                throw new DataBaseException();
+            }
+        }
+
     }
 }

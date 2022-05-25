@@ -132,6 +132,7 @@ namespace DesktopApp
             this.btnRefresh.TabIndex = 5;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnCreateTournament
             // 
@@ -161,6 +162,7 @@ namespace DesktopApp
             this.btnDeleteTournament.TabIndex = 2;
             this.btnDeleteTournament.Text = "Delete";
             this.btnDeleteTournament.UseVisualStyleBackColor = true;
+            this.btnDeleteTournament.Click += new System.EventHandler(this.btnDeleteTournament_Click);
             // 
             // lbxTournaments
             // 

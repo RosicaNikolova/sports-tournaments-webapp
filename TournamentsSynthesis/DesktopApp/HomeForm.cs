@@ -86,12 +86,41 @@ namespace DesktopApp
             }
         }
 
+
         private void btnEditTournament_Click(object sender, EventArgs e)
         {
             object selectedTournament = lbxTournaments.SelectedItem;
             Tournament tournament = ((Tournament)selectedTournament);
             EditTournament editTournament = new EditTournament(tournament);
             editTournament.Show();
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            lbxTournaments.Items.Clear();
+            try
+            {
+                List<Tournament> tournaments = tournamentManager.GetAllTournaments();
+                foreach (Tournament tournament in tournaments)
+                {
+                    lbxTournaments.Items.Add(tournament);
+                }
+            }
+            catch (DataBaseException)
+            {
+                MessageBox.Show("There is a problem with our databse at the moment. Please, try again later");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("An error occured while processing you request.Please, try again later");
+            }
+        }
+
+        private void btnDeleteTournament_Click(object sender, EventArgs e)
+        {
+            object selectedTournament = lbxTournaments.SelectedItem;
+            Tournament tournament = ((Tournament)selectedTournament);
+            tournamentManager.DeleteTournament(tournament.Id);
         }
     }
 }

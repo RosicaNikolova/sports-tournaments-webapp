@@ -185,7 +185,7 @@ namespace DesktopApp
             // 
             // btnEditCreate
             // 
-            this.btnEditCreate.Location = new System.Drawing.Point(312, 554);
+            this.btnEditCreate.Location = new System.Drawing.Point(317, 554);
             this.btnEditCreate.Name = "btnEditCreate";
             this.btnEditCreate.Size = new System.Drawing.Size(108, 53);
             this.btnEditCreate.TabIndex = 16;
