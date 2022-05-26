@@ -24,7 +24,7 @@ namespace ClassLibraryTournaments.Business
         }
         public override string ToString()
         {
-            return "Round Robin";
+            return "Round-Robin";
         }
     }
 }

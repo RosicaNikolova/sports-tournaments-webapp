@@ -27,7 +27,7 @@ namespace ClassLibraryTournaments.Persistence
                         tournament.Id = dateReader.GetInt32("idTournament");
                         tournament.SportType = dateReader.GetString("sportType");
                         string tournamentSystem = dateReader.GetString("tournamentSystem");
-                        if(tournamentSystem == "Round Robin")
+                        if(tournamentSystem == "Round-Robin")
                         {
                             tournament.TournamentSystem = new RoundRobin();
                         }

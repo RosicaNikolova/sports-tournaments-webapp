@@ -63,11 +63,13 @@ namespace DesktopApp
             {
                 tournamentManager.UpdateTournament(tournament.Id, sportType, tournamentSystem, description, startDate, endDate, minimumPlayers, maximumPlayers, location);
                 MessageBox.Show("Tournament is updated successfully");
+                this.Close();
             }
             else
             {
                 tournamentManager.CreateTournament(sportType, tournamentSystem, description, startDate, endDate, minimumPlayers, maximumPlayers, location);
                 MessageBox.Show("Tournament is created successfully");
+                this.Close();
             }
         }
     }

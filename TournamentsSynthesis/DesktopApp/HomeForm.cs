@@ -1,4 +1,5 @@
-﻿using ClassLibraryTournaments.Business;
+﻿using ClassLibraryTournaments;
+using ClassLibraryTournaments.Business;
 using ClassLibraryTournaments.Persistence;
 using System;
 using System.Collections.Generic;
@@ -13,10 +14,20 @@ namespace DesktopApp
     public partial class HomeForm : Form
     {
         TournamentManager tournamentManager = new TournamentManager(new TournamentRepository());
+        GameManager gameManager = new GameManager(new GameRepository());
+        User user;
         public HomeForm()
         {
             InitializeComponent();
         }
+
+        public HomeForm(User user)
+        {
+            InitializeComponent();
+            this.user = user;
+            lblWelcome.Text = $"Hello, {user.FirstName} {user.LastName}";
+        }
+
 
         private void btnManageTournaments_Click(object sender, EventArgs e)
         {
@@ -78,7 +89,12 @@ namespace DesktopApp
             }
             else if (tabControl.SelectedTab == GenerateSchedule)
             {
-
+                cmbxTournaments.Items.Clear();
+                List<Tournament> tournaments = tournamentManager.GetAllTournaments();
+                foreach (Tournament tournament in tournaments)
+                {
+                    cmbxTournaments.Items.Add(tournament);
+                }
             }
             else if(tabControl.SelectedTab == AddResults)
             {
@@ -121,11 +137,20 @@ namespace DesktopApp
             object selectedTournament = lbxTournaments.SelectedItem;
             Tournament tournament = ((Tournament)selectedTournament);
             tournamentManager.DeleteTournament(tournament.Id);
+            MessageBox.Show("Tournament is deleted successfully");
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
+        private void btnGenerateMatches_Click(object sender, EventArgs e)
+        {
+            object selectedTournament = cmbxTournaments.SelectedItem;
+            Tournament tournament = ((Tournament)selectedTournament);
+            List<Game> games = gameManager.GenerateGames(tournament);
+            foreach (Game game in games)
+            {
+                dataGridView1.Rows.Add(game.Player1Id, game.Player2Id);
+            }
+            
         }
     }
 }

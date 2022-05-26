@@ -46,7 +46,7 @@ namespace DesktopApp
                     }
                     else
                     {
-                        HomeForm homeForm = new HomeForm();
+                        HomeForm homeForm = new HomeForm(user);
                         homeForm.Show();
                     }
                 }
