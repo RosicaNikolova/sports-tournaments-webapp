@@ -16,6 +16,8 @@ namespace ClassLibraryTournaments.Business
         public int MaxPlayers { get; set; }
         public string Location { get; set; }
 
+        public Status Status { get; set; }
+
 
         public override string ToString()
         {

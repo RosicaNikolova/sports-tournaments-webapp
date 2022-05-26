@@ -34,6 +34,7 @@ namespace DesktopApp
             this.btnAddResults = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.Home = new System.Windows.Forms.TabPage();
+            this.lblWelcome = new System.Windows.Forms.Label();
             this.ManageTournaments = new System.Windows.Forms.TabPage();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnCreateTournament = new System.Windows.Forms.Button();
@@ -49,15 +50,19 @@ namespace DesktopApp
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnHome1 = new System.Windows.Forms.Button();
             this.AddResults = new System.Windows.Forms.TabPage();
+            this.cmbxTournamentsResults = new System.Windows.Forms.ComboBox();
             this.btnHome2 = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblWelcome = new System.Windows.Forms.Label();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl.SuspendLayout();
             this.Home.SuspendLayout();
             this.ManageTournaments.SuspendLayout();
             this.GenerateSchedule.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.AddResults.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // btnManageTournaments
@@ -116,6 +121,14 @@ namespace DesktopApp
             this.Home.TabIndex = 1;
             this.Home.Text = "Home";
             this.Home.UseVisualStyleBackColor = true;
+            // 
+            // lblWelcome
+            // 
+            this.lblWelcome.AutoSize = true;
+            this.lblWelcome.Location = new System.Drawing.Point(306, 299);
+            this.lblWelcome.Name = "lblWelcome";
+            this.lblWelcome.Size = new System.Drawing.Size(0, 20);
+            this.lblWelcome.TabIndex = 3;
             // 
             // ManageTournaments
             // 
@@ -262,6 +275,8 @@ namespace DesktopApp
             // 
             // AddResults
             // 
+            this.AddResults.Controls.Add(this.dataGridView2);
+            this.AddResults.Controls.Add(this.cmbxTournamentsResults);
             this.AddResults.Controls.Add(this.btnHome2);
             this.AddResults.Location = new System.Drawing.Point(4, 29);
             this.AddResults.Name = "AddResults";
@@ -270,9 +285,17 @@ namespace DesktopApp
             this.AddResults.Text = "Add Results";
             this.AddResults.UseVisualStyleBackColor = true;
             // 
+            // cmbxTournamentsResults
+            // 
+            this.cmbxTournamentsResults.FormattingEnabled = true;
+            this.cmbxTournamentsResults.Location = new System.Drawing.Point(124, 35);
+            this.cmbxTournamentsResults.Name = "cmbxTournamentsResults";
+            this.cmbxTournamentsResults.Size = new System.Drawing.Size(399, 28);
+            this.cmbxTournamentsResults.TabIndex = 3;
+            // 
             // btnHome2
             // 
-            this.btnHome2.Location = new System.Drawing.Point(572, 54);
+            this.btnHome2.Location = new System.Drawing.Point(655, 35);
             this.btnHome2.Name = "btnHome2";
             this.btnHome2.Size = new System.Drawing.Size(94, 29);
             this.btnHome2.TabIndex = 0;
@@ -287,13 +310,32 @@ namespace DesktopApp
             this.Column1.Name = "Column1";
             this.Column1.Width = 125;
             // 
-            // lblWelcome
+            // dataGridView2
             // 
-            this.lblWelcome.AutoSize = true;
-            this.lblWelcome.Location = new System.Drawing.Point(306, 299);
-            this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(0, 20);
-            this.lblWelcome.TabIndex = 3;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column2,
+            this.Column4});
+            this.dataGridView2.Location = new System.Drawing.Point(173, 165);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowHeadersWidth = 51;
+            this.dataGridView2.RowTemplate.Height = 29;
+            this.dataGridView2.Size = new System.Drawing.Size(300, 188);
+            this.dataGridView2.TabIndex = 4;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Player 1";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 125;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Player 2";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 125;
             // 
             // HomeForm
             // 
@@ -310,6 +352,7 @@ namespace DesktopApp
             this.GenerateSchedule.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.AddResults.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -339,5 +382,9 @@ namespace DesktopApp
         private System.Windows.Forms.DataGridViewTextBoxColumn Player1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.Label lblWelcome;
+        private System.Windows.Forms.ComboBox cmbxTournamentsResults;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
     }
 }

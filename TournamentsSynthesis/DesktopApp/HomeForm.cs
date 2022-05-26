@@ -90,7 +90,8 @@ namespace DesktopApp
             else if (tabControl.SelectedTab == GenerateSchedule)
             {
                 cmbxTournaments.Items.Clear();
-                List<Tournament> tournaments = tournamentManager.GetAllTournaments();
+                List<Tournament> tournaments = tournamentManager.GetAllPendingTournaments();
+
                 foreach (Tournament tournament in tournaments)
                 {
                     cmbxTournaments.Items.Add(tournament);
@@ -150,7 +151,10 @@ namespace DesktopApp
             {
                 dataGridView1.Rows.Add(game.Player1Id, game.Player2Id);
             }
-            
+            tournamentManager.SetStatusToOngoing(tournament.Id);
+           
         }
+
+       
     }
 }

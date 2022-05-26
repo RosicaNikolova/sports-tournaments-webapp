@@ -39,30 +39,28 @@ namespace ClassLibraryTournaments.Persistence
 
         public void SaveGames(List<Game> games, int tournamentId)
         {
-            try
+            foreach (Game game in games)
             {
+                //try
+                //{
                 using (MySqlConnection conn = DatabaseConnection.CreateConnection())
-                {
-                    string sql = "insert into games (tournamentId, player1Id, player2Id) values(@tournamentId, @player1Id, @player2Id);";
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("tournamentId", tournamentId);
-
-                    foreach (Game game in games)
-                    {
+                { 
+                        string sql = "insert into games (tournamentId, player1Id, player2Id) values(@tournamentId, @player1Id, @player2Id);";
+                        MySqlCommand cmd = new MySqlCommand(sql, conn);
+                        cmd.Parameters.AddWithValue("tournamentId", tournamentId);
                         cmd.Parameters.AddWithValue("player1Id", game.Player1Id);
                         cmd.Parameters.AddWithValue("player2Id", game.Player2Id);
-                 
+
                         conn.Open();
 
                         cmd.ExecuteNonQuery();
-                    }
-                
                 }
             }
-            catch (Exception)
-            {
-                throw new DataBaseException();
-            }
+            //}
+            //catch (Exception)
+            //{
+            //    throw new DataBaseException();
+            //}
         }
     }
 }

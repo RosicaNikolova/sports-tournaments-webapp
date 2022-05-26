@@ -67,5 +67,16 @@ namespace ClassLibraryTournaments.Business
         {
             tournamentRepository.DeleteTournament(id);
         }
+
+        public List<Tournament> GetAllPendingTournaments()
+        {
+            List<Tournament> tournaments = tournamentRepository.GetAllPendingTournaments();
+            return tournaments;
+        }
+
+        public void SetStatusToOngoing(int id)
+        {
+            tournamentRepository.SetStatusToOngoing(id);
+        }
     }
 }
