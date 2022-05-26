@@ -122,5 +122,10 @@ namespace DesktopApp
             Tournament tournament = ((Tournament)selectedTournament);
             tournamentManager.DeleteTournament(tournament.Id);
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

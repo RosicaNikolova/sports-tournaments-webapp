@@ -6,6 +6,6 @@ namespace ClassLibraryTournaments.Business
 {
     public interface ITournamentSystem
     {
-        public List<Game> GenerateSchedule();
+        public List<Game> GenerateSchedule(List<User>players);
     }
 }
