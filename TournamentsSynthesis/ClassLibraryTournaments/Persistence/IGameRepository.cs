@@ -9,5 +9,7 @@ namespace ClassLibraryTournaments.Persistence
     {
         public List<User> GetPlayersForTournament(int id);
         public void SaveGames(List<Game> games, int tournamentId);
+        List<Game> GetGamesForTournament(int id);
+        void SaveResults(Game game);
     }
 }

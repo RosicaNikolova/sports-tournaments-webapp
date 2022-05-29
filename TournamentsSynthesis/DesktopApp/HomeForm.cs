@@ -72,6 +72,7 @@ namespace DesktopApp
                 lbxTournaments.Items.Clear();
                 try
                 {
+                    //open tournaments for CRUID 
                     List<Tournament> tournaments = tournamentManager.GetAllTournaments();
                     foreach (Tournament tournament in tournaments)
                     {
@@ -89,16 +90,47 @@ namespace DesktopApp
             }
             else if (tabControl.SelectedTab == GenerateSchedule)
             {
-                cmbxTournaments.Items.Clear();
-                List<Tournament> tournaments = tournamentManager.GetAllPendingTournaments();
-
-                foreach (Tournament tournament in tournaments)
+                try
                 {
-                    cmbxTournaments.Items.Add(tournament);
+                    //pending tournaments for generating schedule
+                    cmbxTournaments.Items.Clear();
+                    List<Tournament> tournaments = tournamentManager.GetAllPendingTournaments();
+
+                    foreach (Tournament tournament in tournaments)
+                    {
+                        cmbxTournaments.Items.Add(tournament);
+                    }
+                }
+                catch (DataBaseException)
+                {
+                    MessageBox.Show("There is a problem with our databse at the moment. Please, try again later");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("An error occured while processing you request.Please, try again later");
                 }
             }
             else if(tabControl.SelectedTab == AddResults)
             {
+                try
+                {
+                    //ongoing tournaments for adding results
+                    cmbxTournamentsResults.Items.Clear();
+                    List<Tournament> tournaments = tournamentManager.GetAllOngoingTournaments();
+
+                    foreach (Tournament tournament in tournaments)
+                    {
+                        cmbxTournamentsResults.Items.Add(tournament);
+                    }
+                }
+                catch (DataBaseException)
+                {
+                    MessageBox.Show("There is a problem with our databse at the moment. Please, try again later");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("An error occured while processing you request.Please, try again later");
+                }
 
             }
         }
@@ -144,6 +176,7 @@ namespace DesktopApp
 
         private void btnGenerateMatches_Click(object sender, EventArgs e)
         {
+            dataGridView1.Rows.Clear();
             object selectedTournament = cmbxTournaments.SelectedItem;
             Tournament tournament = ((Tournament)selectedTournament);
             List<Game> games = gameManager.GenerateGames(tournament);
@@ -155,6 +188,44 @@ namespace DesktopApp
            
         }
 
+
+      
+
+        private void cmbxTournamentsResults_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dataGridView2.Rows.Clear();
+            object selectedTournament = cmbxTournamentsResults.SelectedItem;
+            Tournament tournament = ((Tournament)selectedTournament);
+
+            List<Game> games = gameManager.GetGamesForTournament(tournament.Id);
+            foreach (Game game in games)
+            {
+                dataGridView2.Rows.Add(game.GameId, game.Player1Id, game.Player2Id, game.Result1, game.Result2);
+            }
+        }
+
        
+
+        private void btnSaveResults_Click(object sender, EventArgs e)
+        {
+            for (int rows = 0; rows < dataGridView2.Rows.Count; rows++)
+            {
+                int resultPlayer1 = Convert.ToInt32(dataGridView2.Rows[rows].Cells[3].Value.ToString());
+                int resultPlayer2 = Convert.ToInt32(dataGridView2.Rows[rows].Cells[4].Value.ToString());
+                if(resultPlayer1 != 0 && resultPlayer2 != 0)
+                {
+                    int gameId = Convert.ToInt32(dataGridView2.Rows[rows].Cells[0].Value.ToString());
+                    int player1Id = Convert.ToInt32(dataGridView2.Rows[rows].Cells[1].Value.ToString());
+                    int player2Id = Convert.ToInt32(dataGridView2.Rows[rows].Cells[2].Value.ToString());
+                    Game game = new Game();
+                    game.GameId = gameId;
+                    game.Result1 = resultPlayer1;
+                    game.Result2 = resultPlayer2;
+                    game.Player1Id = player1Id;
+                    game.Player2Id = player2Id;
+                    gameManager.SaveResults(game);
+                }
+            }
+        }
     }
 }

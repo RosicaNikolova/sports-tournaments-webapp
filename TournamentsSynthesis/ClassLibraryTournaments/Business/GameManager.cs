@@ -28,5 +28,25 @@ namespace ClassLibraryTournaments.Business
             playersForTournament = gameRepository.GetPlayersForTournament(idTournament);
             return playersForTournament;
         }
+
+        public List<Game> GetGamesForTournament(int id)
+        {
+            List<Game> games = gameRepository.GetGamesForTournament(id);
+            return games;
+
+        }
+
+        public void SaveResults(Game game)
+        {
+            if(game.Result1 > game.Result2)
+            {
+                game.WinnerId = game.Player1Id;
+            }
+            else{
+                game.WinnerId = game.Player2Id;
+            }
+
+            gameRepository.SaveResults(game);
+        }
     }
 }

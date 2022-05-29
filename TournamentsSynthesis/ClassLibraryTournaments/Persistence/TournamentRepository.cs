@@ -196,5 +196,51 @@ namespace ClassLibraryTournaments.Persistence
                 throw new DataBaseException();
             }
         }
+
+        public List<Tournament> GetAllOngoingTournaments()
+        {
+            try
+            {
+                using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+                {
+                    List<Tournament> tournaments = new List<Tournament>();
+                    string sql = "select idTournament, sportType, tournamentSystem, description, startDate, endDate, minPlayer, maxPlayers, status, location from tournament where status=@status;";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                    cmd.Parameters.AddWithValue("status", Status.ongoing.ToString());
+
+                    conn.Open();
+
+                    MySqlDataReader dateReader = cmd.ExecuteReader();
+                    while (dateReader.Read())
+                    {
+                        Tournament tournament = new Tournament();
+                        tournament.Id = dateReader.GetInt32("idTournament");
+                        tournament.SportType = dateReader.GetString("sportType");
+                        string tournamentSystem = dateReader.GetString("tournamentSystem");
+                        if (tournamentSystem == "Round-Robin")
+                        {
+                            tournament.TournamentSystem = new RoundRobin();
+                        }
+                        else
+                        {
+                            tournament.TournamentSystem = new DoubleRoundRobin();
+                        }
+                        tournament.Description = dateReader.GetString("description");
+                        tournament.StartDate = (DateTime)dateReader.GetMySqlDateTime("startDate");
+                        tournament.EndDate = (DateTime)dateReader.GetMySqlDateTime("endDate");
+                        tournament.MinPlayers = dateReader.GetInt32("minPlayer");
+                        tournament.MaxPlayers = dateReader.GetInt32("maxPlayers");
+                        tournament.Location = dateReader.GetString("location");
+                        tournaments.Add(tournament);
+                    }
+                    return tournaments;
+                }
+            }
+            catch (Exception)
+            {
+                throw new DataBaseException();
+            }
+        }
     }
 }

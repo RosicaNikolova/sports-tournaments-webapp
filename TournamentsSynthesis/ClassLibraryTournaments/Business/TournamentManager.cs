@@ -78,5 +78,12 @@ namespace ClassLibraryTournaments.Business
         {
             tournamentRepository.SetStatusToOngoing(id);
         }
+
+        public List<Tournament> GetAllOngoingTournaments()
+        {
+            List<Tournament> tournaments = tournamentRepository.GetAllOngoingTournaments();
+            return tournaments;
+
+        }
     }
 }

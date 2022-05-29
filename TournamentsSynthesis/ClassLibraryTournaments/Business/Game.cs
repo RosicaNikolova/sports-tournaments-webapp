@@ -12,6 +12,7 @@ namespace ClassLibraryTournaments.Business
         public int TournamentId { get; set; }
         public int Result1 { get; set; }
         public int Result2 { get; set; }
+        public int WinnerId { get; set; }
 
         public override string ToString()
         {
