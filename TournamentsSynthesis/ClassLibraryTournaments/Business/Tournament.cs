@@ -18,16 +18,17 @@ namespace ClassLibraryTournaments.Business
         public string Location { get; set; }
         public Status Status { get; set; }
 
-
         public override string ToString()
         {
             return $"{TournamentSystem.ToString()} Location: {Location}";
         }
 
-        public Tournament()
+         public DateTime SetRegistrationClosesDate()
         {
-            RegistrationCloses = new DateTime(StartDate.Year, StartDate.Month, StartDate.Day);
+            DateTime registrationClosesDate = new DateTime(StartDate.Year, StartDate.Month, StartDate.Day).AddDays(-1);
+            return registrationClosesDate;
         }
+        
     }
 
     

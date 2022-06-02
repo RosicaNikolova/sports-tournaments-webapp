@@ -34,6 +34,18 @@ namespace DesktopApp
             this.btnAddResults = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.Home = new System.Windows.Forms.TabPage();
+            this.dataGridViewOverview = new System.Windows.Forms.DataGridView();
+            this.TournamentIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SportTypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TournamentSystemColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StatusColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StartDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EndDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RegisterClosedDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MinPlayersColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaxPlayersColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DescriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LocationColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblWelcome = new System.Windows.Forms.Label();
             this.ManageTournaments = new System.Windows.Forms.TabPage();
             this.btnRefresh = new System.Windows.Forms.Button();
@@ -63,6 +75,7 @@ namespace DesktopApp
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl.SuspendLayout();
             this.Home.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOverview)).BeginInit();
             this.ManageTournaments.SuspendLayout();
             this.GenerateSchedule.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -72,7 +85,7 @@ namespace DesktopApp
             // 
             // btnManageTournaments
             // 
-            this.btnManageTournaments.Location = new System.Drawing.Point(89, 122);
+            this.btnManageTournaments.Location = new System.Drawing.Point(211, 50);
             this.btnManageTournaments.Name = "btnManageTournaments";
             this.btnManageTournaments.Size = new System.Drawing.Size(110, 61);
             this.btnManageTournaments.TabIndex = 0;
@@ -82,7 +95,7 @@ namespace DesktopApp
             // 
             // btnGenerateGames
             // 
-            this.btnGenerateGames.Location = new System.Drawing.Point(241, 122);
+            this.btnGenerateGames.Location = new System.Drawing.Point(411, 50);
             this.btnGenerateGames.Name = "btnGenerateGames";
             this.btnGenerateGames.Size = new System.Drawing.Size(94, 61);
             this.btnGenerateGames.TabIndex = 1;
@@ -92,7 +105,7 @@ namespace DesktopApp
             // 
             // btnAddResults
             // 
-            this.btnAddResults.Location = new System.Drawing.Point(370, 122);
+            this.btnAddResults.Location = new System.Drawing.Point(585, 50);
             this.btnAddResults.Name = "btnAddResults";
             this.btnAddResults.Size = new System.Drawing.Size(110, 61);
             this.btnAddResults.TabIndex = 2;
@@ -109,12 +122,13 @@ namespace DesktopApp
             this.tabControl.Location = new System.Drawing.Point(-5, 12);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(956, 578);
+            this.tabControl.Size = new System.Drawing.Size(1447, 578);
             this.tabControl.TabIndex = 3;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
             // Home
             // 
+            this.Home.Controls.Add(this.dataGridViewOverview);
             this.Home.Controls.Add(this.lblWelcome);
             this.Home.Controls.Add(this.btnGenerateGames);
             this.Home.Controls.Add(this.btnAddResults);
@@ -122,10 +136,120 @@ namespace DesktopApp
             this.Home.Location = new System.Drawing.Point(4, 29);
             this.Home.Name = "Home";
             this.Home.Padding = new System.Windows.Forms.Padding(3);
-            this.Home.Size = new System.Drawing.Size(948, 545);
+            this.Home.Size = new System.Drawing.Size(1439, 545);
             this.Home.TabIndex = 1;
             this.Home.Text = "Home";
             this.Home.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewOverview
+            // 
+            this.dataGridViewOverview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewOverview.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TournamentIdColumn,
+            this.SportTypeColumn,
+            this.TournamentSystemColumn,
+            this.StatusColumn,
+            this.StartDateColumn,
+            this.EndDateColumn,
+            this.RegisterClosedDateColumn,
+            this.MinPlayersColumn,
+            this.MaxPlayersColumn,
+            this.DescriptionColumn,
+            this.LocationColumn});
+            this.dataGridViewOverview.Location = new System.Drawing.Point(6, 174);
+            this.dataGridViewOverview.Name = "dataGridViewOverview";
+            this.dataGridViewOverview.RowHeadersWidth = 51;
+            this.dataGridViewOverview.RowTemplate.Height = 29;
+            this.dataGridViewOverview.Size = new System.Drawing.Size(1433, 425);
+            this.dataGridViewOverview.TabIndex = 4;
+            // 
+            // TournamentIdColumn
+            // 
+            this.TournamentIdColumn.HeaderText = "Tournament Id";
+            this.TournamentIdColumn.MinimumWidth = 6;
+            this.TournamentIdColumn.Name = "TournamentIdColumn";
+            this.TournamentIdColumn.ReadOnly = true;
+            this.TournamentIdColumn.Width = 125;
+            // 
+            // SportTypeColumn
+            // 
+            this.SportTypeColumn.HeaderText = "Sport Type";
+            this.SportTypeColumn.MinimumWidth = 6;
+            this.SportTypeColumn.Name = "SportTypeColumn";
+            this.SportTypeColumn.ReadOnly = true;
+            this.SportTypeColumn.Width = 125;
+            // 
+            // TournamentSystemColumn
+            // 
+            this.TournamentSystemColumn.HeaderText = "Tournament System";
+            this.TournamentSystemColumn.MinimumWidth = 6;
+            this.TournamentSystemColumn.Name = "TournamentSystemColumn";
+            this.TournamentSystemColumn.ReadOnly = true;
+            this.TournamentSystemColumn.Width = 125;
+            // 
+            // StatusColumn
+            // 
+            this.StatusColumn.HeaderText = "Status";
+            this.StatusColumn.MinimumWidth = 6;
+            this.StatusColumn.Name = "StatusColumn";
+            this.StatusColumn.ReadOnly = true;
+            this.StatusColumn.Width = 125;
+            // 
+            // StartDateColumn
+            // 
+            this.StartDateColumn.HeaderText = "Start Date";
+            this.StartDateColumn.MinimumWidth = 6;
+            this.StartDateColumn.Name = "StartDateColumn";
+            this.StartDateColumn.ReadOnly = true;
+            this.StartDateColumn.Width = 125;
+            // 
+            // EndDateColumn
+            // 
+            this.EndDateColumn.HeaderText = "End Date";
+            this.EndDateColumn.MinimumWidth = 6;
+            this.EndDateColumn.Name = "EndDateColumn";
+            this.EndDateColumn.ReadOnly = true;
+            this.EndDateColumn.Width = 125;
+            // 
+            // RegisterClosedDateColumn
+            // 
+            this.RegisterClosedDateColumn.HeaderText = "Register Closed Date";
+            this.RegisterClosedDateColumn.MinimumWidth = 6;
+            this.RegisterClosedDateColumn.Name = "RegisterClosedDateColumn";
+            this.RegisterClosedDateColumn.ReadOnly = true;
+            this.RegisterClosedDateColumn.Width = 125;
+            // 
+            // MinPlayersColumn
+            // 
+            this.MinPlayersColumn.HeaderText = "Minimum Players";
+            this.MinPlayersColumn.MinimumWidth = 6;
+            this.MinPlayersColumn.Name = "MinPlayersColumn";
+            this.MinPlayersColumn.ReadOnly = true;
+            this.MinPlayersColumn.Width = 125;
+            // 
+            // MaxPlayersColumn
+            // 
+            this.MaxPlayersColumn.HeaderText = "Maximum Players";
+            this.MaxPlayersColumn.MinimumWidth = 6;
+            this.MaxPlayersColumn.Name = "MaxPlayersColumn";
+            this.MaxPlayersColumn.ReadOnly = true;
+            this.MaxPlayersColumn.Width = 125;
+            // 
+            // DescriptionColumn
+            // 
+            this.DescriptionColumn.HeaderText = "Description";
+            this.DescriptionColumn.MinimumWidth = 6;
+            this.DescriptionColumn.Name = "DescriptionColumn";
+            this.DescriptionColumn.ReadOnly = true;
+            this.DescriptionColumn.Width = 125;
+            // 
+            // LocationColumn
+            // 
+            this.LocationColumn.HeaderText = "Location";
+            this.LocationColumn.MinimumWidth = 6;
+            this.LocationColumn.Name = "LocationColumn";
+            this.LocationColumn.ReadOnly = true;
+            this.LocationColumn.Width = 125;
             // 
             // lblWelcome
             // 
@@ -146,7 +270,7 @@ namespace DesktopApp
             this.ManageTournaments.Location = new System.Drawing.Point(4, 29);
             this.ManageTournaments.Name = "ManageTournaments";
             this.ManageTournaments.Padding = new System.Windows.Forms.Padding(3);
-            this.ManageTournaments.Size = new System.Drawing.Size(948, 545);
+            this.ManageTournaments.Size = new System.Drawing.Size(1200, 545);
             this.ManageTournaments.TabIndex = 0;
             this.ManageTournaments.Text = "ManageTournaments";
             this.ManageTournaments.UseVisualStyleBackColor = true;
@@ -218,7 +342,7 @@ namespace DesktopApp
             this.GenerateSchedule.Controls.Add(this.btnHome1);
             this.GenerateSchedule.Location = new System.Drawing.Point(4, 29);
             this.GenerateSchedule.Name = "GenerateSchedule";
-            this.GenerateSchedule.Size = new System.Drawing.Size(948, 545);
+            this.GenerateSchedule.Size = new System.Drawing.Size(1200, 545);
             this.GenerateSchedule.TabIndex = 2;
             this.GenerateSchedule.Text = "GenerateGames";
             this.GenerateSchedule.UseVisualStyleBackColor = true;
@@ -287,7 +411,7 @@ namespace DesktopApp
             this.AddResults.Controls.Add(this.btnHome2);
             this.AddResults.Location = new System.Drawing.Point(4, 29);
             this.AddResults.Name = "AddResults";
-            this.AddResults.Size = new System.Drawing.Size(948, 545);
+            this.AddResults.Size = new System.Drawing.Size(1200, 545);
             this.AddResults.TabIndex = 3;
             this.AddResults.Text = "Add Results";
             this.AddResults.UseVisualStyleBackColor = true;
@@ -396,13 +520,14 @@ namespace DesktopApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(941, 583);
+            this.ClientSize = new System.Drawing.Size(1443, 652);
             this.Controls.Add(this.tabControl);
             this.Name = "HomeForm";
             this.Text = "HomeForm";
             this.tabControl.ResumeLayout(false);
             this.Home.ResumeLayout(false);
             this.Home.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOverview)).EndInit();
             this.ManageTournaments.ResumeLayout(false);
             this.GenerateSchedule.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -447,5 +572,17 @@ namespace DesktopApp
         private System.Windows.Forms.DataGridViewTextBoxColumn Player2Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Result1Player;
         private System.Windows.Forms.DataGridViewTextBoxColumn Result2Player;
+        private System.Windows.Forms.DataGridView dataGridViewOverview;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TournamentIdColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SportTypeColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TournamentSystemColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StatusColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StartDateColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EndDateColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RegisterClosedDateColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MinPlayersColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaxPlayersColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DescriptionColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LocationColumn;
     }
 }

@@ -26,6 +26,8 @@ namespace DesktopApp
             InitializeComponent();
             this.user = user;
             lblWelcome.Text = $"Hello, {user.FirstName} {user.LastName}";
+            tournamentManager.CheckStatusesOfTournaments();
+            UpdateTournamentOverview();
         }
 
 
@@ -67,13 +69,13 @@ namespace DesktopApp
 
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(tabControl.SelectedTab == ManageTournaments)
+            if (tabControl.SelectedTab == ManageTournaments)
             {
                 lbxTournaments.Items.Clear();
                 try
                 {
                     //open tournaments for CRUID 
-                    List<Tournament> tournaments = tournamentManager.GetAllTournaments();
+                    List<Tournament> tournaments = tournamentManager.GetAllOpenTournaments();
                     foreach (Tournament tournament in tournaments)
                     {
                         lbxTournaments.Items.Add(tournament);
@@ -110,10 +112,24 @@ namespace DesktopApp
                     MessageBox.Show("An error occured while processing you request.Please, try again later");
                 }
             }
-            else if(tabControl.SelectedTab == AddResults)
+            else if (tabControl.SelectedTab == AddResults)
             {
 
                 UpdateTournamentsListResultsTab();
+            }
+            else if (tabControl.SelectedTab == Home)
+            {
+                UpdateTournamentOverview();
+            }
+        }
+
+        private void UpdateTournamentOverview()
+        {
+            dataGridViewOverview.Rows.Clear();
+            List<Tournament> tournaments = tournamentManager.GetAllTournaments();
+            foreach (Tournament tournament in tournaments)
+            {
+                dataGridView1.Rows.Add(tournament.Id, tournament.SportType, tournament.TournamentSystem, tournament.Status, tournament.StartDate, tournament.EndDate, tournament.RegistrationCloses, tournament.MinPlayers, tournament.MaxPlayers, tournament.Description, tournament.Location);
             }
         }
 
@@ -215,8 +231,8 @@ namespace DesktopApp
             {
                 int resultPlayer1 = Convert.ToInt32(dataGridView2.Rows[rows].Cells[3].Value.ToString());
                 int resultPlayer2 = Convert.ToInt32(dataGridView2.Rows[rows].Cells[4].Value.ToString());
-              
-                if(resultPlayer1 != 0 && resultPlayer2 != 0)
+
+                if (resultPlayer1 != 0 && resultPlayer2 != 0)
                 {
                     int gameId = Convert.ToInt32(dataGridView2.Rows[rows].Cells[0].Value.ToString());
                     int player1Id = Convert.ToInt32(dataGridView2.Rows[rows].Cells[1].Value.ToString());
@@ -235,7 +251,7 @@ namespace DesktopApp
                     }
                     else
                     {
-                        MessageBox.Show("Ivalid results");
+                        MessageBox.Show(game.SportType.GetErrorMessage());
                     }
                 }
             }

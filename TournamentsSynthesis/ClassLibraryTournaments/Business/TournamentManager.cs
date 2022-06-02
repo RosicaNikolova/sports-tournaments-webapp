@@ -29,6 +29,8 @@ namespace ClassLibraryTournaments.Business
             tournament.MinPlayers = minimumPlayers;
             tournament.MaxPlayers = maximumPlayers;
             tournament.Location = location;
+            tournament.RegistrationCloses = tournament.SetRegistrationClosesDate();
+
             if (tournamentSystem == "Round Robin")
             {
                 tournament.TournamentSystem = new RoundRobin();
@@ -52,6 +54,7 @@ namespace ClassLibraryTournaments.Business
             tournament.MinPlayers = minimumPlayers;
             tournament.MaxPlayers = maximumPlayers;
             tournament.Location = location;
+            tournament.RegistrationCloses = tournament.SetRegistrationClosesDate();
             if (tournamentSystem == "Round Robin")
             {
                 tournament.TournamentSystem = new RoundRobin();
@@ -61,6 +64,11 @@ namespace ClassLibraryTournaments.Business
                 tournament.TournamentSystem = new DoubleRoundRobin();
             }
             tournamentRepository.UpdateTournament(tournament);
+        }
+
+        public List<Tournament> GetAllOpenTournaments()
+        {
+            return tournamentRepository.GetAllOpenTournaments();
         }
 
         public void DeleteTournament(int id)
@@ -89,6 +97,24 @@ namespace ClassLibraryTournaments.Business
         public void SetStatusToFinished(int id)
         {
             tournamentRepository.SetStatusToFinished(id);
+        }
+
+        public void CheckStatusesOfTournaments()
+        {
+            List<Tournament> tournaments = tournamentRepository.GetAllTournaments();
+            DateTime today = DateTime.Today;
+            foreach (Tournament tournament in tournaments)
+            {
+                 if(tournament.RegistrationCloses == today)
+                    if (tournamentRepository.GetNumberOfRegisteredPlayersForTournament(tournament.Id) < tournament.MinPlayers)
+                    {
+                        tournamentRepository.SetStatusToCancelled(tournament.Id);
+                    }
+                    else
+                    {
+                        tournamentRepository.SetStatusToPending(tournament.Id);
+                    }
+            }
         }
     }
 }

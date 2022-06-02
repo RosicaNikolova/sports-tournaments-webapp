@@ -7,5 +7,7 @@ namespace ClassLibraryTournaments.Business
     public interface ISportType
     {
         public bool CheckResults(Game game);
+
+        public string GetErrorMessage();
     }
 }
