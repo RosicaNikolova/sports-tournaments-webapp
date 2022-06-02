@@ -112,27 +112,33 @@ namespace DesktopApp
             }
             else if(tabControl.SelectedTab == AddResults)
             {
-                try
-                {
-                    //ongoing tournaments for adding results
-                    cmbxTournamentsResults.Items.Clear();
-                    List<Tournament> tournaments = tournamentManager.GetAllOngoingTournaments();
 
-                    foreach (Tournament tournament in tournaments)
-                    {
-                        cmbxTournamentsResults.Items.Add(tournament);
-                    }
-                }
-                catch (DataBaseException)
-                {
-                    MessageBox.Show("There is a problem with our databse at the moment. Please, try again later");
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("An error occured while processing you request.Please, try again later");
-                }
-
+                UpdateTournamentsListResultsTab();
             }
+        }
+
+        private void UpdateTournamentsListResultsTab()
+        {
+            try
+            {
+                //ongoing tournaments for adding results
+                cmbxTournamentsResults.Items.Clear();
+                List<Tournament> tournaments = tournamentManager.GetAllOngoingTournaments();
+
+                foreach (Tournament tournament in tournaments)
+                {
+                    cmbxTournamentsResults.Items.Add(tournament);
+                }
+            }
+            catch (DataBaseException)
+            {
+                MessageBox.Show("There is a problem with our databse at the moment. Please, try again later");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("An error occured while processing you request.Please, try again later");
+            }
+
         }
 
 
@@ -185,11 +191,7 @@ namespace DesktopApp
                 dataGridView1.Rows.Add(game.Player1Id, game.Player2Id);
             }
             tournamentManager.SetStatusToOngoing(tournament.Id);
-           
         }
-
-
-      
 
         private void cmbxTournamentsResults_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -204,14 +206,16 @@ namespace DesktopApp
             }
         }
 
-       
-
         private void btnSaveResults_Click(object sender, EventArgs e)
         {
+            List<Game> games = new List<Game>();
+            object selectedTournament = cmbxTournamentsResults.SelectedItem;
+            Tournament tournament = ((Tournament)selectedTournament);
             for (int rows = 0; rows < dataGridView2.Rows.Count; rows++)
             {
                 int resultPlayer1 = Convert.ToInt32(dataGridView2.Rows[rows].Cells[3].Value.ToString());
                 int resultPlayer2 = Convert.ToInt32(dataGridView2.Rows[rows].Cells[4].Value.ToString());
+              
                 if(resultPlayer1 != 0 && resultPlayer2 != 0)
                 {
                     int gameId = Convert.ToInt32(dataGridView2.Rows[rows].Cells[0].Value.ToString());
@@ -223,8 +227,24 @@ namespace DesktopApp
                     game.Result2 = resultPlayer2;
                     game.Player1Id = player1Id;
                     game.Player2Id = player2Id;
-                    gameManager.SaveResults(game);
+                    //2 fields - Sport Type in tournaments and game  
+                    //if (game.CheckResults());
+                    if (game.SportType.CheckResults(game))
+                    {
+                        games.Add(game);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ivalid results");
+                    }
                 }
+            }
+            gameManager.SaveResults(games);
+            if (gameManager.CheckIfAllResultsAreEntered(tournament.Id))
+            {
+                tournamentManager.SetStatusToFinished(tournament.Id);
+                MessageBox.Show("All results entered successfully");
+                UpdateTournamentsListResultsTab();
             }
         }
     }

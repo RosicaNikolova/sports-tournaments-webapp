@@ -12,7 +12,8 @@ namespace ClassLibraryTournaments.Persistence
         public void UpdateTournament(Tournament tournament);
         public void DeleteTournament(int id);
         public List<Tournament> GetAllPendingTournaments();
-        void SetStatusToOngoing(int id);
-        List<Tournament> GetAllOngoingTournaments();
+        public void SetStatusToOngoing(int id);
+        public List<Tournament> GetAllOngoingTournaments();
+        public void SetStatusToFinished(int id);
     }
 }

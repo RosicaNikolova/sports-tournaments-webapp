@@ -109,7 +109,7 @@ namespace DesktopApp
             this.tabControl.Location = new System.Drawing.Point(-5, 12);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(956, 500);
+            this.tabControl.Size = new System.Drawing.Size(956, 578);
             this.tabControl.TabIndex = 3;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
@@ -122,7 +122,7 @@ namespace DesktopApp
             this.Home.Location = new System.Drawing.Point(4, 29);
             this.Home.Name = "Home";
             this.Home.Padding = new System.Windows.Forms.Padding(3);
-            this.Home.Size = new System.Drawing.Size(948, 467);
+            this.Home.Size = new System.Drawing.Size(948, 545);
             this.Home.TabIndex = 1;
             this.Home.Text = "Home";
             this.Home.UseVisualStyleBackColor = true;
@@ -146,7 +146,7 @@ namespace DesktopApp
             this.ManageTournaments.Location = new System.Drawing.Point(4, 29);
             this.ManageTournaments.Name = "ManageTournaments";
             this.ManageTournaments.Padding = new System.Windows.Forms.Padding(3);
-            this.ManageTournaments.Size = new System.Drawing.Size(948, 467);
+            this.ManageTournaments.Size = new System.Drawing.Size(948, 545);
             this.ManageTournaments.TabIndex = 0;
             this.ManageTournaments.Text = "ManageTournaments";
             this.ManageTournaments.UseVisualStyleBackColor = true;
@@ -218,7 +218,7 @@ namespace DesktopApp
             this.GenerateSchedule.Controls.Add(this.btnHome1);
             this.GenerateSchedule.Location = new System.Drawing.Point(4, 29);
             this.GenerateSchedule.Name = "GenerateSchedule";
-            this.GenerateSchedule.Size = new System.Drawing.Size(948, 467);
+            this.GenerateSchedule.Size = new System.Drawing.Size(948, 545);
             this.GenerateSchedule.TabIndex = 2;
             this.GenerateSchedule.Text = "GenerateGames";
             this.GenerateSchedule.UseVisualStyleBackColor = true;
@@ -287,7 +287,7 @@ namespace DesktopApp
             this.AddResults.Controls.Add(this.btnHome2);
             this.AddResults.Location = new System.Drawing.Point(4, 29);
             this.AddResults.Name = "AddResults";
-            this.AddResults.Size = new System.Drawing.Size(948, 467);
+            this.AddResults.Size = new System.Drawing.Size(948, 545);
             this.AddResults.TabIndex = 3;
             this.AddResults.Text = "Add Results";
             this.AddResults.UseVisualStyleBackColor = true;

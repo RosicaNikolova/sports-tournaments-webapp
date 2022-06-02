@@ -36,17 +36,25 @@ namespace ClassLibraryTournaments.Business
 
         }
 
-        public void SaveResults(Game game)
+        public void SaveResults(List<Game> games)
         {
-            if(game.Result1 > game.Result2)
+            foreach (Game game in games)
             {
-                game.WinnerId = game.Player1Id;
+                if (game.Result1 > game.Result2)
+                {
+                    game.WinnerId = game.Player1Id;
+                }
+                else
+                {
+                    game.WinnerId = game.Player2Id;
+                }
             }
-            else{
-                game.WinnerId = game.Player2Id;
-            }
+            gameRepository.SaveResults(games);
+        }
 
-            gameRepository.SaveResults(game);
+        public bool CheckIfAllResultsAreEntered(int id)
+        {
+            return gameRepository.CheckIfAllResultsAreEntered(id);
         }
     }
 }

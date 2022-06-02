@@ -89,6 +89,7 @@ namespace ClassLibraryTournaments.Persistence
                     game.Player2Id = dateReader.GetInt32("player2Id");
                     game.Result1 = dateReader.GetInt32("result1");
                     game.Result2 = dateReader.GetInt32("result2");
+                    game.SportType = new BadmintonSportType();
                     games.Add(game);
                 }
                 return games;
@@ -100,27 +101,54 @@ namespace ClassLibraryTournaments.Persistence
             //}
         }
 
-        public void SaveResults(Game game)
+        public void SaveResults(List<Game> games)
         {
             try
             {
-                using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+                foreach (Game game in games)
                 {
-                    string sql = "insert into games (result1, result2, winnerId) values(@result1, @result2, @winnerId) where gameId=@gameId;";
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("gameId", game.GameId);
-                    cmd.Parameters.AddWithValue("result1", game.Result1);
-                    cmd.Parameters.AddWithValue("result2", game.Result2);
-                    cmd.Parameters.AddWithValue("winnerId", game.WinnerId);
+                    using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+                    {
+                        string sql = "insert into games (result1, result2, winnerId) values(@result1, @result2, @winnerId) where gameId=@gameId;";
+                        MySqlCommand cmd = new MySqlCommand(sql, conn);
+                        cmd.Parameters.AddWithValue("gameId", game.GameId);
+                        cmd.Parameters.AddWithValue("result1", game.Result1);
+                        cmd.Parameters.AddWithValue("result2", game.Result2);
+                        cmd.Parameters.AddWithValue("winnerId", game.WinnerId);
+                        conn.Open();
 
-                    conn.Open();
-
-                    cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQuery();
+                    }
                 }
+                
             }
             catch (Exception)
             {
                 throw new DataBaseException();
+            }
+        }
+
+        public bool CheckIfAllResultsAreEntered(int id)
+        {
+            using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+            {
+                List<Game> games = new List<Game>();
+                string sql = "select result1, result2 from games where tournamentId=@tournamentId and (result1=@result1 or result2=@result2);";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("tournamentId", id);
+                cmd.Parameters.AddWithValue("result1", 0);
+                cmd.Parameters.AddWithValue("result2", 0);
+
+                conn.Open();
+
+                MySqlDataReader dateReader = cmd.ExecuteReader();
+
+                while (dateReader.Read())
+                {
+                    return false;
+                }
+                return true;
+                
             }
         }
     }

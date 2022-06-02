@@ -25,7 +25,11 @@ namespace ClassLibraryTournaments.Persistence
                     {
                         Tournament tournament = new Tournament();
                         tournament.Id = dateReader.GetInt32("idTournament");
-                        tournament.SportType = dateReader.GetString("sportType");
+                        string sport = dateReader.GetString("sportType");
+                        if(sport == "Badminton")
+                        {
+                            tournament.SportType = new BadmintonSportType();
+                        }
                         string tournamentSystem = dateReader.GetString("tournamentSystem");
                         if(tournamentSystem == "Round-Robin")
                         {
@@ -92,7 +96,7 @@ namespace ClassLibraryTournaments.Persistence
                     string sql = "update tournament set sportType=@sportType, tournamentSystem=@tournamentSystem, description=@description, startDate=@startDate, endDate=@endDate, minPlayer=@minPlayer, maxPlayers=@maxPlayers, location=@location where idTournament=@idTournament;";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("idTournament", tournament.Id);
-                    cmd.Parameters.AddWithValue("sportType", tournament.SportType);
+                    cmd.Parameters.AddWithValue("sportType", tournament.SportType.ToString());
                     cmd.Parameters.AddWithValue("tournamentSystem", tournament.TournamentSystem.ToString());
                     cmd.Parameters.AddWithValue("description", tournament.Description);
                     cmd.Parameters.AddWithValue("startDate", tournament.StartDate);
@@ -149,7 +153,11 @@ namespace ClassLibraryTournaments.Persistence
                     {
                         Tournament tournament = new Tournament();
                         tournament.Id = dateReader.GetInt32("idTournament");
-                        tournament.SportType = dateReader.GetString("sportType");
+                        string sport = dateReader.GetString("sportType");
+                        if (sport == "Badminton")
+                        {
+                            tournament.SportType = new BadmintonSportType();
+                        }
                         string tournamentSystem = dateReader.GetString("tournamentSystem");
                         if (tournamentSystem == "Round-Robin")
                         {
@@ -216,7 +224,11 @@ namespace ClassLibraryTournaments.Persistence
                     {
                         Tournament tournament = new Tournament();
                         tournament.Id = dateReader.GetInt32("idTournament");
-                        tournament.SportType = dateReader.GetString("sportType");
+                        string sport = dateReader.GetString("sportType");
+                        if (sport == "Badminton")
+                        {
+                            tournament.SportType = new BadmintonSportType();
+                        }
                         string tournamentSystem = dateReader.GetString("tournamentSystem");
                         if (tournamentSystem == "Round-Robin")
                         {
@@ -235,6 +247,26 @@ namespace ClassLibraryTournaments.Persistence
                         tournaments.Add(tournament);
                     }
                     return tournaments;
+                }
+            }
+            catch (Exception)
+            {
+                throw new DataBaseException();
+            }
+        }
+
+        public void SetStatusToFinished(int id)
+        {
+            try
+            {
+                using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+                {
+                    string sql = "update tournament set status=@status where idTournament=@idTournament;";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("idTournament", id);
+                    cmd.Parameters.AddWithValue("status", Status.finished.ToString());
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
                 }
             }
             catch (Exception)

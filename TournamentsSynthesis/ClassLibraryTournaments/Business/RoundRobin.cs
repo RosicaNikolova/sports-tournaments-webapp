@@ -18,7 +18,6 @@ namespace ClassLibraryTournaments.Business
                     game.Player2Id = players[k].Id;
                     games.Add(game);
                 }
-
             }
             return games;
         }

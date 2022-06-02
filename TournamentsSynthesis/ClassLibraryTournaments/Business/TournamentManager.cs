@@ -22,7 +22,7 @@ namespace ClassLibraryTournaments.Business
         public void CreateTournament(string sportType, string tournamentSystem, string description, DateTime startDate, DateTime endDate, int minimumPlayers, int maximumPlayers, string location)
         {
             Tournament tournament = new Tournament();
-            tournament.SportType = sportType;
+            tournament.SportType = new BadmintonSportType();
             tournament.Description = description;
             tournament.StartDate = startDate;
             tournament.EndDate = endDate;
@@ -45,7 +45,7 @@ namespace ClassLibraryTournaments.Business
         {
             Tournament tournament = new Tournament();
             tournament.Id = id;
-            tournament.SportType = sportType;
+            tournament.SportType = new BadmintonSportType();
             tournament.Description = description;
             tournament.StartDate = startDate;
             tournament.EndDate = endDate;
@@ -84,6 +84,11 @@ namespace ClassLibraryTournaments.Business
             List<Tournament> tournaments = tournamentRepository.GetAllOngoingTournaments();
             return tournaments;
 
+        }
+
+        public void SetStatusToFinished(int id)
+        {
+            tournamentRepository.SetStatusToFinished(id);
         }
     }
 }
