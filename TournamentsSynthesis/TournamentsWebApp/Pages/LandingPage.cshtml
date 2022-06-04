@@ -1,4 +1,25 @@
 ﻿@page
 @model TournamentsWebApp.Pages.LandingPageModel
 @{
+    if (User.Identity.IsAuthenticated)
+    {
+        Layout = "_Layout1";
+    }
+    else
+    {
+        Layout = "_Layout";
+    }
 }
+
+<section class="hero-section">
+    <div class="hero-text-container">
+        <div class="hero-text">
+            <h2>The website for sports enthusiasts</h2>
+            <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                has been the industry's standard dummy text ever since the 1500s.
+            </p>
+        </div>
+    </div>
+    <img src="~/pic/badminton.jpg" alt="Badminton">
+</section>

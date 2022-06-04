@@ -1,0 +1,62 @@
+﻿@page
+@model TournamentsWebApp.Pages.TournamentModel
+@{
+    if (User.Identity.IsAuthenticated)
+    {
+        Layout = "_Layout1";
+    }
+    else
+    {
+        Layout = "_Layout";
+    }
+}
+
+<div class="container-content">
+    <section class="container-info">
+        <div>
+            <h2>Tournament Information</h2>
+            <p>Sport: Badminton</p>
+            <p>System: Round-Robin</p>
+            <p>Location: Eindhoven, Rachelsmolen</p>
+            <p>Start Date: 21.05.2022</p>
+            <p>End Date: 25.05.2022</p>
+            <p>Description: This is a badminton tournament which is for advanced players.</p>
+        </div>
+    </section>
+
+    <section class="container-participants">
+        <div>
+            <h2>Participants:</h2>
+            <ul>
+                <li>Henry Willson</li>
+                <li>Daniil Blagoev</li>
+                <li>Jakub Jelenovski</li>
+                <li>Rositsa Nikolova</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="container-ranks">
+        <h2>Ranking</h2>
+        <p>Gold: Rositsa Nikolova</p>
+        <p>Silver: Jakub Jelenovski</p>
+        <p>Bronze: Daniil Blagoev</p>
+    </section>
+
+    <section class="container-games">
+        <table>
+            <tr>
+                <th>Game</th>
+                <th>Result</th>
+            </tr>
+            <tr>
+                <td>Rositsa - Daniil</td>
+                <td>16 - 21</td>
+            </tr>
+            <tr>
+                <td>Jakub - Henry</td>
+                <td>20 - 14</td>
+            </tr>
+        </table>
+    </section>
+</div>

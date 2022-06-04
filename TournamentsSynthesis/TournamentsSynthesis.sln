@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TournamentsWebApp", "Tourna
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassLibraryTournaments", "ClassLibraryTournaments\ClassLibraryTournaments.csproj", "{F87BE2F7-D0CF-491C-92D0-D4C311476131}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopApp", "DesktopApp\DesktopApp.csproj", "{E8E805B8-D90E-488B-91C7-2B2E2B1B356B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesktopApp", "DesktopApp\DesktopApp.csproj", "{E8E805B8-D90E-488B-91C7-2B2E2B1B356B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,0 +1,555 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+/*a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}*/
+
+/* Provide sufficient contrast against white background */
+/*a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}*/
+
+/* Sticky footer styles
+-------------------------------------------------- */
+/*html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}*/
+
+/* Sticky footer styles
+-------------------------------------------------- */
+/*html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {*/
+  /* Margin bottom by footer height */
+  /*margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;*/ /* Vertically center the text there */
+/*}*/
+
+
+
+/*Login Page*/
+
+.form_container {
+    display: block;
+    text-align: center;
+}
+
+.loginForm {
+    padding: 10px;
+    border: 1px solid white;
+    width: 40%;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    background-color: #A2D0EE;
+    color: white;
+    border-radius: 15px;
+}
+
+.container label {
+    font-size: 1.2vw;
+}
+
+.login_heading {
+    font-size: 2.3vw;
+    margin: 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 15px 0 30px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+
+.login_buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+    .login_buttons input {
+        background-color: #F2F2F5;
+        color: #1E1E35;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 20%;
+        font-size: 1vw;
+    }
+
+    .login_buttons button {
+        background-color: #F2F2F5;
+        color: #1E1E35;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 20%;
+        font-size: 1vw;
+    }
+
+    .login_buttons input:hover {
+        opacity: 0.8;
+    }
+
+    .login_buttons button:hover {
+        opacity: 0.8;
+    }
+
+
+body {
+    overflow-x: hidden;
+    font-family: FilsonPro,Helvetica,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 28px;
+    margin: 0;
+    color: white;
+    background-color: black;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+/*navigation*/
+.header {
+    background-color: black;
+    margin: 0;
+    color: white;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+}
+
+    .navbar img {
+        height: 100px;
+        width: 100px;
+    }
+
+.navbar-nav {
+    display: flex;
+    list-style: none;
+    margin-left: 50em;
+    padding: 0;
+}
+
+.nav-item {
+    padding: 0.8em;
+}
+
+    .nav-item a {
+        color: white
+    }
+
+    .nav-item:hover {
+        background-color: white;
+    }
+
+        .nav-item:hover a {
+            color: black;
+        }
+
+
+
+
+
+/*Landing page*/
+
+.hero-section {
+    display: flex;
+    justify-content: flex-end;
+    width: auto;
+    height: 635px;
+    background-color: black
+}
+
+.hero-text {
+    background-color: black;
+    text-align: center;
+    margin: 1em;
+    color: white;
+}
+
+.hero-text-container {
+    display: flex;
+    align-items: center;
+}
+
+.hero-text h2 {
+    margin: 2em;
+    font-size: 2em;
+}
+
+.hero-text p {
+    font-size: 1.2em;
+}
+
+
+/*Home*/
+
+.list-container {
+    display: flex;
+    justify-content: center;
+}
+
+.item-container {
+    display: flex;
+    background-color: aqua;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    transition-duration: 0.4s;
+    opacity: 1;
+    transition: 0,3;
+    color: black;
+}
+
+    .item-container img {
+        height: 200px;
+        width: 300px;
+        max-width: 50%;
+    }
+
+.item-content {
+    margin-left: 40px;
+}
+
+.item-container:hover {
+    opacity: 0.5;
+}
+
+/*Tournament Page*/
+
+.container-content {
+    background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+    .container-content section {
+        margin: 20px;
+        min-width: 50%;
+        text-align: center;
+    }
+
+.container-info {
+    background-color: bisque;
+}
+
+.container-ranks {
+    background-color: pink;
+}
+
+.container-participants {
+    background-color: green;
+}
+
+.container-games {
+    background-color: blue;
+    display: flex;
+    justify-content: center;
+    font-size: 1.1em;
+}
+
+    .container-games table {
+        width: 60%;
+    }
+
+    .container-games table, th, td {
+        border: 1px solid blue;
+        border-collapse: collaplse;
+    }
+
+
+    .container-games th {
+        background-color: beige;
+        width: 60%;
+    }
+
+    .container-games td {
+        background-color: aqua;
+    }
+
+    .container-games tr {
+        height: 3em;
+    }
+
+
+
+/*Players Profile*/
+
+.container-content-info {
+    background-color: aqua;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+    .container-content-info section {
+        margin: 1em;
+        min-width: 50%;
+    }
+
+.container-personal-info {
+    background-color: antiquewhite;
+    min-width: 30%;
+}
+
+    .container-personal-info h2 {
+        text-align: center;
+        margin-bottom: 2em;
+    }
+
+    .container-personal-info p {
+        margin-left: 2em;
+    }
+
+.container-participations {
+    background-color: pink;
+}
+
+.container-tourn-info {
+    background-color: violet;
+}
+
+    .container-tourn-info p {
+        margin-left: 2em;
+    }
+
+.container-player-tournament {
+    background-color: aliceblue;
+    border: solid 2px black;
+    margin: 2em;
+    width: 70%;
+}
+
+.container-player-games {
+    background-color: skyblue;
+}
+
+.container-player-rank {
+    background-color: aquamarine;
+}
+
+.container-participations h2, h3 {
+    text-align: center;
+}
+
+.container-player-games table {
+    width: 60%;
+}
+
+.container-player-games th, td {
+    border: 1px solid blue;
+    border-collapse: collaplse;
+}
+
+.container-player-games th {
+    background-color: beige;
+    width: 60%;
+}
+
+.container-player-games td {
+    background-color: aqua;
+}
+
+.container-player-games tr {
+    height: 3em;
+}
+
+.flex-container-table {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.flex-continer-player-tournament {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+
+
+/*Available Tournaments*/
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 80%;
+}
+
+.grid-item {
+    background-color: black;
+    color: white;
+    border: solid 2px white;
+}
+
+    .grid-item:hover {
+        color: black;
+        background-color: white;
+        opacity: 0.9;
+    }
+
+.container-content-grid {
+    display: flex;
+    justify-content: center;
+    margin-top: 3em;
+    background-color: black;
+}
+
+.picture-container img {
+    width: 100%;
+}
+
+.picture-container {
+    width: 80%;
+}
+
+.flex-container-grid-content {
+    display: flex;
+    margin-bottom: 2em;
+    margin-top: 2em;
+    margin-left: 2em;
+}
+
+.container-left {
+    width: 50%;
+    margin-right: 2em;
+}
+
+.container-right h4 {
+    margin-top: 0;
+}
+
+.container-right {
+    width: 50%;
+}
+
+.register-container {
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+    .register-container input {
+        background-color: white;
+        color: black;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 20%;
+        font-size: 1vw;
+        border: solid 1px black;
+    }
+
+        .register-container input:hover {
+            background-color: black;
+            color: white;
+            opacity: 0.3;
+        }
+
+
+/*Previous*/
+
+/*
+.list-container{
+    display: flex;
+    justify-content: center;
+}
+.item-container{
+    display: flex;
+    background-color: aqua;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    transition-duration: 0.4s;
+    opacity: 1;
+    transition: 0,3;
+    color: black;
+}
+
+.item-container img{
+    height: 200px;
+    width: 300px;
+    max-width: 50%;
+}
+
+.item-content{
+    margin-left: 40px;
+}
+
+.item-container:hover{
+    opacity: 0.5; 
+}
+*/
+
+
+

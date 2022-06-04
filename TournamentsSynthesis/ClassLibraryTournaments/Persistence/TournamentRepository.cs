@@ -39,6 +39,7 @@ namespace ClassLibraryTournaments.Persistence
                         {
                             tournament.TournamentSystem = new DoubleRoundRobin();
                         }
+                        tournament.Id = dateReader.GetInt32("idTournament");
                         tournament.Description = dateReader.GetString("description");
                         tournament.StartDate = (DateTime)dateReader.GetMySqlDateTime("startDate");
                         tournament.EndDate = (DateTime)dateReader.GetMySqlDateTime("endDate");

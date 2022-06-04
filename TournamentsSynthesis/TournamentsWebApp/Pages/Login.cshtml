@@ -1,9 +1,14 @@
 ﻿@page
 @model TournamentsWebApp.Pages.LoginModel
 @{
-    ViewData["Title"] = "Log in";
-    Layout = "_Layout";
-
+    if (User.Identity.IsAuthenticated)
+    {
+        Layout = "_Layout1";
+    }
+    else
+    {
+        Layout = "_Layout";
+    }
 }
 @section scripts{
     <partial name="_ValidationScriptsPartial" />
@@ -11,7 +16,7 @@
 
 <div class="form_container">
 
-    <form method="post">
+    <form method="post" class="loginForm">
         <div class="container">
             <h2 class="login_heading">Login</h2>
             <label asp-for="Login.Email">E-mail:</label> <br />

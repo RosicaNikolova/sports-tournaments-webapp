@@ -1,4 +1,50 @@
 ﻿@page
 @model TournamentsWebApp.Pages.HomeModel
-@{
+@{      
+    if (User.Identity.IsAuthenticated)
+    {
+        Layout = "_Layout1";
+    }
+    else
+    {
+        Layout = "_Layout";
+    }
 }
+
+<div class="list-container">
+    <ul>
+        <li>
+            <a href="">
+                <div class="item-container">
+
+                    <img src="pic/360_F_252750183_IbB0ENXBPiXXg2ig4tJXDZc4tRCgEzdM.jpg" alt="">
+                    <div class="item-content">
+                        <h4>Tournament Name</h4>
+                        <p>sport type</p>
+                        <p>tournament system</p>
+                        <p>dates</p>
+                    </div>
+
+
+                </div>
+            </a>
+
+        </li>
+        <li>
+            <a href="">
+                <div class="item-container">
+
+                    <img src="pic/360_F_252750183_IbB0ENXBPiXXg2ig4tJXDZc4tRCgEzdM.jpg" alt="">
+                    <div class="item-content">
+                        <h4>Tournament Name</h4>
+                        <p>sport type</p>
+                        <p>tournament system</p>
+                        <p>dates</p>
+                    </div>
+
+                </div>
+            </a>
+
+        </li>
+    </ul>
+</div>

@@ -129,7 +129,7 @@ namespace DesktopApp
             List<Tournament> tournaments = tournamentManager.GetAllTournaments();
             foreach (Tournament tournament in tournaments)
             {
-                dataGridView1.Rows.Add(tournament.Id, tournament.SportType, tournament.TournamentSystem, tournament.Status, tournament.StartDate, tournament.EndDate, tournament.RegistrationCloses, tournament.MinPlayers, tournament.MaxPlayers, tournament.Description, tournament.Location);
+                dataGridViewOverview.Rows.Add(tournament.Id, tournament.SportType, tournament.TournamentSystem, tournament.Status, tournament.StartDate, tournament.EndDate, tournament.RegistrationCloses, tournament.MinPlayers, tournament.MaxPlayers, tournament.Description, tournament.Location); 
             }
         }
 
@@ -232,12 +232,13 @@ namespace DesktopApp
                 int resultPlayer1 = Convert.ToInt32(dataGridView2.Rows[rows].Cells[3].Value.ToString());
                 int resultPlayer2 = Convert.ToInt32(dataGridView2.Rows[rows].Cells[4].Value.ToString());
 
-                if (resultPlayer1 != 0 && resultPlayer2 != 0)
-                {
+                //if (resultPlayer1 != 0 && resultPlayer2 != 0)
+                //{
                     int gameId = Convert.ToInt32(dataGridView2.Rows[rows].Cells[0].Value.ToString());
                     int player1Id = Convert.ToInt32(dataGridView2.Rows[rows].Cells[1].Value.ToString());
                     int player2Id = Convert.ToInt32(dataGridView2.Rows[rows].Cells[2].Value.ToString());
                     Game game = new Game();
+                    game.SportType = tournament.SportType;
                     game.GameId = gameId;
                     game.Result1 = resultPlayer1;
                     game.Result2 = resultPlayer2;
@@ -251,9 +252,13 @@ namespace DesktopApp
                     }
                     else
                     {
-                        MessageBox.Show(game.SportType.GetErrorMessage());
+                        MessageBox.Show($"Invalid results for game with Id - {game.GameId} {game.SportType.GetErrorMessage()}");
                     }
-                }
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Points cannot be zero");
+                //}
             }
             gameManager.SaveResults(games);
             if (gameManager.CheckIfAllResultsAreEntered(tournament.Id))

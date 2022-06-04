@@ -103,13 +103,13 @@ namespace ClassLibraryTournaments.Persistence
 
         public void SaveResults(List<Game> games)
         {
-            try
-            {
+            //try
+            //{
                 foreach (Game game in games)
                 {
                     using (MySqlConnection conn = DatabaseConnection.CreateConnection())
                     {
-                        string sql = "insert into games (result1, result2, winnerId) values(@result1, @result2, @winnerId) where gameId=@gameId;";
+                        string sql = "update games set result1=@result1, result2=@result2, winnerId=@winnerId where gameId=@gameId;";
                         MySqlCommand cmd = new MySqlCommand(sql, conn);
                         cmd.Parameters.AddWithValue("gameId", game.GameId);
                         cmd.Parameters.AddWithValue("result1", game.Result1);
@@ -121,11 +121,11 @@ namespace ClassLibraryTournaments.Persistence
                     }
                 }
                 
-            }
-            catch (Exception)
-            {
-                throw new DataBaseException();
-            }
+            //}
+            //catch (Exception)
+            //{
+            //    throw new DataBaseException();
+            //}
         }
 
         public bool CheckIfAllResultsAreEntered(int id)

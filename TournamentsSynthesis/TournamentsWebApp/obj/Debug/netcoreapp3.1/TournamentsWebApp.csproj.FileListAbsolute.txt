@@ -40,7 +40,6 @@ D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\Tournam
 D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\TournamentsWebApp\obj\Debug\netcoreapp3.1\TournamentsWebApp.dll
 D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\TournamentsWebApp\obj\Debug\netcoreapp3.1\TournamentsWebApp.pdb
 D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\TournamentsWebApp\obj\Debug\netcoreapp3.1\TournamentsWebApp.genruntimeconfig.cache
-D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\TournamentsWebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_Layout 1.cshtml.g.cs
 D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\TournamentsWebApp\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
 D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\TournamentsWebApp\bin\Debug\netcoreapp3.1\Google.Protobuf.dll
 D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\TournamentsWebApp\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.dll
@@ -54,3 +53,8 @@ D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\Tournam
 D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\TournamentsWebApp\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
 D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\TournamentsWebApp\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\TournamentsWebApp\obj\Debug\netcoreapp3.1\Razor\Pages\LandingPage.cshtml.g.cs
+D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\TournamentsWebApp\obj\Debug\netcoreapp3.1\Razor\Pages\AvailableTournaments.cshtml.g.cs
+D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\TournamentsWebApp\obj\Debug\netcoreapp3.1\Razor\Pages\MyProfile.cshtml.g.cs
+D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\TournamentsWebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Tournament.cshtml.g.cs
+D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\TournamentsWebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_Layout1.cshtml.g.cs
+D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\TournamentsWebApp\obj\Debug\netcoreapp3.1\Razor\Pages\AccessDenied.cshtml.g.cs

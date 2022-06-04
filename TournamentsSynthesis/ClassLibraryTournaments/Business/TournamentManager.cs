@@ -12,7 +12,6 @@ namespace ClassLibraryTournaments.Business
         {
             this.tournamentRepository = repo;
         }
-
         public List<Tournament> GetAllTournaments()
         {
             List<Tournament> tournaments = tournamentRepository.GetAllTournaments();
@@ -105,7 +104,7 @@ namespace ClassLibraryTournaments.Business
             DateTime today = DateTime.Today;
             foreach (Tournament tournament in tournaments)
             {
-                 if(tournament.RegistrationCloses == today)
+                if (tournament.RegistrationCloses == today)
                     if (tournamentRepository.GetNumberOfRegisteredPlayersForTournament(tournament.Id) < tournament.MinPlayers)
                     {
                         tournamentRepository.SetStatusToCancelled(tournament.Id);

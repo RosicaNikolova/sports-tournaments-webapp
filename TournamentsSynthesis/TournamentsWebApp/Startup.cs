@@ -27,7 +27,7 @@ namespace TournamentsWebApp
         {
             services.AddMvc().AddRazorPagesOptions(options =>
             {
-                options.Conventions.AddPageRoute("/Login", "");
+                options.Conventions.AddPageRoute("/LandingPage", "");
             });
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(
@@ -59,6 +59,9 @@ namespace TournamentsWebApp
             app.UseStaticFiles();
 
             app.UseRouting();
+            //app.UseSession();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

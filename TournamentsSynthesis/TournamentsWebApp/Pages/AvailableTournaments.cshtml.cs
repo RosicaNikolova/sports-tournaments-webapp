@@ -5,10 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-
 namespace TournamentsWebApp.Pages
 {
-    public class HomeModel : PageModel
+    public class AvailableTournamentsModel : PageModel
     {
         public void OnGet()
         {
