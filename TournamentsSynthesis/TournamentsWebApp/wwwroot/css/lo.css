@@ -271,6 +271,7 @@ a {
         height: 200px;
         width: 300px;
         max-width: 50%;
+        margin-top: 7%;
     }
 
 .item-content {
@@ -513,6 +514,28 @@ a {
             color: white;
             opacity: 0.3;
         }
+
+
+/*Styling status box*/
+
+
+.pending {
+    background-color: coral
+}
+
+.cancelled {
+    background-color: red;
+}
+
+.ongoing {
+    background-color: blue;
+}
+
+.open {
+    background-color: darkseagreen;
+}
+
+
 
 
 /*Previous*/

@@ -7,3 +7,4 @@ D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\Tournam
 D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\ClassLibraryTournaments\obj\Debug\netcoreapp3.1\ClassLibraryTournaments.csproj.CoreCompileInputs.cache
 D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\ClassLibraryTournaments\obj\Debug\netcoreapp3.1\ClassLibraryTournaments.dll
 D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\ClassLibraryTournaments\obj\Debug\netcoreapp3.1\ClassLibraryTournaments.pdb
+D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\ClassLibraryTournaments\obj\Debug\netcoreapp3.1\ClassLibraryTournaments.csproj.AssemblyReference.cache

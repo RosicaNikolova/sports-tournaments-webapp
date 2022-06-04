@@ -392,5 +392,35 @@ namespace ClassLibraryTournaments.Persistence
                 throw new DataBaseException();
             }
         }
+
+        public Dictionary<int, int> GetAvailablePlaces()
+        {
+            try
+            {
+                using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+                {
+                    Dictionary<int, int> availablePlaces = new Dictionary<int, int>();
+                    string sql = "SELECT p.tournamentId, t.maxPlayers - COUNT(p.tournamentId) as AvailablePlaces from tournamentplayer as p join tournament as t on p.tournamentId = t.idTournament where t.status = @status GROUP BY p.tournamentId;";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                    cmd.Parameters.AddWithValue("status", Status.open.ToString());
+
+                    conn.Open();
+
+                    MySqlDataReader dateReader = cmd.ExecuteReader();
+                    while (dateReader.Read())
+                    {
+                        int tournamentId = dateReader.GetInt32("tournamentId");
+                        int placesAvailable = dateReader.GetInt32("AvailablePlaces");
+                        availablePlaces.Add(tournamentId, placesAvailable);
+                    }
+                    return availablePlaces;
+                }
+            }
+            catch (Exception)
+            {
+                throw new DataBaseException();
+            }
+        }
     }
 }

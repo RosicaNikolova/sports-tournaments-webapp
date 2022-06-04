@@ -1,6 +1,6 @@
 ﻿@page
 @model TournamentsWebApp.Pages.HomeModel
-@{      
+@{
     if (User.Identity.IsAuthenticated)
     {
         Layout = "_Layout1";
@@ -9,42 +9,55 @@
     {
         Layout = "_Layout";
     }
+
+    ViewData["Title"] = "Home";
+
 }
+
+
 
 <div class="list-container">
     <ul>
-        <li>
-            <a href="">
-                <div class="item-container">
+        @{ if (Model.tournaments == null)
+            {
+                <h3>No tournaments</h3>
+            }
+            else
+            {
+                foreach (var tournament in Model.tournaments)
+                {
+                    <li>
+                        <a asp-page="/Tournament">
+                            <div class="item-container">
 
-                    <img src="pic/360_F_252750183_IbB0ENXBPiXXg2ig4tJXDZc4tRCgEzdM.jpg" alt="">
-                    <div class="item-content">
-                        <h4>Tournament Name</h4>
-                        <p>sport type</p>
-                        <p>tournament system</p>
-                        <p>dates</p>
-                    </div>
+                                <img src="pic/download.jpg" alt="tournamentPicture">
+                                <div class="item-content">
+                                    <h4> Sport: @tournament.SportType.ToString()</h4>
+                                    <p>Tournament System: @tournament.TournamentSystem.ToString()</p>
+                                    <p>Start Date: @tournament.StartDate</p>
+                                    <p>End Date: @tournament.EndDate</p>
+                                    <p>Location: @tournament.Location</p>
+
+                                    @*setting the div class to the status of the tournament because it will change the color for the different statuses*@
+
+                                    <div class="@tournament.Status.ToString()">
+                                        <p>Status: @tournament.Status</p>
+                                    </div>
+
+                                </div>
 
 
-                </div>
-            </a>
+                            </div>
+                        </a>
 
-        </li>
-        <li>
-            <a href="">
-                <div class="item-container">
+                    </li>
 
-                    <img src="pic/360_F_252750183_IbB0ENXBPiXXg2ig4tJXDZc4tRCgEzdM.jpg" alt="">
-                    <div class="item-content">
-                        <h4>Tournament Name</h4>
-                        <p>sport type</p>
-                        <p>tournament system</p>
-                        <p>dates</p>
-                    </div>
 
-                </div>
-            </a>
+                }
 
-        </li>
+            }
+        }
+
     </ul>
 </div>
+

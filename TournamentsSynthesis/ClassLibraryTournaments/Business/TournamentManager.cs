@@ -115,5 +115,11 @@ namespace ClassLibraryTournaments.Business
                     }
             }
         }
+
+        public Dictionary<int, int> GetAvailablePlaces()
+        {
+            return tournamentRepository.GetAvailablePlaces();
+        }
+
     }
 }

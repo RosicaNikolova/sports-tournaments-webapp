@@ -19,6 +19,6 @@ namespace ClassLibraryTournaments.Persistence
         public void SetStatusToCancelled(int id);
         public void SetStatusToPending(int id);
         public int GetNumberOfRegisteredPlayersForTournament(int id);
-
+        Dictionary<int, int> GetAvailablePlaces();
     }
 }
