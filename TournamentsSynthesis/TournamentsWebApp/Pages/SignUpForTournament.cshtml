@@ -5,4 +5,45 @@
     ViewData["Title"] = "Sign up for tournament";
 }
 
+<section class="signup-container">
+    <div class="signup-info-container">
+        <h3>Sign up for tournament</h3>
+
+        @{
+            if (Model.tournament == null || Model.player == null)
+            {
+                <h3>Page not found</h3>
+            }
+            else
+            {
+                <div class="border-container">
+                    <h4>Infromation about tournament</h4>
+                    <p>Sport Type: @Model.tournament.SportType </p>
+                    <p>Tournament System: @Model.tournament.TournamentSystem</p>
+                    <p>Start Date: @Model.tournament.StartDate</p>
+                    <p>End Date: @Model.tournament.EndDate</p>
+                    <p>Location: @Model.tournament.Location</p>
+
+                    <h4>Infromation about player</h4>
+                    <p>First Name: @Model.player.FirstName</p>
+                    <p>Last Name: @Model.player.LastName</p>
+
+                    <p>*Schedule for matches will be announced on @Model.tournament.RegistrationCloses</p>
+
+                    <p class="message">@ViewData["Message"]</p>
+
+                </div>
+                <form method="post">
+                    <div class="btn-signup-container">
+                        <input type="submit" value="Sign Up" />
+                    </div>
+                </form>
+
+            }
+        }
+
+
+    </div>
+</section>
+
 

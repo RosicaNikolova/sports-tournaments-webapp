@@ -49,7 +49,8 @@
                             </div>
                         </div>
                         <div class="register-container">
-                            <input type="submit" value="Register" class="loginbtn">
+                           <a asp-page="/SignUpForTournament" asp-route-id="@tournament.Id">Register</a>
+                            @*<input type="submit" value="Register" class="loginbtn">*@
                         </div>
                     </div>
                 }

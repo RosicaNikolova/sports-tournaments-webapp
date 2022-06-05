@@ -39,7 +39,6 @@ namespace ClassLibraryTournaments.Persistence
                         {
                             tournament.TournamentSystem = new DoubleRoundRobin();
                         }
-                        tournament.Id = dateReader.GetInt32("idTournament");
                         tournament.Description = dateReader.GetString("description");
                         tournament.StartDate = (DateTime)dateReader.GetMySqlDateTime("startDate");
                         tournament.EndDate = (DateTime)dateReader.GetMySqlDateTime("endDate");
@@ -422,5 +421,101 @@ namespace ClassLibraryTournaments.Persistence
                 throw new DataBaseException();
             }
         }
+
+        public Tournament GetTournamentById(int idTournament)
+        {
+            try
+            {
+                using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+                {
+                    string sql = "select idTournament, sportType, tournamentSystem, startDate, endDate, LastRegisterDate, location from tournament where idTournament=@idTournament;";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                    cmd.Parameters.AddWithValue("idTournament", idTournament);
+                    conn.Open();
+                    Tournament tournament = null;
+
+                    MySqlDataReader dateReader = cmd.ExecuteReader();
+                    while (dateReader.Read())
+                    {
+                        tournament = new Tournament();
+                        tournament.Id = dateReader.GetInt32("idTournament");
+                        string sport = dateReader.GetString("sportType");
+                        if (sport == "Badminton")
+                        {
+                            tournament.SportType = new BadmintonSportType();
+                        }
+                        string tournamentSystem = dateReader.GetString("tournamentSystem");
+                        if (tournamentSystem == "Round-Robin")
+                        {
+                            tournament.TournamentSystem = new RoundRobin();
+                        }
+                        else
+                        {
+                            tournament.TournamentSystem = new DoubleRoundRobin();
+                        }
+                        tournament.StartDate = (DateTime)dateReader.GetMySqlDateTime("startDate");
+                        tournament.EndDate = (DateTime)dateReader.GetMySqlDateTime("endDate");
+                        tournament.RegistrationCloses = (DateTime)dateReader.GetMySqlDateTime("LastRegisterDate");
+                        tournament.Location = dateReader.GetString("location");
+                    }
+                    return tournament;
+                }
+            }
+            catch (Exception)
+            {
+                throw new DataBaseException();
+            }
+        }
+
+        public bool PlayerNotRegistered(int idTournament, int idPlayer)
+        {
+            //try
+            //{
+                using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+                {
+                    string sql = "select userId from tournamentplayer where tournamentId=@tournamentId and userId=@userId;";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                    cmd.Parameters.AddWithValue("tournamentId", idTournament);
+                    cmd.Parameters.AddWithValue("userId", idPlayer);
+                    conn.Open();
+                    MySqlDataReader dateReader = cmd.ExecuteReader();
+                    while (dateReader.Read())
+                    {
+                        return false;
+                    }
+                    return true;
+                }
+            //}
+            //catch (Exception)
+            //{
+            //    throw new DataBaseException();
+            //}
+        }
+
+        public void RegisterPlayer(int idTournament, int idPlayer)
+        {
+            //try
+            //{
+                using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+                {
+                    List<Tournament> tournaments = new List<Tournament>();
+                    string sql = "insert into tournamentplayer (tournamentId, userId) values (@tournamentId,@userId);";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("tournamentId", idTournament);
+                    cmd.Parameters.AddWithValue("userId", idPlayer);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            //}
+            //catch (Exception)
+            //{
+            //    throw new DataBaseException();
+            //}
+        }
+
+        
     }
 }

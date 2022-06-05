@@ -13,5 +13,10 @@ namespace ClassLibraryTournaments.Business
         {
             this.userRepository = repo;
         }
+
+        public User GetPlayerById(int userId)
+        {
+            return userRepository.GetPlayerById(userId);
+        }
     }
 }

@@ -58,3 +58,4 @@ D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\Tournam
 D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\TournamentsWebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Tournament.cshtml.g.cs
 D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\TournamentsWebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_Layout1.cshtml.g.cs
 D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\TournamentsWebApp\obj\Debug\netcoreapp3.1\Razor\Pages\AccessDenied.cshtml.g.cs
+D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\TournamentsWebApp\obj\Debug\netcoreapp3.1\Razor\Pages\SignUpForTournament.cshtml.g.cs

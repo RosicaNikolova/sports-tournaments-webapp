@@ -42,6 +42,11 @@ namespace ClassLibraryTournaments.Business
             tournamentRepository.SaveTournament(tournament);
         }
 
+        public Tournament GetTournamentById(int idTournament)
+        {
+            return tournamentRepository.GetTournamentById(idTournament);
+        }
+
         public void UpdateTournament(int id, string sportType, string tournamentSystem, string description, DateTime startDate, DateTime endDate, int minimumPlayers, int maximumPlayers, string location)
         {
             Tournament tournament = new Tournament();
@@ -63,6 +68,24 @@ namespace ClassLibraryTournaments.Business
                 tournament.TournamentSystem = new DoubleRoundRobin();
             }
             tournamentRepository.UpdateTournament(tournament);
+        }
+
+        public bool RegisterPlayerForTournament(int idTournament, int idPlayer)
+        {
+            if(tournamentRepository.PlayerNotRegistered(idTournament, idPlayer))
+            {
+                tournamentRepository.RegisterPlayer(idTournament, idPlayer);         
+
+                if (tournamentRepository.GetAvailablePlaces()[idTournament] == 0)
+                {
+                    tournamentRepository.SetStatusToPending(idTournament);
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public List<Tournament> GetAllOpenTournaments()

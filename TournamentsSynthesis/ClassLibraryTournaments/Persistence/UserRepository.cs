@@ -41,5 +41,37 @@ namespace ClassLibraryTournaments.Persistence
                 throw new DataBaseException();
             }
         }
+
+        public User GetPlayerById(int userId)
+        {
+            try
+            {
+                using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+                {
+                    string sql = "select firstName, lastName,idUser from usertournaments where idUser=@idUser and role=@role;";
+
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("idUser", userId);
+                    cmd.Parameters.AddWithValue("role", Role.Player.ToString());
+
+                    conn.Open();
+                    User user = null;
+                    MySqlDataReader dateReader = cmd.ExecuteReader();
+
+                    if (dateReader.Read())
+                    {
+                        user = new User();
+                        user.Id = dateReader.GetInt32("idUser");
+                        user.FirstName = dateReader.GetString("firstName");
+                        user.LastName = dateReader.GetString("lastName");
+                    }
+                    return user;
+                }
+            }
+            catch (Exception)
+            {
+                throw new DataBaseException();
+            }
+        }
     }
 }
