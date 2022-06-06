@@ -6,7 +6,9 @@ namespace ClassLibraryTournaments.Persistence
 {
     public interface IUserRepository
     {
-        User FindUser(string email, string password);
-        User GetPlayerById(int userId);
+        public User FindUser(string email, string password);
+        public User GetPlayerById(int userId);
+        public bool CheckIfUserExists(string email);
+        public void RegisterUser(User user);
     }
 }

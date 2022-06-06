@@ -80,20 +80,19 @@ body {*/
 }
 
 .loginForm {
-    padding: 10px;
+    padding: 2%;
     border: 1px solid white;
     width: 40%;
     display: inline-block;
     margin-left: auto;
     margin-right: auto;
     text-align: left;
-    background-color: #A2D0EE;
-    color: white;
     border-radius: 15px;
 }
 
 .container label {
     font-size: 1.2vw;
+    
 }
 
 .login_heading {
@@ -575,4 +574,28 @@ a {
 
 .message{
     color: lightgreen;
+}
+
+
+
+/*Register page*/
+
+.register_form_container{
+    display: flex;
+    justify-content: center;
+}
+
+    .register_form_container form {
+        width: 50%;
+        border: 1px solid white;
+        padding: 2%;
+        border-radius: 15px;
+    }
+
+.container span {
+    color: lightcoral;
+}
+
+.error_message {
+    color: lightcoral;
 }

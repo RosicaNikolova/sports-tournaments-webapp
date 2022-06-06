@@ -8,6 +8,7 @@ namespace ClassLibraryTournaments.Persistence
 {
     public class UserRepository : IUserRepository
     {
+     
         public User FindUser(string email, string password)
         {
             try
@@ -66,6 +67,56 @@ namespace ClassLibraryTournaments.Persistence
                         user.LastName = dateReader.GetString("lastName");
                     }
                     return user;
+                }
+            }
+            catch (Exception)
+            {
+                throw new DataBaseException();
+            }
+        }
+        public bool CheckIfUserExists(string email)
+        {
+            try
+            {
+                using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+                {
+                    string sql = "select email from usertournaments where @email=email;";
+
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("email", email);
+                    conn.Open();
+
+                    MySqlDataReader dateReader = cmd.ExecuteReader();
+                    if (dateReader.Read())
+                    {
+                        return false;
+                    }
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                throw new DataBaseException();
+            }
+        }
+
+        public void RegisterUser(User user)
+        {
+            try
+            {
+                using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+                {
+                    string sql = "insert into usertournaments (email, password, firstName, lastName, role) values(@email, @password, @firstName, @lastName, @role);";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("email", user.Email);
+                    cmd.Parameters.AddWithValue("password", user.Password);
+                    cmd.Parameters.AddWithValue("firstName", user.FirstName);
+                    cmd.Parameters.AddWithValue("lastName", user.LastName);
+                    cmd.Parameters.AddWithValue("role", user.Role.ToString());
+
+                    conn.Open();
+
+                    cmd.ExecuteNonQuery();
                 }
             }
             catch (Exception)

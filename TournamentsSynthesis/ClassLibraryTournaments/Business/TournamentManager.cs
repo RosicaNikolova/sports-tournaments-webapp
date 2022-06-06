@@ -42,6 +42,7 @@ namespace ClassLibraryTournaments.Business
             tournamentRepository.SaveTournament(tournament);
         }
 
+
         public Tournament GetTournamentById(int idTournament)
         {
             return tournamentRepository.GetTournamentById(idTournament);
@@ -144,5 +145,15 @@ namespace ClassLibraryTournaments.Business
             return tournamentRepository.GetAvailablePlaces();
         }
 
+        public Dictionary<int, User> GetNamesOfPlayersForTournament(int id)
+        {
+            return tournamentRepository.GetNamesOfPlayersForTournament(id);
+        }
+
+
+        public Dictionary<User, int> GetRankingForTournament(int id)
+        {
+            return tournamentRepository.GetRankingForTournament(id);
+        }
     }
 }

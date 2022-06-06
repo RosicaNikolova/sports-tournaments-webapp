@@ -12,3 +12,39 @@
 
     ViewData["Title"] = "Register";
 }
+@section scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
+<div class="register_form_container">
+    <form method="post">
+        <div class="container">
+            <h2 class="login_heading">Register</h2>
+
+            <label asp-for="Register.Email">E-mail:</label> <br />
+            <span asp-validation-for="Register.Email"></span>
+            <input asp-for="Register.Email" type="text" placeholder="Enter E-mail">
+
+            <label asp-for="Register.Password">Password:</label> <br />
+            <span asp-validation-for="Register.Password"></span>
+            <input asp-for="Register.Password" type="password" placeholder="Enter Password">
+
+            <label asp-for="Register.FirstName">First Name:</label> <br />
+            <span asp-validation-for="Register.FirstName"></span>
+            <input asp-for="Register.FirstName" type="text" placeholder="Enter First name" required>
+
+            <label asp-for="Register.LastName">Last Name:</label> <br />
+            <span asp-validation-for="Register.LastName"></span>
+            <input asp-for="Register.LastName" type="text" placeholder="Enter Last Name" required>
+
+        </div>
+        <div class="login_buttons">
+            <input type="submit" value="Register" class="loginbtn">
+            <button type="reset" class="cancelbtn" value="Cancel">Cancel</button>
+        </div>
+
+        <div class="error_message"> @ViewData["Message_register"] </div>
+
+    </form>
+

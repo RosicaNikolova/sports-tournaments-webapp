@@ -428,7 +428,7 @@ namespace ClassLibraryTournaments.Persistence
             {
                 using (MySqlConnection conn = DatabaseConnection.CreateConnection())
                 {
-                    string sql = "select idTournament, sportType, tournamentSystem, startDate, endDate, LastRegisterDate, location from tournament where idTournament=@idTournament;";
+                    string sql = "select idTournament, sportType, tournamentSystem, startDate, endDate, LastRegisterDate, location, status, description from tournament where idTournament=@idTournament;";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
 
                     cmd.Parameters.AddWithValue("idTournament", idTournament);
@@ -458,6 +458,8 @@ namespace ClassLibraryTournaments.Persistence
                         tournament.EndDate = (DateTime)dateReader.GetMySqlDateTime("endDate");
                         tournament.RegistrationCloses = (DateTime)dateReader.GetMySqlDateTime("LastRegisterDate");
                         tournament.Location = dateReader.GetString("location");
+                        tournament.Description = dateReader.GetString("description");
+                        tournament.Status = (Status)Enum.Parse(typeof(Status), dateReader.GetString("status"));
                     }
                     return tournament;
                 }
@@ -516,6 +518,67 @@ namespace ClassLibraryTournaments.Persistence
             //}
         }
 
-        
+        public Dictionary<User, int> GetRankingForTournament(int id)
+        {
+            //try
+            //{
+                using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+                {
+                    Dictionary<User, int> ranking = new Dictionary<User, int>();
+                    string sql = "SELECT g.winnerId, COUNT(g.winnerId) as points, g.tournamentId, u.firstName, u.lastName from games as g JOIN usertournaments as u on g.winnerId = u.idUser WHERE g.tournamentId =@tournamentId GROUP BY g.winnerId ORDER by points DESC;";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                    cmd.Parameters.AddWithValue("tournamentId", id);
+                    conn.Open();
+
+                    MySqlDataReader dateReader = cmd.ExecuteReader();
+                    while (dateReader.Read())
+                    {
+                        User user = new User();
+                        user.Id = dateReader.GetInt32("winnerId");
+                        user.FirstName = dateReader.GetString("firstName");
+                        user.LastName = dateReader.GetString("lastName");
+                        int points = dateReader.GetInt32("points");
+                        ranking.Add(user, points);
+                    }
+                    return ranking;
+                }
+            //}
+            //catch (Exception)
+            //{
+            //    throw new DataBaseException();
+            //}
+        }
+
+        public Dictionary<int, User> GetNamesOfPlayersForTournament(int id)
+        {
+            try
+            {
+                using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+                {
+                    Dictionary<int, User> players = new Dictionary<int, User>();
+                    string sql = "SELECT u.firstName, u.lastName, u.idUser from tournamentplayer as p join usertournaments as u on p.userId = u.idUser WHERE p.tournamentId = @tournamentId";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                    cmd.Parameters.AddWithValue("tournamentId", id);
+                    conn.Open();
+
+                    MySqlDataReader dateReader = cmd.ExecuteReader();
+                    while (dateReader.Read())
+                    {
+                        User user = new User();
+                        user.Id = dateReader.GetInt32("idUser");
+                        user.FirstName = dateReader.GetString("firstName");
+                        user.LastName = dateReader.GetString("lastName");
+                        players.Add(user.Id, user);
+                    }
+                    return players;
+                }
+            }
+            catch (Exception)
+            {
+                throw new DataBaseException();
+            }
+        }
     }
 }

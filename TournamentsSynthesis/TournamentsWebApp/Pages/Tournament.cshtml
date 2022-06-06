@@ -32,6 +32,7 @@
                     <p>Description: @Model.tournament.Description</p>
                 </div>
             </section>
+
             if (Model.tournament.Status == ClassLibraryTournaments.Business.Status.cancelled)
             {
                 <p>Tournamnet is cancelled. No information available</p>
@@ -42,82 +43,91 @@
                     <div>
                         <h2>Participants:</h2>
                         <ul>
-                            
-                                @if (Model.players.Count == 0)
+
+                            @if (Model.players.Count == 0)
+                            {
+                                <li>No registered players yet.</li>
+                            }
+                            else
+                            {
+                                foreach (var player in Model.players)
                                 {
-                                    <li>No registered players yet.</li>
+                                    <li>@player</li>
                                 }
-                                else
-                                {
-                                    foreach (var player in Model.players)
-                                    {
-                                        <li>@player</li>
-                                    }
-                                }
-                            
+                            }
+
                         </ul>
                     </div>
                 </section>
                 <section class="container-ranks">
 
-                    @if (Model.tournament.Status == ClassLibraryTournaments.Business.Status.finished || Model.tournament.Status == ClassLibraryTournaments.Business.Status.ongoing)
+                    @if (Model.ranking != null && Model.ranking.Count != 0)
                     {
                         if (Model.tournament.Status == ClassLibraryTournaments.Business.Status.finished)
                         {
                             <h2>Ranking</h2>
                         }
-                        <p>Gold: Rositsa Nikolova</p>
-                        <p>Silver: Jakub Jelenovski</p>
-                        <p>Bronze: Daniil Blagoev</p>
+                        else
+                        {
+                            <h2>Current Ranking</h2>
+                        }
+                        int counter = 1;
+                        string place;
+                        foreach (var player in Model.ranking)
+                        {
+                            switch (counter)
+                            {
+                                case 1:
+                                    place = "Gold";
+                                    break;
+                                case 2:
+                                    place = "Silver";
+                                    break;
+                                case 3:
+                                    place = "Bronze";
+                                    break;
+                                default:
+                                    place = counter.ToString();
+                                    break;
+                            }
+                            <p>@place: @player.Key - @player.Value points</p>
+                            counter++;
+                        }
                     }
                     else
                     {
                         <h2>Ranking</h2>
-
                         <p> No ranking present yet.</p>
                     }
                 </section>
 
+
+                if (Model.games != null && Model.games.Count != 0)
+                {
+                <section class="container-games">
+                    <table>
+                        <tr>
+                            <th>Game</th>
+                            <th>Result</th>
+                        </tr>
+                        @foreach (var game in Model.games)
+                        {
+                            <tr>
+                                <td>@Model.namesOfPlayersForGames[game.Player1Id] - @Model.namesOfPlayersForGames[game.Player2Id]</td>
+                                <td>@game.Result1 - @game.Result2</td>
+                            </tr>
+                        }
+                    </table>
+                </section>
+                }
+                else
+                {
+                <p>No games present yet.</p>
+                }
             }
+
         }
 
-
-        switch (Model.tournament.Status)
-        {
-            case ClassLibraryTournaments.Business.Status.open:
-                break;
-            case ClassLibraryTournaments.Business.Status.ongoing:
-                break;
-            case ClassLibraryTournaments.Business.Status.pending:
-                break;
-            case ClassLibraryTournaments.Business.Status.finished:
-                break;
-            case ClassLibraryTournaments.Business.Status.cancelled:
-                break;
-        }
-
-
-
-
-        <section class="container-games">
-            <table>
-                <tr>
-                    <th>Game</th>
-                    <th>Result</th>
-                </tr>
-                <tr>
-                    <td>Rositsa - Daniil</td>
-                    <td>16 - 21</td>
-                </tr>
-                <tr>
-                    <td>Jakub - Henry</td>
-                    <td>20 - 14</td>
-                </tr>
-            </table>
-        </section>
-
     }
-    }
-
 
 </div>
