@@ -22,7 +22,7 @@ namespace ClassLibraryTournaments.Business
             return games;
         }
 
-        private List<User> GetPlayersForTournament(int idTournament)
+        public List<User> GetPlayersForTournament(int idTournament)
         {
             List<User> playersForTournament = new List<User>();
             playersForTournament = gameRepository.GetPlayersForTournament(idTournament);

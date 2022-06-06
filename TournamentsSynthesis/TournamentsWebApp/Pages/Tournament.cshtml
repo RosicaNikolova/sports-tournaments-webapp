@@ -14,51 +14,110 @@
 }
 
 <div class="container-content">
-    <section class="container-info">
-        <div>
-            <h2>Tournament Information</h2>
-            <p>Sport: Badminton</p>
-            <p>System: Round-Robin</p>
-            <p>Location: Eindhoven, Rachelsmolen</p>
-            <p>Start Date: 21.05.2022</p>
-            <p>End Date: 25.05.2022</p>
-            <p>Description: This is a badminton tournament which is for advanced players.</p>
-        </div>
-    </section>
+    @{
+        if (Model.tournament == null)
+        {
+            <h3>Page not found</h3>
+        }
+        else
+        {
+            <section class="container-info">
+                <div>
+                    <h2>Tournament Information</h2>
+                    <p>Sport: @Model.tournament.SportType</p>
+                    <p>System: @Model.tournament.TournamentSystem</p>
+                    <p>Location: @Model.tournament.Location</p>
+                    <p>Start Date: @Model.tournament.StartDate</p>
+                    <p>End Date: @Model.tournament.EndDate</p>
+                    <p>Description: @Model.tournament.Description</p>
+                </div>
+            </section>
+            if (Model.tournament.Status == ClassLibraryTournaments.Business.Status.cancelled)
+            {
+                <p>Tournamnet is cancelled. No information available</p>
+            }
+            else
+            {
+                <section class="container-participants">
+                    <div>
+                        <h2>Participants:</h2>
+                        <ul>
+                            
+                                @if (Model.players.Count == 0)
+                                {
+                                    <li>No registered players yet.</li>
+                                }
+                                else
+                                {
+                                    foreach (var player in Model.players)
+                                    {
+                                        <li>@player</li>
+                                    }
+                                }
+                            
+                        </ul>
+                    </div>
+                </section>
+                <section class="container-ranks">
 
-    <section class="container-participants">
-        <div>
-            <h2>Participants:</h2>
-            <ul>
-                <li>Henry Willson</li>
-                <li>Daniil Blagoev</li>
-                <li>Jakub Jelenovski</li>
-                <li>Rositsa Nikolova</li>
-            </ul>
-        </div>
-    </section>
+                    @if (Model.tournament.Status == ClassLibraryTournaments.Business.Status.finished || Model.tournament.Status == ClassLibraryTournaments.Business.Status.ongoing)
+                    {
+                        if (Model.tournament.Status == ClassLibraryTournaments.Business.Status.finished)
+                        {
+                            <h2>Ranking</h2>
+                        }
+                        <p>Gold: Rositsa Nikolova</p>
+                        <p>Silver: Jakub Jelenovski</p>
+                        <p>Bronze: Daniil Blagoev</p>
+                    }
+                    else
+                    {
+                        <h2>Ranking</h2>
 
-    <section class="container-ranks">
-        <h2>Ranking</h2>
-        <p>Gold: Rositsa Nikolova</p>
-        <p>Silver: Jakub Jelenovski</p>
-        <p>Bronze: Daniil Blagoev</p>
-    </section>
+                        <p> No ranking present yet.</p>
+                    }
+                </section>
 
-    <section class="container-games">
-        <table>
-            <tr>
-                <th>Game</th>
-                <th>Result</th>
-            </tr>
-            <tr>
-                <td>Rositsa - Daniil</td>
-                <td>16 - 21</td>
-            </tr>
-            <tr>
-                <td>Jakub - Henry</td>
-                <td>20 - 14</td>
-            </tr>
-        </table>
-    </section>
+            }
+        }
+
+
+        switch (Model.tournament.Status)
+        {
+            case ClassLibraryTournaments.Business.Status.open:
+                break;
+            case ClassLibraryTournaments.Business.Status.ongoing:
+                break;
+            case ClassLibraryTournaments.Business.Status.pending:
+                break;
+            case ClassLibraryTournaments.Business.Status.finished:
+                break;
+            case ClassLibraryTournaments.Business.Status.cancelled:
+                break;
+        }
+
+
+
+
+        <section class="container-games">
+            <table>
+                <tr>
+                    <th>Game</th>
+                    <th>Result</th>
+                </tr>
+                <tr>
+                    <td>Rositsa - Daniil</td>
+                    <td>16 - 21</td>
+                </tr>
+                <tr>
+                    <td>Jakub - Henry</td>
+                    <td>20 - 14</td>
+                </tr>
+            </table>
+        </section>
+
+    }
+    }
+
+
 </div>

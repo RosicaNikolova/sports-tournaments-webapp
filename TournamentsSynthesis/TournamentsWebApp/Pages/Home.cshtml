@@ -27,7 +27,7 @@
                 foreach (var tournament in Model.tournaments)
                 {
                     <li>
-                        <a asp-page="/Tournament">
+                        <a asp-page="/Tournament" asp-route-id="@tournament.Id">
                             <div class="item-container">
 
                                 <img src="pic/download.jpg" alt="tournamentPicture">

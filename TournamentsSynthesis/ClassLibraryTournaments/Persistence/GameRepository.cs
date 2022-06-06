@@ -16,7 +16,7 @@ namespace ClassLibraryTournaments.Persistence
                 using (MySqlConnection conn = DatabaseConnection.CreateConnection())
                 {
                     List<User> players = new List<User>();
-                    string sql = "select userId from tournamentplayer where tournamentId=@tournamentId;";
+                    string sql = "SELECT * FROM tournamentplayer as t JOIN usertournaments as u on t.userId = u.idUser where t.tournamentId = @tournamentId  ORDER BY u.lastName ASC;";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("tournamentId", id);
                     conn.Open();
@@ -27,6 +27,8 @@ namespace ClassLibraryTournaments.Persistence
                     {
                         player = new User();
                         player.Id = dateReader.GetInt32("userId");
+                        player.FirstName = dateReader.GetString("firstName");
+                        player.LastName = dateReader.GetString("lastName");
                         players.Add(player);
                     }
                     return players;
