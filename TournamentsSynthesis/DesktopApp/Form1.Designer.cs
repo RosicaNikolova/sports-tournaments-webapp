@@ -47,6 +47,7 @@ namespace DesktopApp
             // 
             this.txbPassword.Location = new System.Drawing.Point(176, 261);
             this.txbPassword.Name = "txbPassword";
+            this.txbPassword.PasswordChar = '*';
             this.txbPassword.Size = new System.Drawing.Size(207, 27);
             this.txbPassword.TabIndex = 1;
             // 

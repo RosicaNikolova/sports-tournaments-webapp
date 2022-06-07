@@ -76,6 +76,11 @@ namespace ClassLibraryTournaments.Business
             tournamentRepository.UpdateTournament(tournament);
         }
 
+        public List<Tournament> GetAllOpenOrCancelledTournaments()
+        {
+            return tournamentRepository.GetAllOpenOrCancelledTournaments();
+        }
+
         public bool RegisterPlayerForTournament(int idTournament, int idPlayer)
         {
             if(tournamentRepository.PlayerNotRegistered(idTournament, idPlayer))
@@ -101,6 +106,7 @@ namespace ClassLibraryTournaments.Business
 
         public void DeleteTournament(int id)
         {
+            tournamentRepository.DeleteRegisteredPlayersForTournament(id);
             tournamentRepository.DeleteTournament(id);
         }
 
@@ -129,7 +135,7 @@ namespace ClassLibraryTournaments.Business
 
         public void CheckStatusesOfTournaments()
         {
-            List<Tournament> tournaments = tournamentRepository.GetAllTournaments();
+            List<Tournament> tournaments = tournamentRepository.GetAllOpenTournaments();
             DateTime today = DateTime.Today;
             foreach (Tournament tournament in tournaments)
             {

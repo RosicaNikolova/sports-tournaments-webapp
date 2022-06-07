@@ -46,8 +46,16 @@ namespace DesktopApp
                     }
                     else
                     {
-                        HomeForm homeForm = new HomeForm(user);
-                        homeForm.Show();
+                        if(user.Role == Role.Staff)
+                        {
+                            HomeForm homeForm = new HomeForm(user);
+                            homeForm.Show();
+                            this.Hide();
+                        }
+                        else if(user.Role == Role.Player)
+                        {
+                            MessageBox.Show("Hello player, you can log in on the website");
+                        }
                     }
                 }
             }

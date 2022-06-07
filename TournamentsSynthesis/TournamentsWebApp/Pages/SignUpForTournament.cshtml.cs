@@ -57,9 +57,11 @@ namespace TournamentsWebApp.Pages
                 {
                     @ViewData["Message"] = "You are already registered for this tournament";
                 }
-                OnGet(id);
+
                 //questionable
+                OnGet(id);
                 return Page();
+               //return new RedirectToPageResult("SignUpForTournament", new {id = id });
             }
            
             catch (DataBaseException)

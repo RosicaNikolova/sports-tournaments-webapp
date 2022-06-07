@@ -349,7 +349,7 @@ namespace ClassLibraryTournaments.Persistence
                 using (MySqlConnection conn = DatabaseConnection.CreateConnection())
                 {
                     List<Tournament> tournaments = new List<Tournament>();
-                    string sql = "select idTournament, sportType, tournamentSystem, description, startDate, endDate, minPlayer, maxPlayers, status, location from tournament where status=@status;";
+                    string sql = "select idTournament, sportType, tournamentSystem, description, startDate, endDate, minPlayer, maxPlayers, status, LastRegisterDate, location from tournament where status=@status;";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
 
                     cmd.Parameters.AddWithValue("status", Status.open.ToString());
@@ -381,6 +381,7 @@ namespace ClassLibraryTournaments.Persistence
                         tournament.MinPlayers = dateReader.GetInt32("minPlayer");
                         tournament.MaxPlayers = dateReader.GetInt32("maxPlayers");
                         tournament.Location = dateReader.GetString("location");
+                        tournament.RegistrationCloses = (DateTime)dateReader.GetMySqlDateTime("LastRegisterDate");
                         tournaments.Add(tournament);
                     }
                     return tournaments;
@@ -661,6 +662,76 @@ namespace ClassLibraryTournaments.Persistence
             //{
             //    throw new DataBaseException();
             //}
+        }
+
+        public void DeleteRegisteredPlayersForTournament(int id)
+        {
+            try
+            {
+                using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+                {
+                    string sql = "Delete from tournamentplayer where tournamentId=@tournamentId";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("tournamentId", id);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception)
+            {
+                throw new DataBaseException();
+            }
+        }
+
+        public List<Tournament> GetAllOpenOrCancelledTournaments()
+        {
+            try
+            {
+                using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+                {
+                    List<Tournament> tournaments = new List<Tournament>();
+                    string sql = "select idTournament, sportType, tournamentSystem, description, startDate, endDate, minPlayer, maxPlayers, status, location from tournament where status=@status or status=@statusCancelled;";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                    cmd.Parameters.AddWithValue("status", Status.open.ToString());
+                    cmd.Parameters.AddWithValue("statusCancelled", Status.cancelled.ToString());
+
+                    conn.Open();
+
+                    MySqlDataReader dateReader = cmd.ExecuteReader();
+                    while (dateReader.Read())
+                    {
+                        Tournament tournament = new Tournament();
+                        tournament.Id = dateReader.GetInt32("idTournament");
+                        string sport = dateReader.GetString("sportType");
+                        if (sport == "Badminton")
+                        {
+                            tournament.SportType = new BadmintonSportType();
+                        }
+                        string tournamentSystem = dateReader.GetString("tournamentSystem");
+                        if (tournamentSystem == "Round-Robin")
+                        {
+                            tournament.TournamentSystem = new RoundRobin();
+                        }
+                        else
+                        {
+                            tournament.TournamentSystem = new DoubleRoundRobin();
+                        }
+                        tournament.Description = dateReader.GetString("description");
+                        tournament.StartDate = (DateTime)dateReader.GetMySqlDateTime("startDate");
+                        tournament.EndDate = (DateTime)dateReader.GetMySqlDateTime("endDate");
+                        tournament.MinPlayers = dateReader.GetInt32("minPlayer");
+                        tournament.MaxPlayers = dateReader.GetInt32("maxPlayers");
+                        tournament.Location = dateReader.GetString("location");
+                        tournaments.Add(tournament);
+                    }
+                    return tournaments;
+                }
+            }
+            catch (Exception)
+            {
+                throw new DataBaseException();
+            }
         }
     }
 }

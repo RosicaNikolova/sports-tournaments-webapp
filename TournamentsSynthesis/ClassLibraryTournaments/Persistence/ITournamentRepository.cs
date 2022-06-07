@@ -27,5 +27,7 @@ namespace ClassLibraryTournaments.Persistence
         public Dictionary<int, User> GetNamesOfPlayersForTournament(int id);
         public List<Tournament> GetTournamentsForPlayer(int userId);
         public Dictionary<int, User> GetNamesOfOponents(int userId);
+        void DeleteRegisteredPlayersForTournament(int id);
+        List<Tournament> GetAllOpenOrCancelledTournaments();
     }
 }

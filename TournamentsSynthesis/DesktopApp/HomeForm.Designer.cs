@@ -65,14 +65,15 @@ namespace DesktopApp
             this.btnSaveResults = new System.Windows.Forms.Button();
             this.lblCheck = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.cmbxTournamentsResults = new System.Windows.Forms.ComboBox();
-            this.btnHome2 = new System.Windows.Forms.Button();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GameId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Player1Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Player2Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Result1Player = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Result2Player = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmbxTournamentsResults = new System.Windows.Forms.ComboBox();
+            this.btnHome2 = new System.Windows.Forms.Button();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.Home.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOverview)).BeginInit();
@@ -128,6 +129,7 @@ namespace DesktopApp
             // 
             // Home
             // 
+            this.Home.Controls.Add(this.btnLogout);
             this.Home.Controls.Add(this.dataGridViewOverview);
             this.Home.Controls.Add(this.lblWelcome);
             this.Home.Controls.Add(this.btnGenerateGames);
@@ -452,32 +454,6 @@ namespace DesktopApp
             this.dataGridView2.Size = new System.Drawing.Size(841, 341);
             this.dataGridView2.TabIndex = 4;
             // 
-            // cmbxTournamentsResults
-            // 
-            this.cmbxTournamentsResults.FormattingEnabled = true;
-            this.cmbxTournamentsResults.Location = new System.Drawing.Point(124, 35);
-            this.cmbxTournamentsResults.Name = "cmbxTournamentsResults";
-            this.cmbxTournamentsResults.Size = new System.Drawing.Size(399, 28);
-            this.cmbxTournamentsResults.TabIndex = 3;
-            this.cmbxTournamentsResults.SelectedIndexChanged += new System.EventHandler(this.cmbxTournamentsResults_SelectedIndexChanged);
-            // 
-            // btnHome2
-            // 
-            this.btnHome2.Location = new System.Drawing.Point(655, 35);
-            this.btnHome2.Name = "btnHome2";
-            this.btnHome2.Size = new System.Drawing.Size(94, 29);
-            this.btnHome2.TabIndex = 0;
-            this.btnHome2.Text = "Home";
-            this.btnHome2.UseVisualStyleBackColor = true;
-            this.btnHome2.Click += new System.EventHandler(this.btnHome2_Click);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Player 1";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 125;
-            // 
             // GameId
             // 
             this.GameId.HeaderText = "Game Id";
@@ -515,6 +491,42 @@ namespace DesktopApp
             this.Result2Player.MinimumWidth = 6;
             this.Result2Player.Name = "Result2Player";
             this.Result2Player.Width = 125;
+            // 
+            // cmbxTournamentsResults
+            // 
+            this.cmbxTournamentsResults.FormattingEnabled = true;
+            this.cmbxTournamentsResults.Location = new System.Drawing.Point(124, 35);
+            this.cmbxTournamentsResults.Name = "cmbxTournamentsResults";
+            this.cmbxTournamentsResults.Size = new System.Drawing.Size(399, 28);
+            this.cmbxTournamentsResults.TabIndex = 3;
+            this.cmbxTournamentsResults.SelectedIndexChanged += new System.EventHandler(this.cmbxTournamentsResults_SelectedIndexChanged);
+            // 
+            // btnHome2
+            // 
+            this.btnHome2.Location = new System.Drawing.Point(655, 35);
+            this.btnHome2.Name = "btnHome2";
+            this.btnHome2.Size = new System.Drawing.Size(94, 29);
+            this.btnHome2.TabIndex = 0;
+            this.btnHome2.Text = "Home";
+            this.btnHome2.UseVisualStyleBackColor = true;
+            this.btnHome2.Click += new System.EventHandler(this.btnHome2_Click);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Player 1";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 125;
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.Location = new System.Drawing.Point(1048, 66);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(94, 29);
+            this.btnLogout.TabIndex = 5;
+            this.btnLogout.Text = "Log out";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // HomeForm
             // 
@@ -584,5 +596,6 @@ namespace DesktopApp
         private System.Windows.Forms.DataGridViewTextBoxColumn Player2Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Result1Player;
         private System.Windows.Forms.DataGridViewTextBoxColumn Result2Player;
+        private System.Windows.Forms.Button btnLogout;
     }
 }
