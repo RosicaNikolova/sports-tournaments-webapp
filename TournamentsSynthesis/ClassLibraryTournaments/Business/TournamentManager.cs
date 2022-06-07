@@ -42,6 +42,11 @@ namespace ClassLibraryTournaments.Business
             tournamentRepository.SaveTournament(tournament);
         }
 
+        public Dictionary<int, User> GetNamesOfOtherPlayers(int userId)
+        {
+           
+            return tournamentRepository.GetNamesOfOponents(userId);
+        }
 
         public Tournament GetTournamentById(int idTournament)
         {
@@ -154,6 +159,30 @@ namespace ClassLibraryTournaments.Business
         public Dictionary<User, int> GetRankingForTournament(int id)
         {
             return tournamentRepository.GetRankingForTournament(id);
+        }
+
+        public Dictionary<int, int> GetRankingForPlayer(int userId, List<Tournament> tournaments)
+        {
+            Dictionary<int, int> ranking = new Dictionary<int, int>();
+            foreach (Tournament tournament in tournaments)
+            {
+                Dictionary<User, int> rankingForTournament =  tournamentRepository.GetRankingForTournament(tournament.Id);
+                int counter = 1;
+                foreach (var user in rankingForTournament)
+                {
+                    if(user.Key.Id == userId)
+                    {
+                        ranking.Add(tournament.Id, counter);
+                    }
+                    counter++;
+                }
+            }
+            return ranking;
+        }
+
+        public List<Tournament> GetTournamentsForPlayer(int userId)
+        {
+            return tournamentRepository.GetTournamentsForPlayer(userId);
         }
     }
 }

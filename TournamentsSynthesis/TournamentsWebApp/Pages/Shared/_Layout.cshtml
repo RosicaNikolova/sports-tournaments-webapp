@@ -5,54 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - TournamentsWebApp</title>
     @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
-    <link rel="stylesheet" href="~/css/hel.css" />
+    <link rel="stylesheet" href="~/css/fuck.css">
 </head>
 <body>
         <header class="header">
             <nav class="navbar">
 
                 <a class="navbar-brand desktop" asp-page="/LandingPage">
-                    <img src="" alt="logo">
+                    <img src="~/pic/kisspng-sport-logo-football-clip-art-sports-logos-5b51ce96b2d505.1023534515320879587325.png" alt="logo">
                 </a>
 
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav">
 
+                        <a class="nav-link dropdown-toggle" asp-page="/Home">
                         <li class="nav-item">
-                            <a class="nav-link dropdown-toggle" asp-page="/Home">
-                                Home
-                            </a>
+
+                            Home
                         </li>
+                        </a>
+
+                        <a class="nav-link dropdown-toggle" asp-page="/AvailableTournaments">
                         <li class="nav-item">
-                            <a class="nav-link dropdown-toggle" asp-page="/AvailableTournaments">
-                                Available Tournaments
-                            </a>
+
+                            Available Tournaments
                         </li>
-                        @*<li class="nav-item">
-            <a class="nav-link">My profile</a>
-        </li>*@
+
+                        </a>
+
 
                         <li class="nav-item">|</li>
 
+                        <a class="nav-link" asp-page="/Register">
                         <li class="nav-item">
-                            <a class="nav-link" asp-page="/Register">
-                                Create Account
-                            </a>
-                        </li>
-                        @*@{ if (User.Identity.IsAuthenticated)
-                            {
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-page="/Login">Logout</a>
-                                </li>
-                            }
-                            else
-                            {*@
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-page="/Login">Login</a>
-                                </li>
-                            @*}
 
-                        }*@
+                            Create Account
+                        </li>
+
+                        </a>
+                    
+                        <a class="nav-link" asp-page="/Login">
+                        <li class="nav-item">
+                            Login
+                        </li>
+
+                        </a>
+          
 
 
                     </ul>
@@ -60,18 +58,8 @@
             </nav>
         </header>
 
-   
-    @*<div class="container">
-        <main role="main" class="pb-3">*@
             @RenderBody()
-        @*</main>
-    </div>*@
-
-    @*<footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - TournamentsWebApp - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer>*@
+    
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     @*<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@

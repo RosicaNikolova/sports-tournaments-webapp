@@ -10,86 +10,85 @@
     <section class="container-personal-info">
 
         <h2>Personal Information</h2>
-        <p>Email: Badminton</p>
-        <p>First Name: Round-Robin</p>
-        <p>Last Name: Eindhoven, Rachelsmolen</p>
+        <p>Email: @Model.user.Email</p>
+        <p>First Name: @Model.user.FirstName</p>
+        <p>Last Name: @Model.user.LastName</p>
     </section>
 
     <section class="container-participations">
-        <h2> Participations</h2>
-        <div class="flex-continer-player-tournament">
-            <div class="container-player-tournament">
-                <div class="container-tourn-info">
-                    <h3>Tournament Information</h3>
-                    <p>Sport: Badminton</p>
-                    <p>System: Round-Robin</p>
-                    <p>Location: Eindhoven, Rachelsmolen</p>
-                    <p>Start Date: 21.05.2022</p>
-                </div>
+        <h2> Participations: @Model.tournaments.Count</h2>
 
-                <div class="container-player-games">
-                    <h3>Your Games</h3>
-                    <div class="flex-container-table">
-                        <table>
-                            <tr>
-                                <th>Game</th>
-                                <th>Result</th>
-                            </tr>
-                            <tr>
-                                <td>Rositsa - Daniil</td>
-                                <td>16 - 21</td>
-                            </tr>
-                            <tr>
-                                <td>Jakub - Henry</td>
-                                <td>20 - 14</td>
-                            </tr>
-                        </table>
+        @{
+            if (Model.tournaments.Count != 0)
+            {
+                foreach (var tournament in Model.tournaments)
+                {
+                    <div class="flex-continer-player-tournament">
+                        <div class="container-player-tournament">
+                            <div class="container-tourn-info">
+                                <h3>Tournament Information</h3>
+                                <p>Sport: @tournament.SportType</p>
+                                <p>System: @tournament.TournamentSystem</p>
+                                <p>Location: @tournament.Location</p>
+                                <p>Start Date: @tournament.StartDate</p>
+                                <p>Stauts: @tournament.Status</p>
+                            </div>
+
+                            <div class="container-player-games">
+                                <h3>Your Games</h3>
+                                @if (Model.games.Count != 0 && Model.games.ContainsKey(tournament.Id))
+                                {
+                                    <div class="flex-container-table">
+                                        <table>
+                                            <tr>
+                                                <th>Game</th>
+                                                <th>Result</th>
+                                            </tr>
+                                            @{
+                                                foreach (var game in Model.games[tournament.Id])
+                                                {
+                                                    <tr>
+                                                        <td>@Model.names[game.Player1Id] - @Model.names[game.Player2Id]</td>
+                                                        <td>@game.Result1 - @game.Result2</td>
+                                                    </tr>
+                                                }
+                                            }
+                                        </table>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <h3>No games yet.</h3>
+                                }
+
+                            </div>
+
+                            <div class="container-player-rank">
+                                <h3>Your ranking: </h3>
+                                @{if (Model.ranking.Count != 0 && Model.ranking.ContainsKey(tournament.Id))
+                                    {
+                                        <h3>Rank: @Model.ranking[tournament.Id]</h3>
+                                    }
+                                    else
+                                    {
+                                        <h3>No ranking present yet.</h3>
+                                    }
+                                }
+                            </div>
+                        </div>
+
+
+                       
+
                     </div>
-                </div>
+                }
+            }
+            else
+            {
+                <h3>No participations yet.</h3>
+            }
+        }
 
-                <div class="container-player-rank">
-                    <h3>Rank: 1</h3>
-
-                </div>
-            </div>
-
-
-            <div class="container-player-tournament">
-                <div class="container-tourn-info">
-                    <h3>Tournament Information</h3>
-                    <p>Sport: Badminton</p>
-                    <p>System: Round-Robin</p>
-                    <p>Location: Eindhoven, Rachelsmolen</p>
-                    <p>Start Date: 21.05.2022</p>
-                </div>
-
-                <div class="container-player-games">
-                    <h3>Your Games</h3>
-                    <div class="flex-container-table">
-                        <table>
-                            <tr>
-                                <th>Game</th>
-                                <th>Result</th>
-                            </tr>
-                            <tr>
-                                <td>Rositsa - Daniil</td>
-                                <td>16 - 21</td>
-                            </tr>
-                            <tr>
-                                <td>Jakub - Henry</td>
-                                <td>20 - 14</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-
-                <div class="container-player-rank">
-                    <h3>Rank: 1</h3>
-
-                </div>
-            </div>
-
-        </div>
     </section>
 
     <div>

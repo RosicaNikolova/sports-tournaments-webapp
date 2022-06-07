@@ -101,29 +101,34 @@
                     }
                 </section>
 
-
-                if (Model.games != null && Model.games.Count != 0)
-                {
                 <section class="container-games">
-                    <table>
-                        <tr>
-                            <th>Game</th>
-                            <th>Result</th>
-                        </tr>
-                        @foreach (var game in Model.games)
+
+                    @{ if (Model.games != null && Model.games.Count != 0)
                         {
-                            <tr>
-                                <td>@Model.namesOfPlayersForGames[game.Player1Id] - @Model.namesOfPlayersForGames[game.Player2Id]</td>
-                                <td>@game.Result1 - @game.Result2</td>
-                            </tr>
+                            <table>
+                                <tr>
+                                    <th>Game</th>
+                                    <th>Result</th>
+                                </tr>
+                                @foreach (var game in Model.games)
+                                {
+                                    if (Model.namesOfPlayersForGames.ContainsKey(game.Player1Id) && Model.namesOfPlayersForGames.ContainsKey(game.Player2Id))
+                                    {
+                                    <tr>
+                                        <td>@Model.namesOfPlayersForGames[game.Player1Id] - @Model.namesOfPlayersForGames[game.Player2Id]</td>
+                                        <td>@game.Result1 - @game.Result2</td>
+                                    </tr>
+                                    }
+                                }
+                            </table>
                         }
-                    </table>
+                        else
+                        {
+                            <p>No games present yet.</p>
+                        }
+                    }
                 </section>
-                }
-                else
-                {
-                <p>No games present yet.</p>
-                }
+
             }
 
         }

@@ -20,24 +20,36 @@ namespace TournamentsWebApp.Pages
         public Dictionary<int, User> namesOfPlayersForGames = null;
         public IActionResult OnGet(int id)
         {
-            TournamentManager tournamentManager = new TournamentManager(new TournamentRepository());
-            GameManager gameManager = new GameManager(new GameRepository());
-            tournament = tournamentManager.GetTournamentById(id);
-            if (tournament != null)
+            try
             {
+                TournamentManager tournamentManager = new TournamentManager(new TournamentRepository());
+                GameManager gameManager = new GameManager(new GameRepository());
+                tournament = tournamentManager.GetTournamentById(id);
+                if (tournament != null)
+                {
 
-                if (tournament.Status != Status.cancelled)
-                {
-                    players = gameManager.GetPlayersForTournament(id);
+                    if (tournament.Status != Status.cancelled)
+                    {
+                        players = gameManager.GetPlayersForTournament(id);
+                    }
+                    if (tournament.Status == Status.finished || tournament.Status == Status.ongoing)
+                    {
+                        games = gameManager.GetGamesForTournament(id);
+                        namesOfPlayersForGames = tournamentManager.GetNamesOfPlayersForTournament(id);
+                        ranking = tournamentManager.GetRankingForTournament(id);
+                    }
                 }
-                if (tournament.Status == Status.finished || tournament.Status == Status.ongoing)
-                {
-                    games = gameManager.GetGamesForTournament(id);
-                    namesOfPlayersForGames = tournamentManager.GetNamesOfPlayersForTournament(id);
-                    ranking = tournamentManager.GetRankingForTournament(id);
-                }
+                return Page();
             }
-            return Page();
+            catch (DataBaseException)
+            {
+                return new RedirectToPageResult("Error");
+
+            }
+            catch (Exception)
+            {
+                return new RedirectToPageResult("Error");
+            }
 
         }
     }

@@ -153,5 +153,47 @@ namespace ClassLibraryTournaments.Persistence
                 
             }
         }
+
+        public Dictionary<int, List<Game>> GetGamesForPlayer(int userId)
+        {
+            //try
+            //{
+            using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+            {
+                Dictionary<int, List<Game>> games = new Dictionary<int, List<Game>>();
+                string sql = "SELECT * from games where player1Id=@userId or player2Id=@userId";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("userId", userId);
+                conn.Open();
+
+                MySqlDataReader dateReader = cmd.ExecuteReader();
+
+                while (dateReader.Read())
+                {
+                    int tournamentId = dateReader.GetInt32("tournamentId");
+                    Game game = new Game();
+                    game.GameId = dateReader.GetInt32("gameId");
+                    game.Player1Id = dateReader.GetInt32("player1Id");
+                    game.Player2Id = dateReader.GetInt32("player2Id");
+                    game.Result1 = dateReader.GetInt32("result1");
+                    game.Result2 = dateReader.GetInt32("result2");
+                    if (games.ContainsKey(tournamentId))
+                    {
+                        games[tournamentId].Add(game);
+                    }
+                    else
+                    {
+                        games.Add(tournamentId, new List<Game>());
+                        games[tournamentId].Add(game);
+                    }
+                }
+                return games;
+            }
+            //}
+            //catch (Exception)
+            //{
+            //    throw new DataBaseException();
+            //}
+        }
     }
 }

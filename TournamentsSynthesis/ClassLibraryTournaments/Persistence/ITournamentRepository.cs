@@ -23,7 +23,9 @@ namespace ClassLibraryTournaments.Persistence
         public Tournament GetTournamentById(int idTournament);
         public bool PlayerNotRegistered(int idTournament, int idPlayer);
         public void RegisterPlayer(int idTournament, int idPlayer);
-        Dictionary<User, int> GetRankingForTournament(int id);
-        Dictionary<int, User> GetNamesOfPlayersForTournament(int id);
+        public Dictionary<User, int> GetRankingForTournament(int id);
+        public Dictionary<int, User> GetNamesOfPlayersForTournament(int id);
+        public List<Tournament> GetTournamentsForPlayer(int userId);
+        public Dictionary<int, User> GetNamesOfOponents(int userId);
     }
 }

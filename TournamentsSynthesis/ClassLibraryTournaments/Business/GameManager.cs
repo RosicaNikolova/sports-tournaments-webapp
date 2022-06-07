@@ -52,6 +52,11 @@ namespace ClassLibraryTournaments.Business
             gameRepository.SaveResults(games);
         }
 
+        public Dictionary<int, List<Game>> GetGamesForPlayer(int userId)
+        {
+            return gameRepository.GetGamesForPlayer(userId);
+        }
+
         public bool CheckIfAllResultsAreEntered(int id)
         {
             return gameRepository.CheckIfAllResultsAreEntered(id);

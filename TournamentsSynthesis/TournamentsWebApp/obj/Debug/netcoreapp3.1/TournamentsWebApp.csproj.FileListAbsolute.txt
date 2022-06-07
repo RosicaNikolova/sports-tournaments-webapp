@@ -27,7 +27,6 @@ D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\Tournam
 D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\TournamentsWebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Error.cshtml.g.cs
 D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\TournamentsWebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Home.cshtml.g.cs
 D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\TournamentsWebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Login.cshtml.g.cs
-D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\TournamentsWebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Privacy.cshtml.g.cs
 D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\TournamentsWebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Register.cshtml.g.cs
 D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\TournamentsWebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_Layout.cshtml.g.cs
 D:\OneDrive\Работен плот\Synthesis\Repo\tournaments_synthesis\TournamentsSynthesis\TournamentsWebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_ValidationScriptsPartial.cshtml.g.cs

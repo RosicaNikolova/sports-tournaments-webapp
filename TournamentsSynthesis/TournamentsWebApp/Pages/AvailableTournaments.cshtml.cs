@@ -25,17 +25,22 @@ namespace TournamentsWebApp.Pages
                 {
                     availablePlaces = tournamentManager.GetAvailablePlaces();
                 }
+                foreach (Tournament tournament in tournaments)
+                {
+                    if (!availablePlaces.ContainsKey(tournament.Id))
+                    {
+                        availablePlaces.Add(tournament.Id, tournament.MaxPlayers);
+                    }
+                }
                 return Page();
             }
             catch (DataBaseException)
             {
-                ViewData["Error_message"] = "An error occured while adding the content of this page. Please, try again.";
                 return new RedirectToPageResult("Error");
 
             }
             catch (Exception)
             {
-                ViewData["Error_message"] = "An error occured while adding the content of this page. Please, try again.";
                 return new RedirectToPageResult("Error");
             }
 

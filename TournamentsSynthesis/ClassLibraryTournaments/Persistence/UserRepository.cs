@@ -49,7 +49,7 @@ namespace ClassLibraryTournaments.Persistence
             {
                 using (MySqlConnection conn = DatabaseConnection.CreateConnection())
                 {
-                    string sql = "select firstName, lastName,idUser from usertournaments where idUser=@idUser and role=@role;";
+                    string sql = "select firstName, lastName,idUser, email from usertournaments where idUser=@idUser and role=@role;";
 
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("idUser", userId);
@@ -65,6 +65,7 @@ namespace ClassLibraryTournaments.Persistence
                         user.Id = dateReader.GetInt32("idUser");
                         user.FirstName = dateReader.GetString("firstName");
                         user.LastName = dateReader.GetString("lastName");
+                        user.Email = dateReader.GetString("email");
                     }
                     return user;
                 }

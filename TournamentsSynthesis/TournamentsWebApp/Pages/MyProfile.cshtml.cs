@@ -14,30 +14,41 @@ namespace TournamentsWebApp.Pages
     [Authorize]
     public class MyProfileModel : PageModel
     {
-        UserManager userManager = new UserManager(new UserRepository());
-
-        User loggedUser;
+        
+        public User user = null;
+        public List<Tournament> tournaments = null;
+        //tournamne id, ranking
+        public Dictionary<int, int> ranking = null;
+        //tournament id, games
+        public Dictionary<int, List<Game>> games = null;
+        //user id, User
+        public Dictionary<int, User> names = null;
         public IActionResult OnGet()
         {
+            UserManager userManager = new UserManager(new UserRepository());
+            TournamentManager tournamentManager = new TournamentManager(new TournamentRepository());
+            GameManager gameManager = new GameManager(new GameRepository());
             try
             {
-                if(User.FindFirst("id").Value != null)
-                {
-                    return Page();
-                }
-                else
-                {
-                    return new RedirectToPageResult("Login");
-                }
+                int userId = Convert.ToInt32(User.FindFirst("id").Value);
+            user = userManager.GetPlayerById(userId);
+            tournaments = tournamentManager.GetTournamentsForPlayer(userId);
+            if (tournaments.Count != 0)
+            {
+                games = gameManager.GetGamesForPlayer(userId);
+                ranking = tournamentManager.GetRankingForPlayer(userId, tournaments);
+                names = tournamentManager.GetNamesOfOtherPlayers(userId);
+            }
+
+            return Page();
+
             }
             catch (DataBaseException)
             {
-                ViewData["Error_message"] = "An error occured while loading the page. Please contact the support.";
                 return new RedirectToPageResult("Error");
             }
             catch (Exception)
             {
-                ViewData["Error_message"] = "An error occured while loading the page. Please contact the support.";
                 return new RedirectToPageResult("Error");
             }
         }

@@ -580,5 +580,87 @@ namespace ClassLibraryTournaments.Persistence
                 throw new DataBaseException();
             }
         }
+
+        public List<Tournament> GetTournamentsForPlayer(int userId)
+        {
+            try
+            {
+                List<Tournament> tournaments = new List<Tournament>();
+                using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+                {
+                    string sql = "select t.idTournament, t.sportType, t.tournamentSystem, t.startDate, t.endDate, t.LastRegisterDate, t.location, t.status, t.description from tournament as t join tournamentplayer as p on t.idTournament = p.tournamentId where p.userId=@userId;";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                    cmd.Parameters.AddWithValue("userId", userId);
+                    conn.Open();
+                    Tournament tournament = null;
+
+                    MySqlDataReader dateReader = cmd.ExecuteReader();
+                    while (dateReader.Read())
+                    {
+                        tournament = new Tournament();
+                        tournament.Id = dateReader.GetInt32("idTournament");
+                        string sport = dateReader.GetString("sportType");
+                        if (sport == "Badminton")
+                        {
+                            tournament.SportType = new BadmintonSportType();
+                        }
+                        string tournamentSystem = dateReader.GetString("tournamentSystem");
+                        if (tournamentSystem == "Round-Robin")
+                        {
+                            tournament.TournamentSystem = new RoundRobin();
+                        }
+                        else
+                        {
+                            tournament.TournamentSystem = new DoubleRoundRobin();
+                        }
+                        tournament.StartDate = (DateTime)dateReader.GetMySqlDateTime("startDate");
+                        tournament.EndDate = (DateTime)dateReader.GetMySqlDateTime("endDate");
+                        tournament.RegistrationCloses = (DateTime)dateReader.GetMySqlDateTime("LastRegisterDate");
+                        tournament.Location = dateReader.GetString("location");
+                        tournament.Description = dateReader.GetString("description");
+                        tournament.Status = (Status)Enum.Parse(typeof(Status), dateReader.GetString("status"));
+                        tournaments.Add(tournament);
+                    }
+                    return tournaments;
+                }
+            }
+            catch (Exception)
+            {
+                throw new DataBaseException();
+            }
+        }
+
+
+        public Dictionary<int, User> GetNamesOfOponents(int userId)
+        {
+            //try
+            //{
+                using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+                {
+                    Dictionary<int, User> players = new Dictionary<int, User>();
+                    string sql = "SELECT firstName, lastName, idUser from usertournaments where idUser in(select player1Id from games where player1Id=@playerId or player2Id =@playerId group by player1Id) or idUser in(select player2Id from games where player1Id=@playerId or player2Id=@playerId group by player2Id);";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                    cmd.Parameters.AddWithValue("playerId", userId);
+                    conn.Open();
+
+                    MySqlDataReader dateReader = cmd.ExecuteReader();
+                    while (dateReader.Read())
+                    {
+                        User user = new User();
+                        user.Id = dateReader.GetInt32("idUser");
+                        user.FirstName = dateReader.GetString("firstName");
+                        user.LastName = dateReader.GetString("lastName");
+                        players.Add(user.Id, user);
+                    }
+                    return players;
+                }
+            //}
+            //catch (Exception)
+            //{
+            //    throw new DataBaseException();
+            //}
+        }
     }
 }
