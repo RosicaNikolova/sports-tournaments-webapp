@@ -12,6 +12,6 @@ namespace ClassLibraryTournaments.Persistence
         public List<Game> GetGamesForTournament(int id);
         public void SaveResults(List<Game> games);
         public bool CheckIfAllResultsAreEntered(int id);
-        Dictionary<int, List<Game>> GetGamesForPlayer(int userId);
+        public Dictionary<int, List<Game>> GetGamesForPlayer(int userId);
     }
 }

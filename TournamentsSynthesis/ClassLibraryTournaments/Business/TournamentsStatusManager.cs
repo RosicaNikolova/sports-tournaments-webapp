@@ -20,7 +20,6 @@ namespace ClassLibraryTournaments.Business
 
         public void CheckStatusesOfTournaments(List<Tournament> tournamentsToCheck)
         {
-            //List<Tournament> tournaments = tournamentRepository.GetAllOpenTournaments();
             DateTime today = DateTime.Today;
             foreach (Tournament tournament in tournamentsToCheck)
             {

@@ -22,7 +22,6 @@ namespace ClassLibraryTournaments.Business
         {
             return $"{TournamentSystem.ToString()} Location: {Location}";
         }
-
          public DateTime SetRegistrationClosesDate()
         {
             DateTime registrationClosesDate = new DateTime(StartDate.Year, StartDate.Month, StartDate.Day).AddDays(-1);

@@ -44,69 +44,70 @@ namespace ClassLibraryTournaments.Persistence
         {
             foreach (Game game in games)
             {
-                //try
-                //{
-                using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+                try
                 {
-                    string sql = "insert into games (tournamentId, player1Id, player2Id, result1, result2) values(@tournamentId, @player1Id, @player2Id, @result1, @result2);";
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("tournamentId", tournamentId);
-                    cmd.Parameters.AddWithValue("player1Id", game.Player1Id);
-                    cmd.Parameters.AddWithValue("player2Id", game.Player2Id);
-                    cmd.Parameters.AddWithValue("result1", 0);
-                    cmd.Parameters.AddWithValue("result2", 0);
-                    
+                    using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+                    {
+                        string sql = "insert into games (tournamentId, player1Id, player2Id, result1, result2) values(@tournamentId, @player1Id, @player2Id, @result1, @result2);";
+                        MySqlCommand cmd = new MySqlCommand(sql, conn);
+                        cmd.Parameters.AddWithValue("tournamentId", tournamentId);
+                        cmd.Parameters.AddWithValue("player1Id", game.Player1Id);
+                        cmd.Parameters.AddWithValue("player2Id", game.Player2Id);
+                        cmd.Parameters.AddWithValue("result1", 0);
+                        cmd.Parameters.AddWithValue("result2", 0);
 
-                    conn.Open();
 
-                    cmd.ExecuteNonQuery();
+                        conn.Open();
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception)
+                {
+                    throw new DataBaseException();
                 }
             }
-            //}
-            //catch (Exception)
-            //{
-            //    throw new DataBaseException();
-            //}
+
         }
 
         public List<Game> GetGamesForTournament(int id)
         {
-            //try
-            //{
-            using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+            try
             {
-                List<Game> games = new List<Game>();
-                string sql = "select * from games where tournamentId=@tournamentId;";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("tournamentId", id);
-                conn.Open();
-
-                MySqlDataReader dateReader = cmd.ExecuteReader();
-
-                while (dateReader.Read())
+                using (MySqlConnection conn = DatabaseConnection.CreateConnection())
                 {
-                    Game game = new Game();
-                    game.GameId = dateReader.GetInt32("gameId");
-                    game.Player1Id = dateReader.GetInt32("player1Id");
-                    game.Player2Id = dateReader.GetInt32("player2Id");
-                    game.Result1 = dateReader.GetInt32("result1");
-                    game.Result2 = dateReader.GetInt32("result2");
-                    game.SportType = new BadmintonSportType();
-                    games.Add(game);
+                    List<Game> games = new List<Game>();
+                    string sql = "select * from games where tournamentId=@tournamentId;";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("tournamentId", id);
+                    conn.Open();
+
+                    MySqlDataReader dateReader = cmd.ExecuteReader();
+
+                    while (dateReader.Read())
+                    {
+                        Game game = new Game();
+                        game.GameId = dateReader.GetInt32("gameId");
+                        game.Player1Id = dateReader.GetInt32("player1Id");
+                        game.Player2Id = dateReader.GetInt32("player2Id");
+                        game.Result1 = dateReader.GetInt32("result1");
+                        game.Result2 = dateReader.GetInt32("result2");
+                        game.SportType = new BadmintonSportType();
+                        games.Add(game);
+                    }
+                    return games;
                 }
-                return games;
             }
-            //}
-            //catch (Exception)
-            //{
-            //    throw new DataBaseException();
-            //}
+            catch (Exception)
+            {
+                throw new DataBaseException();
+            }
         }
 
         public void SaveResults(List<Game> games)
         {
-            //try
-            //{
+            try
+            {
                 foreach (Game game in games)
                 {
                     using (MySqlConnection conn = DatabaseConnection.CreateConnection())
@@ -122,12 +123,11 @@ namespace ClassLibraryTournaments.Persistence
                         cmd.ExecuteNonQuery();
                     }
                 }
-                
-            //}
-            //catch (Exception)
-            //{
-            //    throw new DataBaseException();
-            //}
+            }
+            catch (Exception)
+            {
+                throw new DataBaseException();
+            }
         }
 
         public bool CheckIfAllResultsAreEntered(int id)
@@ -150,50 +150,50 @@ namespace ClassLibraryTournaments.Persistence
                     return false;
                 }
                 return true;
-                
+
             }
         }
 
         public Dictionary<int, List<Game>> GetGamesForPlayer(int userId)
         {
-            //try
-            //{
-            using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+            try
             {
-                Dictionary<int, List<Game>> games = new Dictionary<int, List<Game>>();
-                string sql = "SELECT * from games where player1Id=@userId or player2Id=@userId";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("userId", userId);
-                conn.Open();
-
-                MySqlDataReader dateReader = cmd.ExecuteReader();
-
-                while (dateReader.Read())
+                using (MySqlConnection conn = DatabaseConnection.CreateConnection())
                 {
-                    int tournamentId = dateReader.GetInt32("tournamentId");
-                    Game game = new Game();
-                    game.GameId = dateReader.GetInt32("gameId");
-                    game.Player1Id = dateReader.GetInt32("player1Id");
-                    game.Player2Id = dateReader.GetInt32("player2Id");
-                    game.Result1 = dateReader.GetInt32("result1");
-                    game.Result2 = dateReader.GetInt32("result2");
-                    if (games.ContainsKey(tournamentId))
+                    Dictionary<int, List<Game>> games = new Dictionary<int, List<Game>>();
+                    string sql = "SELECT * from games where player1Id=@userId or player2Id=@userId";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("userId", userId);
+                    conn.Open();
+
+                    MySqlDataReader dateReader = cmd.ExecuteReader();
+
+                    while (dateReader.Read())
                     {
-                        games[tournamentId].Add(game);
+                        int tournamentId = dateReader.GetInt32("tournamentId");
+                        Game game = new Game();
+                        game.GameId = dateReader.GetInt32("gameId");
+                        game.Player1Id = dateReader.GetInt32("player1Id");
+                        game.Player2Id = dateReader.GetInt32("player2Id");
+                        game.Result1 = dateReader.GetInt32("result1");
+                        game.Result2 = dateReader.GetInt32("result2");
+                        if (games.ContainsKey(tournamentId))
+                        {
+                            games[tournamentId].Add(game);
+                        }
+                        else
+                        {
+                            games.Add(tournamentId, new List<Game>());
+                            games[tournamentId].Add(game);
+                        }
                     }
-                    else
-                    {
-                        games.Add(tournamentId, new List<Game>());
-                        games[tournamentId].Add(game);
-                    }
+                    return games;
                 }
-                return games;
             }
-            //}
-            //catch (Exception)
-            //{
-            //    throw new DataBaseException();
-            //}
+            catch (Exception)
+            {
+                throw new DataBaseException();
+            }
         }
     }
 }
