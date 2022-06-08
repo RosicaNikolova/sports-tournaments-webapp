@@ -24,8 +24,7 @@ namespace ClassLibraryTournaments.Business
 
         public List<User> GetPlayersForTournament(int idTournament)
         {
-            List<User> playersForTournament = new List<User>();
-            playersForTournament = gameRepository.GetPlayersForTournament(idTournament);
+            List<User> playersForTournament = gameRepository.GetPlayersForTournament(idTournament);
             return playersForTournament;
         }
 
