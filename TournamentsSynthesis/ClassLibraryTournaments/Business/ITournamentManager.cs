@@ -14,7 +14,6 @@ namespace ClassLibraryTournaments.Business
 
         public void DeleteTournament(int id);
 
-        public List<Tournament> GetAllPendingTournaments();
 
 
 

@@ -17,6 +17,7 @@ namespace TournamentsWebApp.Pages
         public Tournament tournament;
         public User player;
         TournamentManager tournamentManager = new TournamentManager(new TournamentRepository());
+        TournamentsStatusManager tournamentsStatusManager = new TournamentsStatusManager(new TournamentRepository());
         UserManager userManager = new UserManager(new UserRepository());
 
 
@@ -51,6 +52,15 @@ namespace TournamentsWebApp.Pages
 
                 if (tournamentManager.RegisterPlayerForTournament(id, userId))
                 {
+                    Dictionary<int, int> availablePlaces = tournamentManager.GetAvailablePlaces();
+                    if (availablePlaces.ContainsKey(id))
+                    {
+                        if(availablePlaces[id] == 0)
+                        {
+                            tournamentsStatusManager.ChangeTournamentStatus(id, Status.pending);
+                        } 
+                    }
+                    
                     @ViewData["Message"] = "Registration completed successfully";
                 }
                 else

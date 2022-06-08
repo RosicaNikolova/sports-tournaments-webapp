@@ -11,13 +11,7 @@ namespace ClassLibraryTournaments.Persistence
         public void SaveTournament(Tournament tournament);
         public void UpdateTournament(Tournament tournament);
         public void DeleteTournament(int id);
-        public List<Tournament> GetAllPendingTournaments();
-        public List<Tournament> GetAllOngoingTournaments();
-        public List<Tournament> GetAllOpenTournaments();
-        public void SetStatusToOngoing(int id);
-        public void SetStatusToFinished(int id);
-        public void SetStatusToCancelled(int id);
-        public void SetStatusToPending(int id);
+        public void ChangeTournamentStatus(int id, Status status);
         public int GetNumberOfRegisteredPlayersForTournament(int id);
         public Dictionary<int, int> GetAvailablePlaces();
         public Tournament GetTournamentById(int idTournament);
@@ -27,7 +21,8 @@ namespace ClassLibraryTournaments.Persistence
         public Dictionary<int, User> GetNamesOfPlayersForTournament(int id);
         public List<Tournament> GetTournamentsForPlayer(int userId);
         public Dictionary<int, User> GetNamesOfOponents(int userId);
-        void DeleteRegisteredPlayersForTournament(int id);
-        List<Tournament> GetAllOpenOrCancelledTournaments();
+        public void DeleteRegisteredPlayersForTournament(int id);
+        public List<Tournament> GetAllOpenOrCancelledTournaments();
+        List<Tournament> GetAllTournamentsWithStatus(Status status);
     }
 }

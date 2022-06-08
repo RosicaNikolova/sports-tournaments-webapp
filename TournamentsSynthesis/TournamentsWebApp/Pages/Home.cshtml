@@ -17,7 +17,7 @@
 
 <div class="list-container">
     <ul>
-        @{ if (Model.tournaments == null)
+        @{ if (Model.tournaments.Count == 0)
             {
                 <h3>No tournaments</h3>
             }

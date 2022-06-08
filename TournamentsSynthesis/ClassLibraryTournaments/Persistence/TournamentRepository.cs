@@ -137,146 +137,146 @@ namespace ClassLibraryTournaments.Persistence
             }
         }
 
-        public List<Tournament> GetAllPendingTournaments()
-        {
-            try
-            {
-                using (MySqlConnection conn = DatabaseConnection.CreateConnection())
-                {
-                    List<Tournament> tournaments = new List<Tournament>();
-                    string sql = "select idTournament, sportType, tournamentSystem, description, startDate, endDate, minPlayer, maxPlayers, status, location from tournament where status=@status;";
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+        //public List<Tournament> GetAllPendingTournaments()
+        //{
+        //    try
+        //    {
+        //        using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+        //        {
+        //            List<Tournament> tournaments = new List<Tournament>();
+        //            string sql = "select idTournament, sportType, tournamentSystem, description, startDate, endDate, minPlayer, maxPlayers, status, location from tournament where status=@status;";
+        //            MySqlCommand cmd = new MySqlCommand(sql, conn);
 
-                    cmd.Parameters.AddWithValue("status", Status.pending.ToString());
+        //            cmd.Parameters.AddWithValue("status", Status.pending.ToString());
 
-                    conn.Open();
+        //            conn.Open();
 
-                    MySqlDataReader dateReader = cmd.ExecuteReader();
-                    while (dateReader.Read())
-                    {
-                        Tournament tournament = new Tournament();
-                        tournament.Id = dateReader.GetInt32("idTournament");
-                        string sport = dateReader.GetString("sportType");
-                        if (sport == "Badminton")
-                        {
-                            tournament.SportType = new BadmintonSportType();
-                        }
-                        string tournamentSystem = dateReader.GetString("tournamentSystem");
-                        if (tournamentSystem == "Round-Robin")
-                        {
-                            tournament.TournamentSystem = new RoundRobin();
-                        }
-                        else
-                        {
-                            tournament.TournamentSystem = new DoubleRoundRobin();
-                        }
-                        tournament.Description = dateReader.GetString("description");
-                        tournament.StartDate = (DateTime)dateReader.GetMySqlDateTime("startDate");
-                        tournament.EndDate = (DateTime)dateReader.GetMySqlDateTime("endDate");
-                        tournament.MinPlayers = dateReader.GetInt32("minPlayer");
-                        tournament.MaxPlayers = dateReader.GetInt32("maxPlayers");
-                        tournament.Location = dateReader.GetString("location");
-                        tournaments.Add(tournament);
-                    }
-                    return tournaments;
-                }
-            }
-            catch (Exception)
-            {
-                throw new DataBaseException();
-            }
+        //            MySqlDataReader dateReader = cmd.ExecuteReader();
+        //            while (dateReader.Read())
+        //            {
+        //                Tournament tournament = new Tournament();
+        //                tournament.Id = dateReader.GetInt32("idTournament");
+        //                string sport = dateReader.GetString("sportType");
+        //                if (sport == "Badminton")
+        //                {
+        //                    tournament.SportType = new BadmintonSportType();
+        //                }
+        //                string tournamentSystem = dateReader.GetString("tournamentSystem");
+        //                if (tournamentSystem == "Round-Robin")
+        //                {
+        //                    tournament.TournamentSystem = new RoundRobin();
+        //                }
+        //                else
+        //                {
+        //                    tournament.TournamentSystem = new DoubleRoundRobin();
+        //                }
+        //                tournament.Description = dateReader.GetString("description");
+        //                tournament.StartDate = (DateTime)dateReader.GetMySqlDateTime("startDate");
+        //                tournament.EndDate = (DateTime)dateReader.GetMySqlDateTime("endDate");
+        //                tournament.MinPlayers = dateReader.GetInt32("minPlayer");
+        //                tournament.MaxPlayers = dateReader.GetInt32("maxPlayers");
+        //                tournament.Location = dateReader.GetString("location");
+        //                tournaments.Add(tournament);
+        //            }
+        //            return tournaments;
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw new DataBaseException();
+        //    }
 
-        }
+        //}
 
-        public void SetStatusToOngoing(int id)
-        {
-            try
-            {
-                using (MySqlConnection conn = DatabaseConnection.CreateConnection())
-                {
-                    string sql = "update tournament set status=@status where idTournament=@idTournament;";
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("idTournament", id);
-                    cmd.Parameters.AddWithValue("status", Status.ongoing.ToString());
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception)
-            {
-                throw new DataBaseException();
-            }
-        }
+        //public void SetStatusToOngoing(int id)
+        //{
+        //    try
+        //    {
+        //        using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+        //        {
+        //            string sql = "update tournament set status=@status where idTournament=@idTournament;";
+        //            MySqlCommand cmd = new MySqlCommand(sql, conn);
+        //            cmd.Parameters.AddWithValue("idTournament", id);
+        //            cmd.Parameters.AddWithValue("status", Status.ongoing.ToString());
+        //            conn.Open();
+        //            cmd.ExecuteNonQuery();
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw new DataBaseException();
+        //    }
+        //}
 
-        public List<Tournament> GetAllOngoingTournaments()
-        {
-            try
-            {
-                using (MySqlConnection conn = DatabaseConnection.CreateConnection())
-                {
-                    List<Tournament> tournaments = new List<Tournament>();
-                    string sql = "select idTournament, sportType, tournamentSystem, description, startDate, endDate, minPlayer, maxPlayers, status, location from tournament where status=@status;";
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+        //public List<Tournament> GetAllOngoingTournaments()
+        //{
+        //    try
+        //    {
+        //        using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+        //        {
+        //            List<Tournament> tournaments = new List<Tournament>();
+        //            string sql = "select idTournament, sportType, tournamentSystem, description, startDate, endDate, minPlayer, maxPlayers, status, location from tournament where status=@status;";
+        //            MySqlCommand cmd = new MySqlCommand(sql, conn);
 
-                    cmd.Parameters.AddWithValue("status", Status.ongoing.ToString());
+        //            cmd.Parameters.AddWithValue("status", Status.ongoing.ToString());
 
-                    conn.Open();
+        //            conn.Open();
 
-                    MySqlDataReader dateReader = cmd.ExecuteReader();
-                    while (dateReader.Read())
-                    {
-                        Tournament tournament = new Tournament();
-                        tournament.Id = dateReader.GetInt32("idTournament");
-                        string sport = dateReader.GetString("sportType");
-                        if (sport == "Badminton")
-                        {
-                            tournament.SportType = new BadmintonSportType();
-                        }
-                        string tournamentSystem = dateReader.GetString("tournamentSystem");
-                        if (tournamentSystem == "Round-Robin")
-                        {
-                            tournament.TournamentSystem = new RoundRobin();
-                        }
-                        else
-                        {
-                            tournament.TournamentSystem = new DoubleRoundRobin();
-                        }
-                        tournament.Description = dateReader.GetString("description");
-                        tournament.StartDate = (DateTime)dateReader.GetMySqlDateTime("startDate");
-                        tournament.EndDate = (DateTime)dateReader.GetMySqlDateTime("endDate");
-                        tournament.MinPlayers = dateReader.GetInt32("minPlayer");
-                        tournament.MaxPlayers = dateReader.GetInt32("maxPlayers");
-                        tournament.Location = dateReader.GetString("location");
-                        tournaments.Add(tournament);
-                    }
-                    return tournaments;
-                }
-            }
-            catch (Exception)
-            {
-                throw new DataBaseException();
-            }
-        }
+        //            MySqlDataReader dateReader = cmd.ExecuteReader();
+        //            while (dateReader.Read())
+        //            {
+        //                Tournament tournament = new Tournament();
+        //                tournament.Id = dateReader.GetInt32("idTournament");
+        //                string sport = dateReader.GetString("sportType");
+        //                if (sport == "Badminton")
+        //                {
+        //                    tournament.SportType = new BadmintonSportType();
+        //                }
+        //                string tournamentSystem = dateReader.GetString("tournamentSystem");
+        //                if (tournamentSystem == "Round-Robin")
+        //                {
+        //                    tournament.TournamentSystem = new RoundRobin();
+        //                }
+        //                else
+        //                {
+        //                    tournament.TournamentSystem = new DoubleRoundRobin();
+        //                }
+        //                tournament.Description = dateReader.GetString("description");
+        //                tournament.StartDate = (DateTime)dateReader.GetMySqlDateTime("startDate");
+        //                tournament.EndDate = (DateTime)dateReader.GetMySqlDateTime("endDate");
+        //                tournament.MinPlayers = dateReader.GetInt32("minPlayer");
+        //                tournament.MaxPlayers = dateReader.GetInt32("maxPlayers");
+        //                tournament.Location = dateReader.GetString("location");
+        //                tournaments.Add(tournament);
+        //            }
+        //            return tournaments;
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw new DataBaseException();
+        //    }
+        //}
 
-        public void SetStatusToFinished(int id)
-        {
-            try
-            {
-                using (MySqlConnection conn = DatabaseConnection.CreateConnection())
-                {
-                    string sql = "update tournament set status=@status where idTournament=@idTournament;";
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("idTournament", id);
-                    cmd.Parameters.AddWithValue("status", Status.finished.ToString());
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception)
-            {
-                throw new DataBaseException();
-            }
-        }
+        //public void SetStatusToFinished(int id)
+        //{
+        //    try
+        //    {
+        //        using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+        //        {
+        //            string sql = "update tournament set status=@status where idTournament=@idTournament;";
+        //            MySqlCommand cmd = new MySqlCommand(sql, conn);
+        //            cmd.Parameters.AddWithValue("idTournament", id);
+        //            cmd.Parameters.AddWithValue("status", Status.finished.ToString());
+        //            conn.Open();
+        //            cmd.ExecuteNonQuery();
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw new DataBaseException();
+        //    }
+        //}
 
 
         public int GetNumberOfRegisteredPlayersForTournament(int id)
@@ -302,96 +302,96 @@ namespace ClassLibraryTournaments.Persistence
             //}
         }
 
-        public void SetStatusToCancelled(int id)
-        {
-            try
-            {
-                using (MySqlConnection conn = DatabaseConnection.CreateConnection())
-                {
-                    string sql = "update tournament set status=@status where idTournament=@idTournament;";
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("idTournament", id);
-                    cmd.Parameters.AddWithValue("status", Status.cancelled.ToString());
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception)
-            {
-                throw new DataBaseException();
-            }
-        }
+        //public void SetStatusToCancelled(int id)
+        //{
+        //    try
+        //    {
+        //        using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+        //        {
+        //            string sql = "update tournament set status=@status where idTournament=@idTournament;";
+        //            MySqlCommand cmd = new MySqlCommand(sql, conn);
+        //            cmd.Parameters.AddWithValue("idTournament", id);
+        //            cmd.Parameters.AddWithValue("status", Status.cancelled.ToString());
+        //            conn.Open();
+        //            cmd.ExecuteNonQuery();
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw new DataBaseException();
+        //    }
+        //}
 
-        public void SetStatusToPending(int id)
-        {
-            try
-            {
-                using (MySqlConnection conn = DatabaseConnection.CreateConnection())
-                {
-                    string sql = "update tournament set status=@status where idTournament=@idTournament;";
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("idTournament", id);
-                    cmd.Parameters.AddWithValue("status", Status.pending.ToString());
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception)
-            {
-                throw new DataBaseException();
-            }
-        }
+        //public void SetStatusToPending(int id)
+        //{
+        //    try
+        //    {
+        //        using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+        //        {
+        //            string sql = "update tournament set status=@status where idTournament=@idTournament;";
+        //            MySqlCommand cmd = new MySqlCommand(sql, conn);
+        //            cmd.Parameters.AddWithValue("idTournament", id);
+        //            cmd.Parameters.AddWithValue("status", Status.pending.ToString());
+        //            conn.Open();
+        //            cmd.ExecuteNonQuery();
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw new DataBaseException();
+        //    }
+        //}
 
-        public List<Tournament> GetAllOpenTournaments()
-        {
-            try
-            {
-                using (MySqlConnection conn = DatabaseConnection.CreateConnection())
-                {
-                    List<Tournament> tournaments = new List<Tournament>();
-                    string sql = "select idTournament, sportType, tournamentSystem, description, startDate, endDate, minPlayer, maxPlayers, status, LastRegisterDate, location from tournament where status=@status;";
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+        //public List<Tournament> GetAllOpenTournaments()
+        //{
+        //    try
+        //    {
+        //        using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+        //        {
+        //            List<Tournament> tournaments = new List<Tournament>();
+        //            string sql = "select idTournament, sportType, tournamentSystem, description, startDate, endDate, minPlayer, maxPlayers, status, LastRegisterDate, location from tournament where status=@status;";
+        //            MySqlCommand cmd = new MySqlCommand(sql, conn);
 
-                    cmd.Parameters.AddWithValue("status", Status.open.ToString());
+        //            cmd.Parameters.AddWithValue("status", Status.open.ToString());
 
-                    conn.Open();
+        //            conn.Open();
 
-                    MySqlDataReader dateReader = cmd.ExecuteReader();
-                    while (dateReader.Read())
-                    {
-                        Tournament tournament = new Tournament();
-                        tournament.Id = dateReader.GetInt32("idTournament");
-                        string sport = dateReader.GetString("sportType");
-                        if (sport == "Badminton")
-                        {
-                            tournament.SportType = new BadmintonSportType();
-                        }
-                        string tournamentSystem = dateReader.GetString("tournamentSystem");
-                        if (tournamentSystem == "Round-Robin")
-                        {
-                            tournament.TournamentSystem = new RoundRobin();
-                        }
-                        else
-                        {
-                            tournament.TournamentSystem = new DoubleRoundRobin();
-                        }
-                        tournament.Description = dateReader.GetString("description");
-                        tournament.StartDate = (DateTime)dateReader.GetMySqlDateTime("startDate");
-                        tournament.EndDate = (DateTime)dateReader.GetMySqlDateTime("endDate");
-                        tournament.MinPlayers = dateReader.GetInt32("minPlayer");
-                        tournament.MaxPlayers = dateReader.GetInt32("maxPlayers");
-                        tournament.Location = dateReader.GetString("location");
-                        tournament.RegistrationCloses = (DateTime)dateReader.GetMySqlDateTime("LastRegisterDate");
-                        tournaments.Add(tournament);
-                    }
-                    return tournaments;
-                }
-            }
-            catch (Exception)
-            {
-                throw new DataBaseException();
-            }
-        }
+        //            MySqlDataReader dateReader = cmd.ExecuteReader();
+        //            while (dateReader.Read())
+        //            {
+        //                Tournament tournament = new Tournament();
+        //                tournament.Id = dateReader.GetInt32("idTournament");
+        //                string sport = dateReader.GetString("sportType");
+        //                if (sport == "Badminton")
+        //                {
+        //                    tournament.SportType = new BadmintonSportType();
+        //                }
+        //                string tournamentSystem = dateReader.GetString("tournamentSystem");
+        //                if (tournamentSystem == "Round-Robin")
+        //                {
+        //                    tournament.TournamentSystem = new RoundRobin();
+        //                }
+        //                else
+        //                {
+        //                    tournament.TournamentSystem = new DoubleRoundRobin();
+        //                }
+        //                tournament.Description = dateReader.GetString("description");
+        //                tournament.StartDate = (DateTime)dateReader.GetMySqlDateTime("startDate");
+        //                tournament.EndDate = (DateTime)dateReader.GetMySqlDateTime("endDate");
+        //                tournament.MinPlayers = dateReader.GetInt32("minPlayer");
+        //                tournament.MaxPlayers = dateReader.GetInt32("maxPlayers");
+        //                tournament.Location = dateReader.GetString("location");
+        //                tournament.RegistrationCloses = (DateTime)dateReader.GetMySqlDateTime("LastRegisterDate");
+        //                tournaments.Add(tournament);
+        //            }
+        //            return tournaments;
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw new DataBaseException();
+        //    }
+        //}
 
         public Dictionary<int, int> GetAvailablePlaces()
         {
@@ -723,6 +723,79 @@ namespace ClassLibraryTournaments.Persistence
                         tournament.MinPlayers = dateReader.GetInt32("minPlayer");
                         tournament.MaxPlayers = dateReader.GetInt32("maxPlayers");
                         tournament.Location = dateReader.GetString("location");
+                        tournaments.Add(tournament);
+                    }
+                    return tournaments;
+                }
+            }
+            catch (Exception)
+            {
+                throw new DataBaseException();
+            }
+        }
+
+        public void ChangeTournamentStatus(int id, Status status)
+        {
+            try
+            {
+                using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+                {
+                    string sql = "update tournament set status=@status where idTournament=@idTournament;";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("idTournament", id);
+                    cmd.Parameters.AddWithValue("status", status.ToString());
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception)
+            {
+                throw new DataBaseException();
+            }
+
+        }
+
+        public List<Tournament> GetAllTournamentsWithStatus(Status status)
+        {
+            try
+            {
+                using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+                {
+                    List<Tournament> tournaments = new List<Tournament>();
+                    string sql = "select idTournament, sportType, tournamentSystem, description, startDate, endDate, minPlayer, maxPlayers, status, location, LastRegisterDate from tournament where status=@status;";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                    cmd.Parameters.AddWithValue("status", status.ToString());
+
+                    conn.Open();
+
+                    MySqlDataReader dateReader = cmd.ExecuteReader();
+                    while (dateReader.Read())
+                    {
+                        Tournament tournament = new Tournament();
+                        tournament.Id = dateReader.GetInt32("idTournament");
+                        string sport = dateReader.GetString("sportType");
+                        if (sport == "Badminton")
+                        {
+                            tournament.SportType = new BadmintonSportType();
+                        }
+                        string tournamentSystem = dateReader.GetString("tournamentSystem");
+                        if (tournamentSystem == "Round-Robin")
+                        {
+                            tournament.TournamentSystem = new RoundRobin();
+                        }
+                        else
+                        {
+                            tournament.TournamentSystem = new DoubleRoundRobin();
+                        }
+                        tournament.Description = dateReader.GetString("description");
+                        tournament.StartDate = (DateTime)dateReader.GetMySqlDateTime("startDate");
+                        tournament.EndDate = (DateTime)dateReader.GetMySqlDateTime("endDate");
+                        tournament.MinPlayers = dateReader.GetInt32("minPlayer");
+                        tournament.MaxPlayers = dateReader.GetInt32("maxPlayers");
+                        tournament.Location = dateReader.GetString("location");
+                        tournament.RegistrationCloses = (DateTime)dateReader.GetMySqlDateTime("LastRegisterDate");
+
                         tournaments.Add(tournament);
                     }
                     return tournaments;

@@ -44,7 +44,6 @@ namespace ClassLibraryTournaments.Business
 
         public Dictionary<int, User> GetNamesOfOtherPlayers(int userId)
         {
-           
             return tournamentRepository.GetNamesOfOponents(userId);
         }
 
@@ -83,14 +82,13 @@ namespace ClassLibraryTournaments.Business
 
         public bool RegisterPlayerForTournament(int idTournament, int idPlayer)
         {
-            if(tournamentRepository.PlayerNotRegistered(idTournament, idPlayer))
+            if (tournamentRepository.PlayerNotRegistered(idTournament, idPlayer))
             {
-                tournamentRepository.RegisterPlayer(idTournament, idPlayer);         
-
-                if (tournamentRepository.GetAvailablePlaces()[idTournament] == 0)
-                {
-                    tournamentRepository.SetStatusToPending(idTournament);
-                }
+                tournamentRepository.RegisterPlayer(idTournament, idPlayer);
+                //if (tournamentRepository.GetAvailablePlaces()[idTournament] == 0)
+                //{
+                //    tournamentRepository.ChangeTournamentStatus(idTournament, Status.pending);
+                //}
                 return true;
             }
             else
@@ -99,57 +97,63 @@ namespace ClassLibraryTournaments.Business
             }
         }
 
-        public List<Tournament> GetAllOpenTournaments()
-        {
-            return tournamentRepository.GetAllOpenTournaments();
-        }
+        //public List<Tournament> GetAllOpenTournaments()
+        //{
+        //    return tournamentRepository.GetAllOpenTournaments();
+        //}
 
+        public List<Tournament> GetAllTournamentsWithStatus(Status status)
+        {
+            return tournamentRepository.GetAllTournamentsWithStatus(status);
+        }
         public void DeleteTournament(int id)
         {
             tournamentRepository.DeleteRegisteredPlayersForTournament(id);
             tournamentRepository.DeleteTournament(id);
         }
 
-        public List<Tournament> GetAllPendingTournaments()
-        {
-            List<Tournament> tournaments = tournamentRepository.GetAllPendingTournaments();
-            return tournaments;
-        }
+        //public List<Tournament> GetAllPendingTournaments()
+        //{
+        //    List<Tournament> tournaments = tournamentRepository.GetAllPendingTournaments();
+        //    return tournaments;
+        //}
 
-        public void SetStatusToOngoing(int id)
-        {
-            tournamentRepository.SetStatusToOngoing(id);
-        }
+        //public void SetStatusToOngoing(int id)
+        //{
+        //    tournamentRepository.SetStatusToOngoing(id);
+        //}
 
-        public List<Tournament> GetAllOngoingTournaments()
-        {
-            List<Tournament> tournaments = tournamentRepository.GetAllOngoingTournaments();
-            return tournaments;
+        //public List<Tournament> GetAllOngoingTournaments()
+        //{
+        //    List<Tournament> tournaments = tournamentRepository.GetAllOngoingTournaments();
+        //    return tournaments;
 
-        }
+        //}
 
-        public void SetStatusToFinished(int id)
-        {
-            tournamentRepository.SetStatusToFinished(id);
-        }
+        //public void SetStatusToFinished(int id)
+        //{
+        //    tournamentRepository.SetStatusToFinished(id);
+        //}
 
-        public void CheckStatusesOfTournaments()
-        {
-            List<Tournament> tournaments = tournamentRepository.GetAllOpenTournaments();
-            DateTime today = DateTime.Today;
-            foreach (Tournament tournament in tournaments)
-            {
-                if (tournament.RegistrationCloses == today)
-                    if (tournamentRepository.GetNumberOfRegisteredPlayersForTournament(tournament.Id) < tournament.MinPlayers)
-                    {
-                        tournamentRepository.SetStatusToCancelled(tournament.Id);
-                    }
-                    else
-                    {
-                        tournamentRepository.SetStatusToPending(tournament.Id);
-                    }
-            }
-        }
+        //public void CheckStatusesOfTournaments()
+        //{
+        //    List<Tournament> tournaments = tournamentRepository.GetAllOpenTournaments();
+        //    DateTime today = DateTime.Today;
+        //    foreach (Tournament tournament in tournaments)
+        //    {
+        //        if (tournament.RegistrationCloses == today)
+        //        {
+        //            if (tournamentRepository.GetNumberOfRegisteredPlayersForTournament(tournament.Id) < tournament.MinPlayers)
+        //            {
+        //                tournamentRepository.SetStatusToCancelled(tournament.Id);
+        //            }
+        //            else
+        //            {
+        //                tournamentRepository.SetStatusToPending(tournament.Id);
+        //            }
+        //        }
+        //    }
+        //}
 
         public Dictionary<int, int> GetAvailablePlaces()
         {
@@ -160,7 +164,6 @@ namespace ClassLibraryTournaments.Business
         {
             return tournamentRepository.GetNamesOfPlayersForTournament(id);
         }
-
 
         public Dictionary<User, int> GetRankingForTournament(int id)
         {

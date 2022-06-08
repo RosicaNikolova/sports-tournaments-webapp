@@ -15,6 +15,7 @@ namespace DesktopApp
     {
         TournamentManager tournamentManager = new TournamentManager(new TournamentRepository());
         GameManager gameManager = new GameManager(new GameRepository());
+        TournamentsStatusManager statusManager = new TournamentsStatusManager(new TournamentRepository());
         User user;
         public HomeForm()
         {
@@ -26,10 +27,10 @@ namespace DesktopApp
             InitializeComponent();
             this.user = user;
             lblWelcome.Text = $"Hello, {user.FirstName} {user.LastName}";
-            tournamentManager.CheckStatusesOfTournaments();
+            List<Tournament> tournaments = tournamentManager.GetAllTournamentsWithStatus(Status.open);
+            statusManager.CheckStatusesOfTournaments(tournaments);
             UpdateTournamentOverview();
         }
-
 
         private void btnManageTournaments_Click(object sender, EventArgs e)
         {
@@ -107,7 +108,7 @@ namespace DesktopApp
                 {
                     //pending tournaments for generating schedule
                     cmbxTournaments.Items.Clear();
-                    List<Tournament> tournaments = tournamentManager.GetAllPendingTournaments();
+                    List<Tournament> tournaments = tournamentManager.GetAllTournamentsWithStatus(Status.pending);
                     if (tournaments.Count != 0)
                     {
                         foreach (Tournament tournament in tournaments)
@@ -167,7 +168,7 @@ namespace DesktopApp
                 //ongoing tournaments for adding results
                 dataGridView2.Rows.Clear();
                 cmbxTournamentsResults.Items.Clear();
-                List<Tournament> tournaments = tournamentManager.GetAllOngoingTournaments();
+                List<Tournament> tournaments = tournamentManager.GetAllTournamentsWithStatus(Status.ongoing);
                 if (tournaments.Count != 0)
                 {
                     foreach (Tournament tournament in tournaments)
@@ -248,7 +249,7 @@ namespace DesktopApp
                     {
                         dataGridView1.Rows.Add(game.Player1Id, game.Player2Id);
                     }
-                    tournamentManager.SetStatusToOngoing(tournament.Id);
+                    statusManager.ChangeTournamentStatus(tournament.Id, Status.ongoing);
                 }
                 catch (DataBaseException)
                 {
@@ -329,7 +330,7 @@ namespace DesktopApp
             gameManager.SaveResults(games);
             if (gameManager.CheckIfAllResultsAreEntered(tournament.Id))
             {
-                tournamentManager.SetStatusToFinished(tournament.Id);
+                statusManager.ChangeTournamentStatus(tournament.Id, Status.finished);
                 MessageBox.Show("All results entered successfully");
                 UpdateTournamentsListResultsTab();
             }

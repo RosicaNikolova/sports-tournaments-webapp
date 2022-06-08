@@ -20,7 +20,7 @@ namespace TournamentsWebApp.Pages
             try
             {
                 TournamentManager tournamentManager = new TournamentManager(new TournamentRepository());
-                tournaments = tournamentManager.GetAllOpenTournaments();
+                tournaments = tournamentManager.GetAllTournamentsWithStatus(Status.open);
                 if (tournaments.Count != 0)
                 {
                     availablePlaces = tournamentManager.GetAvailablePlaces();
