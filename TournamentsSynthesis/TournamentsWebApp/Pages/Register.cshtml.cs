@@ -29,7 +29,7 @@ namespace TournamentsWebApp.Pages
                     bool registrationSucessful = registerManager.Register(Register.Email, Register.Password, Register.FirstName, Register.LastName);
                     if (registrationSucessful)
                     {
-                        return new RedirectToPageResult("Home");
+                        return new RedirectToPageResult("Login");
                     }
                     else
                     {
