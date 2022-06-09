@@ -34,6 +34,7 @@ namespace DesktopApp
             this.btnAddResults = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.Home = new System.Windows.Forms.TabPage();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.dataGridViewOverview = new System.Windows.Forms.DataGridView();
             this.TournamentIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SportTypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,7 +74,6 @@ namespace DesktopApp
             this.cmbxTournamentsResults = new System.Windows.Forms.ComboBox();
             this.btnHome2 = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnLogout = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.Home.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOverview)).BeginInit();
@@ -123,7 +123,7 @@ namespace DesktopApp
             this.tabControl.Location = new System.Drawing.Point(-5, 12);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1447, 578);
+            this.tabControl.Size = new System.Drawing.Size(1447, 595);
             this.tabControl.TabIndex = 3;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
@@ -138,10 +138,20 @@ namespace DesktopApp
             this.Home.Location = new System.Drawing.Point(4, 29);
             this.Home.Name = "Home";
             this.Home.Padding = new System.Windows.Forms.Padding(3);
-            this.Home.Size = new System.Drawing.Size(1439, 545);
+            this.Home.Size = new System.Drawing.Size(1439, 562);
             this.Home.TabIndex = 1;
             this.Home.Text = "Home";
             this.Home.UseVisualStyleBackColor = true;
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.Location = new System.Drawing.Point(1048, 66);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(94, 29);
+            this.btnLogout.TabIndex = 5;
+            this.btnLogout.Text = "Log out";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // dataGridViewOverview
             // 
@@ -272,7 +282,7 @@ namespace DesktopApp
             this.ManageTournaments.Location = new System.Drawing.Point(4, 29);
             this.ManageTournaments.Name = "ManageTournaments";
             this.ManageTournaments.Padding = new System.Windows.Forms.Padding(3);
-            this.ManageTournaments.Size = new System.Drawing.Size(1439, 545);
+            this.ManageTournaments.Size = new System.Drawing.Size(1439, 562);
             this.ManageTournaments.TabIndex = 0;
             this.ManageTournaments.Text = "ManageTournaments";
             this.ManageTournaments.UseVisualStyleBackColor = true;
@@ -344,7 +354,7 @@ namespace DesktopApp
             this.GenerateSchedule.Controls.Add(this.btnHome1);
             this.GenerateSchedule.Location = new System.Drawing.Point(4, 29);
             this.GenerateSchedule.Name = "GenerateSchedule";
-            this.GenerateSchedule.Size = new System.Drawing.Size(1439, 545);
+            this.GenerateSchedule.Size = new System.Drawing.Size(1439, 562);
             this.GenerateSchedule.TabIndex = 2;
             this.GenerateSchedule.Text = "GenerateGames";
             this.GenerateSchedule.UseVisualStyleBackColor = true;
@@ -373,11 +383,11 @@ namespace DesktopApp
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Player1,
             this.Column3});
-            this.dataGridView1.Location = new System.Drawing.Point(52, 192);
+            this.dataGridView1.Location = new System.Drawing.Point(52, 162);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(476, 188);
+            this.dataGridView1.Size = new System.Drawing.Size(451, 256);
             this.dataGridView1.TabIndex = 1;
             // 
             // Player1
@@ -413,7 +423,7 @@ namespace DesktopApp
             this.AddResults.Controls.Add(this.btnHome2);
             this.AddResults.Location = new System.Drawing.Point(4, 29);
             this.AddResults.Name = "AddResults";
-            this.AddResults.Size = new System.Drawing.Size(1439, 545);
+            this.AddResults.Size = new System.Drawing.Size(1439, 562);
             this.AddResults.TabIndex = 3;
             this.AddResults.Text = "Add Results";
             this.AddResults.UseVisualStyleBackColor = true;
@@ -517,16 +527,6 @@ namespace DesktopApp
             this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
             this.Column1.Width = 125;
-            // 
-            // btnLogout
-            // 
-            this.btnLogout.Location = new System.Drawing.Point(1048, 66);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(94, 29);
-            this.btnLogout.TabIndex = 5;
-            this.btnLogout.Text = "Log out";
-            this.btnLogout.UseVisualStyleBackColor = true;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // HomeForm
             // 

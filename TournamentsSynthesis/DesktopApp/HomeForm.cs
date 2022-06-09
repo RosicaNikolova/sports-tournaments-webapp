@@ -245,9 +245,11 @@ namespace DesktopApp
                     object selectedTournament = cmbxTournaments.SelectedItem;
                     Tournament tournament = ((Tournament)selectedTournament);
                     List<Game> games = gameManager.GenerateGames(tournament);
+                    Dictionary<int, User> namesofPlayers = tournamentManager.GetNamesOfPlayersForTournament(tournament.Id);
+
                     foreach (Game game in games)
                     {
-                        dataGridView1.Rows.Add(game.Player1Id, game.Player2Id);
+                        dataGridView1.Rows.Add(namesofPlayers[game.Player1Id], namesofPlayers[game.Player2Id]);
                     }
                     statusManager.ChangeTournamentStatus(tournament.Id, Status.ongoing);
                 }
@@ -272,9 +274,10 @@ namespace DesktopApp
                 Tournament tournament = ((Tournament)selectedTournament);
 
                 List<Game> games = gameManager.GetGamesForTournament(tournament.Id);
+                Dictionary <int, User> namesofPlayers = tournamentManager.GetNamesOfPlayersForTournament(tournament.Id);
                 foreach (Game game in games)
                 {
-                    dataGridView2.Rows.Add(game.GameId, game.Player1Id, game.Player2Id, game.Result1, game.Result2);
+                    dataGridView2.Rows.Add(game.GameId, namesofPlayers[game.Player1Id], namesofPlayers[game.Player2Id], game.Result1, game.Result2);
                 }
             }
             catch (DataBaseException)
@@ -285,7 +288,6 @@ namespace DesktopApp
             {
                 MessageBox.Show("An error occured while processing you request.Please, try again later");
             }
-
         }
 
         private void btnSaveResults_Click(object sender, EventArgs e)
@@ -302,17 +304,22 @@ namespace DesktopApp
                 //if (resultPlayer1 != 0 && resultPlayer2 != 0)
                 //{
                 int gameId = Convert.ToInt32(dataGridView2.Rows[rows].Cells[0].Value.ToString());
-                int player1Id = Convert.ToInt32(dataGridView2.Rows[rows].Cells[1].Value.ToString());
-                int player2Id = Convert.ToInt32(dataGridView2.Rows[rows].Cells[2].Value.ToString());
+
+                object playerObj1 = dataGridView2.Rows[rows].Cells[1].Value;
+                User player1 = ((User)playerObj1);
+                object playerObj2 = dataGridView2.Rows[rows].Cells[2].Value;
+                User player2 = ((User)playerObj2);
+
+                //int player1Id = Convert.ToInt32(dataGridView2.Rows[rows].Cells[1].Value.ToString());
+                //int player2Id = Convert.ToInt32(dataGridView2.Rows[rows].Cells[2].Value.ToString());
                 Game game = new Game();
                 game.SportType = tournament.SportType;
                 game.GameId = gameId;
                 game.Result1 = resultPlayer1;
                 game.Result2 = resultPlayer2;
-                game.Player1Id = player1Id;
-                game.Player2Id = player2Id;
-                //2 fields - Sport Type in tournaments and game  
-                //if (game.CheckResults());
+                game.Player1Id = player1.Id;
+                game.Player2Id = player2.Id;
+             
                 if (game.SportType.CheckResults(game))
                 {
                     games.Add(game);
