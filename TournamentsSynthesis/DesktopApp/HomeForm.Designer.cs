@@ -29,6 +29,7 @@ namespace DesktopApp
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomeForm));
             this.btnManageTournaments = new System.Windows.Forms.Button();
             this.btnGenerateGames = new System.Windows.Forms.Button();
             this.btnAddResults = new System.Windows.Forms.Button();
@@ -86,9 +87,11 @@ namespace DesktopApp
             // 
             // btnManageTournaments
             // 
-            this.btnManageTournaments.Location = new System.Drawing.Point(211, 50);
+            this.btnManageTournaments.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnManageTournaments.ForeColor = System.Drawing.Color.Black;
+            this.btnManageTournaments.Location = new System.Drawing.Point(259, 50);
             this.btnManageTournaments.Name = "btnManageTournaments";
-            this.btnManageTournaments.Size = new System.Drawing.Size(110, 61);
+            this.btnManageTournaments.Size = new System.Drawing.Size(129, 68);
             this.btnManageTournaments.TabIndex = 0;
             this.btnManageTournaments.Text = "Manage Tournaments";
             this.btnManageTournaments.UseVisualStyleBackColor = true;
@@ -96,9 +99,12 @@ namespace DesktopApp
             // 
             // btnGenerateGames
             // 
-            this.btnGenerateGames.Location = new System.Drawing.Point(411, 50);
+            this.btnGenerateGames.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnGenerateGames.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnGenerateGames.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.btnGenerateGames.Location = new System.Drawing.Point(444, 50);
             this.btnGenerateGames.Name = "btnGenerateGames";
-            this.btnGenerateGames.Size = new System.Drawing.Size(94, 61);
+            this.btnGenerateGames.Size = new System.Drawing.Size(151, 68);
             this.btnGenerateGames.TabIndex = 1;
             this.btnGenerateGames.Text = "Generate Games";
             this.btnGenerateGames.UseVisualStyleBackColor = true;
@@ -106,12 +112,15 @@ namespace DesktopApp
             // 
             // btnAddResults
             // 
-            this.btnAddResults.Location = new System.Drawing.Point(585, 50);
+            this.btnAddResults.BackColor = System.Drawing.Color.Transparent;
+            this.btnAddResults.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAddResults.ForeColor = System.Drawing.Color.Black;
+            this.btnAddResults.Location = new System.Drawing.Point(643, 46);
             this.btnAddResults.Name = "btnAddResults";
-            this.btnAddResults.Size = new System.Drawing.Size(110, 61);
+            this.btnAddResults.Size = new System.Drawing.Size(127, 68);
             this.btnAddResults.TabIndex = 2;
             this.btnAddResults.Text = "Add Results";
-            this.btnAddResults.UseVisualStyleBackColor = true;
+            this.btnAddResults.UseVisualStyleBackColor = false;
             this.btnAddResults.Click += new System.EventHandler(this.btnAddResults_Click);
             // 
             // tabControl
@@ -120,15 +129,16 @@ namespace DesktopApp
             this.tabControl.Controls.Add(this.ManageTournaments);
             this.tabControl.Controls.Add(this.GenerateSchedule);
             this.tabControl.Controls.Add(this.AddResults);
-            this.tabControl.Location = new System.Drawing.Point(-5, 12);
+            this.tabControl.Location = new System.Drawing.Point(-5, -30);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1447, 595);
+            this.tabControl.Size = new System.Drawing.Size(1447, 697);
             this.tabControl.TabIndex = 3;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
             // Home
             // 
+            this.Home.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Home.BackgroundImage")));
             this.Home.Controls.Add(this.btnLogout);
             this.Home.Controls.Add(this.dataGridViewOverview);
             this.Home.Controls.Add(this.lblWelcome);
@@ -138,16 +148,18 @@ namespace DesktopApp
             this.Home.Location = new System.Drawing.Point(4, 29);
             this.Home.Name = "Home";
             this.Home.Padding = new System.Windows.Forms.Padding(3);
-            this.Home.Size = new System.Drawing.Size(1439, 562);
+            this.Home.Size = new System.Drawing.Size(1439, 664);
             this.Home.TabIndex = 1;
             this.Home.Text = "Home";
             this.Home.UseVisualStyleBackColor = true;
             // 
             // btnLogout
             // 
-            this.btnLogout.Location = new System.Drawing.Point(1048, 66);
+            this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnLogout.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.btnLogout.Location = new System.Drawing.Point(1122, 50);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(94, 29);
+            this.btnLogout.Size = new System.Drawing.Size(94, 45);
             this.btnLogout.TabIndex = 5;
             this.btnLogout.Text = "Log out";
             this.btnLogout.UseVisualStyleBackColor = true;
@@ -168,11 +180,11 @@ namespace DesktopApp
             this.MaxPlayersColumn,
             this.DescriptionColumn,
             this.LocationColumn});
-            this.dataGridViewOverview.Location = new System.Drawing.Point(6, 174);
+            this.dataGridViewOverview.Location = new System.Drawing.Point(6, 165);
             this.dataGridViewOverview.Name = "dataGridViewOverview";
             this.dataGridViewOverview.RowHeadersWidth = 51;
             this.dataGridViewOverview.RowTemplate.Height = 29;
-            this.dataGridViewOverview.Size = new System.Drawing.Size(1433, 425);
+            this.dataGridViewOverview.Size = new System.Drawing.Size(1433, 392);
             this.dataGridViewOverview.TabIndex = 4;
             // 
             // TournamentIdColumn
@@ -273,6 +285,7 @@ namespace DesktopApp
             // 
             // ManageTournaments
             // 
+            this.ManageTournaments.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ManageTournaments.BackgroundImage")));
             this.ManageTournaments.Controls.Add(this.btnRefresh);
             this.ManageTournaments.Controls.Add(this.btnCreateTournament);
             this.ManageTournaments.Controls.Add(this.btnEditTournament);
@@ -282,16 +295,17 @@ namespace DesktopApp
             this.ManageTournaments.Location = new System.Drawing.Point(4, 29);
             this.ManageTournaments.Name = "ManageTournaments";
             this.ManageTournaments.Padding = new System.Windows.Forms.Padding(3);
-            this.ManageTournaments.Size = new System.Drawing.Size(1439, 562);
+            this.ManageTournaments.Size = new System.Drawing.Size(1439, 622);
             this.ManageTournaments.TabIndex = 0;
             this.ManageTournaments.Text = "ManageTournaments";
             this.ManageTournaments.UseVisualStyleBackColor = true;
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(84, 20);
+            this.btnRefresh.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnRefresh.Location = new System.Drawing.Point(750, 116);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(73, 29);
+            this.btnRefresh.Size = new System.Drawing.Size(118, 58);
             this.btnRefresh.TabIndex = 5;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
@@ -299,9 +313,10 @@ namespace DesktopApp
             // 
             // btnCreateTournament
             // 
-            this.btnCreateTournament.Location = new System.Drawing.Point(73, 220);
+            this.btnCreateTournament.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnCreateTournament.Location = new System.Drawing.Point(84, 159);
             this.btnCreateTournament.Name = "btnCreateTournament";
-            this.btnCreateTournament.Size = new System.Drawing.Size(94, 29);
+            this.btnCreateTournament.Size = new System.Drawing.Size(105, 58);
             this.btnCreateTournament.TabIndex = 4;
             this.btnCreateTournament.Text = "Create";
             this.btnCreateTournament.UseVisualStyleBackColor = true;
@@ -309,9 +324,10 @@ namespace DesktopApp
             // 
             // btnEditTournament
             // 
-            this.btnEditTournament.Location = new System.Drawing.Point(73, 284);
+            this.btnEditTournament.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnEditTournament.Location = new System.Drawing.Point(84, 252);
             this.btnEditTournament.Name = "btnEditTournament";
-            this.btnEditTournament.Size = new System.Drawing.Size(94, 29);
+            this.btnEditTournament.Size = new System.Drawing.Size(105, 53);
             this.btnEditTournament.TabIndex = 3;
             this.btnEditTournament.Text = "Edit";
             this.btnEditTournament.UseVisualStyleBackColor = true;
@@ -319,9 +335,10 @@ namespace DesktopApp
             // 
             // btnDeleteTournament
             // 
-            this.btnDeleteTournament.Location = new System.Drawing.Point(73, 355);
+            this.btnDeleteTournament.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnDeleteTournament.Location = new System.Drawing.Point(84, 341);
             this.btnDeleteTournament.Name = "btnDeleteTournament";
-            this.btnDeleteTournament.Size = new System.Drawing.Size(94, 29);
+            this.btnDeleteTournament.Size = new System.Drawing.Size(105, 55);
             this.btnDeleteTournament.TabIndex = 2;
             this.btnDeleteTournament.Text = "Delete";
             this.btnDeleteTournament.UseVisualStyleBackColor = true;
@@ -331,16 +348,17 @@ namespace DesktopApp
             // 
             this.lbxTournaments.FormattingEnabled = true;
             this.lbxTournaments.ItemHeight = 20;
-            this.lbxTournaments.Location = new System.Drawing.Point(270, 20);
+            this.lbxTournaments.Location = new System.Drawing.Point(245, 20);
             this.lbxTournaments.Name = "lbxTournaments";
-            this.lbxTournaments.Size = new System.Drawing.Size(389, 364);
+            this.lbxTournaments.Size = new System.Drawing.Size(485, 544);
             this.lbxTournaments.TabIndex = 1;
             // 
             // btnHome
             // 
-            this.btnHome.Location = new System.Drawing.Point(681, 18);
+            this.btnHome.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnHome.Location = new System.Drawing.Point(750, 20);
             this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(94, 29);
+            this.btnHome.Size = new System.Drawing.Size(118, 56);
             this.btnHome.TabIndex = 0;
             this.btnHome.Text = "Home";
             this.btnHome.UseVisualStyleBackColor = true;
@@ -348,20 +366,22 @@ namespace DesktopApp
             // 
             // GenerateSchedule
             // 
+            this.GenerateSchedule.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("GenerateSchedule.BackgroundImage")));
             this.GenerateSchedule.Controls.Add(this.btnGenerateMatches);
             this.GenerateSchedule.Controls.Add(this.cmbxTournaments);
             this.GenerateSchedule.Controls.Add(this.dataGridView1);
             this.GenerateSchedule.Controls.Add(this.btnHome1);
             this.GenerateSchedule.Location = new System.Drawing.Point(4, 29);
             this.GenerateSchedule.Name = "GenerateSchedule";
-            this.GenerateSchedule.Size = new System.Drawing.Size(1439, 562);
+            this.GenerateSchedule.Size = new System.Drawing.Size(1439, 622);
             this.GenerateSchedule.TabIndex = 2;
             this.GenerateSchedule.Text = "GenerateGames";
             this.GenerateSchedule.UseVisualStyleBackColor = true;
             // 
             // btnGenerateMatches
             // 
-            this.btnGenerateMatches.Location = new System.Drawing.Point(606, 76);
+            this.btnGenerateMatches.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnGenerateMatches.Location = new System.Drawing.Point(550, 154);
             this.btnGenerateMatches.Name = "btnGenerateMatches";
             this.btnGenerateMatches.Size = new System.Drawing.Size(166, 69);
             this.btnGenerateMatches.TabIndex = 3;
@@ -383,11 +403,11 @@ namespace DesktopApp
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Player1,
             this.Column3});
-            this.dataGridView1.Location = new System.Drawing.Point(52, 162);
+            this.dataGridView1.Location = new System.Drawing.Point(116, 140);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(451, 256);
+            this.dataGridView1.Size = new System.Drawing.Size(308, 444);
             this.dataGridView1.TabIndex = 1;
             // 
             // Player1
@@ -406,9 +426,10 @@ namespace DesktopApp
             // 
             // btnHome1
             // 
-            this.btnHome1.Location = new System.Drawing.Point(678, 30);
+            this.btnHome1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnHome1.Location = new System.Drawing.Point(625, 31);
             this.btnHome1.Name = "btnHome1";
-            this.btnHome1.Size = new System.Drawing.Size(94, 29);
+            this.btnHome1.Size = new System.Drawing.Size(111, 53);
             this.btnHome1.TabIndex = 0;
             this.btnHome1.Text = "Home";
             this.btnHome1.UseVisualStyleBackColor = true;
@@ -416,6 +437,7 @@ namespace DesktopApp
             // 
             // AddResults
             // 
+            this.AddResults.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddResults.BackgroundImage")));
             this.AddResults.Controls.Add(this.btnSaveResults);
             this.AddResults.Controls.Add(this.lblCheck);
             this.AddResults.Controls.Add(this.dataGridView2);
@@ -423,16 +445,18 @@ namespace DesktopApp
             this.AddResults.Controls.Add(this.btnHome2);
             this.AddResults.Location = new System.Drawing.Point(4, 29);
             this.AddResults.Name = "AddResults";
-            this.AddResults.Size = new System.Drawing.Size(1439, 562);
+            this.AddResults.Size = new System.Drawing.Size(1439, 622);
             this.AddResults.TabIndex = 3;
             this.AddResults.Text = "Add Results";
             this.AddResults.UseVisualStyleBackColor = true;
             // 
             // btnSaveResults
             // 
-            this.btnSaveResults.Location = new System.Drawing.Point(1083, 126);
+            this.btnSaveResults.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnSaveResults.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnSaveResults.Location = new System.Drawing.Point(840, 126);
             this.btnSaveResults.Name = "btnSaveResults";
-            this.btnSaveResults.Size = new System.Drawing.Size(109, 39);
+            this.btnSaveResults.Size = new System.Drawing.Size(143, 56);
             this.btnSaveResults.TabIndex = 6;
             this.btnSaveResults.Text = "Add Results";
             this.btnSaveResults.UseVisualStyleBackColor = true;
@@ -461,7 +485,7 @@ namespace DesktopApp
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 29;
-            this.dataGridView2.Size = new System.Drawing.Size(841, 341);
+            this.dataGridView2.Size = new System.Drawing.Size(776, 341);
             this.dataGridView2.TabIndex = 4;
             // 
             // GameId
@@ -513,9 +537,10 @@ namespace DesktopApp
             // 
             // btnHome2
             // 
+            this.btnHome2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnHome2.Location = new System.Drawing.Point(655, 35);
             this.btnHome2.Name = "btnHome2";
-            this.btnHome2.Size = new System.Drawing.Size(94, 29);
+            this.btnHome2.Size = new System.Drawing.Size(111, 54);
             this.btnHome2.TabIndex = 0;
             this.btnHome2.Text = "Home";
             this.btnHome2.UseVisualStyleBackColor = true;
