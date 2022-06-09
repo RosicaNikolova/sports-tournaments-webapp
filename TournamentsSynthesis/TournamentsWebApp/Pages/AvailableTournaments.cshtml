@@ -24,124 +24,124 @@
             {
                 foreach (var tournament in Model.tournaments)
                 {
-                    <div class="grid-item">
-                        <div class="flex-container-grid-content">
-                            <div class="container-left">
-                                <div class="picture-container">
-                                    <img src="pic/download.jpg" alt="">
-                                </div>
-                                <div class="container-left-text">
-                                    <p>Location: @tournament.Location</p>
-                                    <p>Description: @tournament.Description</p>
+                        <div class="grid-item">
+                            <div class="flex-container-grid-content">
+                                <div class="container-left">
+                                    <div class="picture-container">
+                                        <img src="pic/download.jpg" alt="">
+                                    </div>
+                                    <div class="container-left-text">
+                                        <p>Location: @tournament.Location</p>
+                                        <p>Description: @tournament.Description</p>
+                                    </div>
+
                                 </div>
 
+                                <div class="container-right">
+                                    <h4>Tournament Infromation:</h4>
+                                    <p>Sport Type: @tournament.SportType</p>
+                                    <p>Tournament system:  @tournament.TournamentSystem</p>
+                                    <p>Start Date: @tournament.StartDate</p>
+                                    <p>End Date: @tournament.EndDate</p>
+                                    <p>Minumum Players: @tournament.MinPlayers</p>
+                                    <p>Maximum Players: @tournament.MaxPlayers</p>
+                                    <p>Available Places: @Model.availablePlaces[tournament.Id]</p>
+                                </div>
                             </div>
-
-                            <div class="container-right">
-                                <h4>Tournament Infromation:</h4>
-                                <p>Sport Type: @tournament.SportType</p>
-                                <p>Tournament system:  @tournament.TournamentSystem</p>
-                                <p>Start Date: @tournament.StartDate</p>
-                                <p>End Date: @tournament.EndDate</p>
-                                <p>Minumum Players: @tournament.MinPlayers</p>
-                                <p>Maximum Players: @tournament.MaxPlayers</p>
-                                <p>Available Places: @Model.availablePlaces[tournament.Id]</p>
+                            <div class="register-container">
+                                <a asp-page="/SignUpForTournament" asp-route-id="@tournament.Id">Register</a>
+                                @*<input type="submit" value="Register" class="loginbtn">*@
                             </div>
                         </div>
-                        <div class="register-container">
-                           <a asp-page="/SignUpForTournament" asp-route-id="@tournament.Id">Register</a>
-                            @*<input type="submit" value="Register" class="loginbtn">*@
-                        </div>
-                    </div>
                 }
             }
         }
 
 
         @*<div class="grid-item">
-            <div class="flex-container-grid-content">
-                <div class="container-left">
-                    <div class="picture-container">
-                        <img src="pic/360_F_252750183_IbB0ENXBPiXXg2ig4tJXDZc4tRCgEzdM.jpg" alt="">
-                    </div>
-                    <div class="container-left-text">
-                        <p>Location: Eindhoven, Rachelsmolen 1</p>
-                        <p>Description: This is a badminton tournament which is for advanced players.</p>
-                    </div>
+                <div class="flex-container-grid-content">
+                    <div class="container-left">
+                        <div class="picture-container">
+                            <img src="pic/360_F_252750183_IbB0ENXBPiXXg2ig4tJXDZc4tRCgEzdM.jpg" alt="">
+                        </div>
+                        <div class="container-left-text">
+                            <p>Location: Eindhoven, Rachelsmolen 1</p>
+                            <p>Description: This is a badminton tournament which is for advanced players.</p>
+                        </div>
 
-                </div>
-
-                <div class="container-right">
-                    <h4>Tournament Infromation:</h4>
-                    <p>Sport Type: Badminton</p>
-                    <p>Tournament system: Round Robin</p>
-                    <p>Start Date: 15.03.2022</p>
-                    <p>End Date: 23.03.2022</p>
-                    <p>Minumum Players: 4</p>
-                    <p>Maximum Players: 10</p>
-                    <p>Available: 2</p>
-                </div>
-            </div>
-            <div class="register-container">
-                <input type="submit" value="Register" class="loginbtn">
-            </div>
-        </div>
-        <div class="grid-item">
-            <div class="flex-container-grid-content">
-                <div class="container-left">
-                    <div class="picture-container">
-                        <img src="pic/360_F_252750183_IbB0ENXBPiXXg2ig4tJXDZc4tRCgEzdM.jpg" alt="">
-                    </div>
-                    <div class="container-left-text">
-                        <p>Location: Eindhoven, Rachelsmolen 1</p>
-                        <p>Description: This is a badminton tournament which is for advanced players.</p>
                     </div>
 
-                </div>
-
-                <div class="container-right">
-                    <h4>Tournament Infromation:</h4>
-                    <p>Sport Type: Badminton</p>
-                    <p>Tournament system: Round Robin</p>
-                    <p>Start Date: 15.03.2022</p>
-                    <p>End Date: 23.03.2022</p>
-                    <p>Minumum Players: 4</p>
-                    <p>Maximum Players: 10</p>
-                    <p>Available: 2</p>
-                </div>
-            </div>
-            <div class="register-container">
-                <input type="submit" value="Register" class="loginbtn">
-            </div>
-        </div>
-        <div class="grid-item">
-            <div class="flex-container-grid-content">
-                <div class="container-left">
-                    <div class="picture-container">
-                        <img src="pic/360_F_252750183_IbB0ENXBPiXXg2ig4tJXDZc4tRCgEzdM.jpg" alt="">
+                    <div class="container-right">
+                        <h4>Tournament Infromation:</h4>
+                        <p>Sport Type: Badminton</p>
+                        <p>Tournament system: Round Robin</p>
+                        <p>Start Date: 15.03.2022</p>
+                        <p>End Date: 23.03.2022</p>
+                        <p>Minumum Players: 4</p>
+                        <p>Maximum Players: 10</p>
+                        <p>Available: 2</p>
                     </div>
-                    <div class="container-left-text">
-                        <p>Location: Eindhoven, Rachelsmolen 1</p>
-                        <p>Description: This is a badminton tournament which is for advanced players.</p>
+                </div>
+                <div class="register-container">
+                    <input type="submit" value="Register" class="loginbtn">
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="flex-container-grid-content">
+                    <div class="container-left">
+                        <div class="picture-container">
+                            <img src="pic/360_F_252750183_IbB0ENXBPiXXg2ig4tJXDZc4tRCgEzdM.jpg" alt="">
+                        </div>
+                        <div class="container-left-text">
+                            <p>Location: Eindhoven, Rachelsmolen 1</p>
+                            <p>Description: This is a badminton tournament which is for advanced players.</p>
+                        </div>
+
                     </div>
 
+                    <div class="container-right">
+                        <h4>Tournament Infromation:</h4>
+                        <p>Sport Type: Badminton</p>
+                        <p>Tournament system: Round Robin</p>
+                        <p>Start Date: 15.03.2022</p>
+                        <p>End Date: 23.03.2022</p>
+                        <p>Minumum Players: 4</p>
+                        <p>Maximum Players: 10</p>
+                        <p>Available: 2</p>
+                    </div>
                 </div>
+                <div class="register-container">
+                    <input type="submit" value="Register" class="loginbtn">
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="flex-container-grid-content">
+                    <div class="container-left">
+                        <div class="picture-container">
+                            <img src="pic/360_F_252750183_IbB0ENXBPiXXg2ig4tJXDZc4tRCgEzdM.jpg" alt="">
+                        </div>
+                        <div class="container-left-text">
+                            <p>Location: Eindhoven, Rachelsmolen 1</p>
+                            <p>Description: This is a badminton tournament which is for advanced players.</p>
+                        </div>
 
-                <div class="container-right">
-                    <h4>Tournament Infromation:</h4>
-                    <p>Sport Type: Badminton</p>
-                    <p>Tournament system: Round Robin</p>
-                    <p>Start Date: 15.03.2022</p>
-                    <p>End Date: 23.03.2022</p>
-                    <p>Minumum Players: 4</p>
-                    <p>Maximum Players: 10</p>
-                    <p>Available: 2</p>
+                    </div>
+
+                    <div class="container-right">
+                        <h4>Tournament Infromation:</h4>
+                        <p>Sport Type: Badminton</p>
+                        <p>Tournament system: Round Robin</p>
+                        <p>Start Date: 15.03.2022</p>
+                        <p>End Date: 23.03.2022</p>
+                        <p>Minumum Players: 4</p>
+                        <p>Maximum Players: 10</p>
+                        <p>Available: 2</p>
+                    </div>
                 </div>
-            </div>
-            <div class="register-container">
-                <input type="submit" value="Register" class="loginbtn">
-            </div>
-        </div>*@
+                <div class="register-container">
+                    <input type="submit" value="Register" class="loginbtn">
+                </div>
+            </div>*@
     </div>
 
 </div>

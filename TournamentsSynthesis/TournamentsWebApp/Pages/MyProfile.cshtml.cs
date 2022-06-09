@@ -14,15 +14,19 @@ namespace TournamentsWebApp.Pages
     [Authorize]
     public class MyProfileModel : PageModel
     {
-        
+
         public User user = null;
         public List<Tournament> tournaments = null;
+
         //tournamne id, ranking
         public Dictionary<int, int> ranking = null;
+
         //tournament id, games
         public Dictionary<int, List<Game>> games = null;
+
         //user id, User
         public Dictionary<int, User> names = null;
+
         public IActionResult OnGet()
         {
             UserManager userManager = new UserManager(new UserRepository());
@@ -31,16 +35,18 @@ namespace TournamentsWebApp.Pages
             try
             {
                 int userId = Convert.ToInt32(User.FindFirst("id").Value);
-            user = userManager.GetPlayerById(userId);
-            tournaments = tournamentManager.GetTournamentsForPlayer(userId);
-            if (tournaments.Count != 0)
-            {
-                games = gameManager.GetGamesForPlayer(userId);
-                ranking = tournamentManager.GetRankingForPlayer(userId, tournaments);
-                names = tournamentManager.GetNamesOfOtherPlayers(userId);
-            }
 
-            return Page();
+                //I query the user because I have to show personal information on the page
+                user = userManager.GetPlayerById(userId);
+                tournaments = tournamentManager.GetTournamentsForPlayer(userId);
+                if (tournaments.Count != 0)
+                {
+                    games = gameManager.GetGamesForPlayer(userId);
+                    ranking = tournamentManager.GetRankingForPlayer(userId, tournaments);
+                    names = tournamentManager.GetNamesOfOtherPlayers(userId);
+                }
+
+                return Page();
 
             }
             catch (DataBaseException)

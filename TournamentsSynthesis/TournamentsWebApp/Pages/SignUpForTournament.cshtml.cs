@@ -17,7 +17,7 @@ namespace TournamentsWebApp.Pages
         public Tournament tournament;
         public User player;
         TournamentManager tournamentManager = new TournamentManager(new TournamentRepository());
-        TournamentsStatusManager tournamentsStatusManager = new TournamentsStatusManager(new TournamentRepository());
+        TournamentsStatusManager tournamentsStatusManager = new TournamentsStatusManager(new TournamentStatusRepository());
         UserManager userManager = new UserManager(new UserRepository());
 
 

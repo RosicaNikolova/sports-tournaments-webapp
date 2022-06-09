@@ -7,15 +7,15 @@ namespace ClassLibraryTournaments.Business
 {
     public class TournamentsStatusManager : ITournamentsStatusManager
     {
-        private ITournamentRepository tournamentRepository;
-        public TournamentsStatusManager(ITournamentRepository repo)
+        private ITournamentStatusRepository statusRepository;
+        public TournamentsStatusManager(ITournamentStatusRepository repo)
         {
-            this.tournamentRepository = repo;
+            this.statusRepository = repo;
         }
 
         public void ChangeTournamentStatus(int id, Status status)
         {
-            tournamentRepository.ChangeTournamentStatus(id, status);
+            statusRepository.ChangeTournamentStatus(id, status);
         }
 
         public void CheckStatusesOfTournaments(List<Tournament> tournamentsToCheck)
@@ -25,13 +25,13 @@ namespace ClassLibraryTournaments.Business
             {
                 if (tournament.RegistrationCloses == today)
                 {
-                    if (tournamentRepository.GetNumberOfRegisteredPlayersForTournament(tournament.Id) < tournament.MinPlayers)
+                    if (statusRepository.GetNumberOfRegisteredPlayersForTournament(tournament.Id) < tournament.MinPlayers)
                     {
-                        tournamentRepository.ChangeTournamentStatus(tournament.Id, Status.cancelled);
+                        statusRepository.ChangeTournamentStatus(tournament.Id, Status.cancelled);
                     }
                     else
                     {
-                        tournamentRepository.ChangeTournamentStatus(tournament.Id, Status.pending);
+                        statusRepository.ChangeTournamentStatus(tournament.Id, Status.pending);
                     }
                 }
             }

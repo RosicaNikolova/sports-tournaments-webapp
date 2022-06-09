@@ -11,8 +11,6 @@ namespace ClassLibraryTournaments.Persistence
         public void SaveTournament(Tournament tournament);
         public void UpdateTournament(Tournament tournament);
         public void DeleteTournament(int id);
-        public void ChangeTournamentStatus(int id, Status status);
-        public int GetNumberOfRegisteredPlayersForTournament(int id);
         public Dictionary<int, int> GetAvailablePlaces();
         public Tournament GetTournamentById(int idTournament);
         public bool PlayerNotRegistered(int idTournament, int idPlayer);

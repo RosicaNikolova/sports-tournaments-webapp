@@ -15,7 +15,7 @@ namespace DesktopApp
     {
         TournamentManager tournamentManager = new TournamentManager(new TournamentRepository());
         GameManager gameManager = new GameManager(new GameRepository());
-        TournamentsStatusManager statusManager = new TournamentsStatusManager(new TournamentRepository());
+        TournamentsStatusManager statusManager = new TournamentsStatusManager(new TournamentStatusRepository());
         User user;
         public HomeForm()
         {

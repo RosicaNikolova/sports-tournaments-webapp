@@ -24,6 +24,12 @@
             <section class="container-info">
                 <div>
                     <h2>Tournament Information</h2>
+                    <div class="@Model.tournament.Status.ToString()">
+                        <p>
+                            Status:
+                            @Model.tournament.Status
+                        </p>
+                    </div>
                     <p>Sport: @Model.tournament.SportType</p>
                     <p>System: @Model.tournament.TournamentSystem</p>
                     <p>Location: @Model.tournament.Location</p>

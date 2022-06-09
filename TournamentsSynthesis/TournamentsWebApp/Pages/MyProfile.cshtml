@@ -24,15 +24,20 @@
                 foreach (var tournament in Model.tournaments)
                 {
                     <div class="flex-continer-player-tournament">
-                        <div class="container-player-tournament">
-                            <div class="container-tourn-info">
-                                <h3>Tournament Information</h3>
-                                <p>Sport: @tournament.SportType</p>
-                                <p>System: @tournament.TournamentSystem</p>
-                                <p>Location: @tournament.Location</p>
-                                <p>Start Date: @tournament.StartDate</p>
-                                <p>Stauts: @tournament.Status</p>
-                            </div>
+                        <div class="container-player-tournament-@tournament.Status.ToString()">
+                                    <div class="container-tourn-info">
+                                        <h3>Tournament Information</h3>
+                                        <div class="@tournament.Status.ToString()">
+                                            <p>
+                                                Status:
+                                                @tournament.Status
+                                            </p>
+                                        </div>
+                                        <p>Sport: @tournament.SportType</p>
+                                        <p>System: @tournament.TournamentSystem</p>
+                                        <p>Location: @tournament.Location</p>
+                                        <p>Start Date: @tournament.StartDate</p>
+                                    </div>
 
                             <div class="container-player-games">
                                 <h3>Your Games</h3>

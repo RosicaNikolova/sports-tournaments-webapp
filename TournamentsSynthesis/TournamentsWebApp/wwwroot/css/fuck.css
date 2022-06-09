@@ -1,76 +1,4 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-/*a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
-}*/
-
-/* Provide sufficient contrast against white background */
-/*a {
-  color: #0366d6;
-}
-
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}*/
-
-/* Sticky footer styles
--------------------------------------------------- */
-/*html {
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
-
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
-}*/
-
-/* Sticky footer styles
--------------------------------------------------- */
-/*html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {*/
-  /* Margin bottom by footer height */
-  /*margin-bottom: 60px;
-}
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;*/ /* Vertically center the text there */
-/*}*/
-
-
+﻿
 
 /*Login Page*/
 
@@ -92,7 +20,6 @@ body {*/
 
 .container label {
     font-size: 1.2vw;
-    
 }
 
 .login_heading {
@@ -201,17 +128,17 @@ a {
     font-size: 1em;
 }
 
-    a .nav-item {
-        color: white;
-    }
+a .nav-item {
+    color: white;
+}
 
-    .nav-item:hover {
-        background-color: white;
-    }
+.nav-item:hover {
+    background-color: white;
+}
 
-       a .nav-item:hover{
-            color: black;
-        }
+a .nav-item:hover {
+    color: black;
+}
 
 .nav-item button {
     color: white;
@@ -220,7 +147,7 @@ a {
     font-size: 1em;
 }
 
-.nav-item:hover button{
+.nav-item:hover button {
     color: black;
     cursor: pointer;
 }
@@ -292,7 +219,8 @@ a {
 }
 
 .item-container:hover {
-    opacity: 0.8;
+    background-color: white;
+    color: black;
 }
 
 /*Tournament Page*/
@@ -321,12 +249,12 @@ a {
 }
 
 .container-participants {
-    background-color: skyblue;
+    background-color: white;
     color: black;
 }
 
 .container-games {
-    background-color: skyblue;
+    background-color: white;
     display: flex;
     justify-content: center;
     font-size: 1.1em;
@@ -336,7 +264,6 @@ a {
         width: 100%;
         margin: 4%;
         padding: 1%;
-        border-radius: 15px;
     }
 
     .container-games table, th, td {
@@ -393,7 +320,6 @@ a {
 .container-participations {
     background-color: white;
     color: #03045E;
-    border: 1px outset lightskyblue;
     border-radius: 15px;
 }
 
@@ -408,9 +334,85 @@ a {
         margin-left: 2em;
     }
 
-.container-player-tournament {
+
+
+.container-player-tournament-ongoing {
     margin: 2em;
-    width: 70%;
+    width: 80%;
+    border-radius: 15px;
+}
+
+.container-player-tournament-open {
+    margin: 2em;
+    width: 80%;
+    border-radius: 15px;
+}
+
+.container-player-tournament-open .container-tourn-info {
+        background-color: #D8F3DC;
+}
+
+    .container-player-tournament-open .container-player-games {
+        background-color: #B7E4C7;
+    }
+
+    .container-player-tournament-open .container-player-rank {
+        background-color: #40916C;
+    }
+
+
+.container-player-tournament-finished .container-tourn-info {
+    background-color: #F2D5F8;
+}
+
+.container-player-tournament-finished .container-player-games {
+    background-color: #E6C0E9;
+}
+
+.container-player-tournament-finished .container-player-rank {
+    background-color: #BFABCB;
+}
+
+
+.container-player-tournament-pending .container-tourn-info {
+    background-color: #F8EDEB;
+}
+
+.container-player-tournament-pending .container-player-games {
+    background-color: #F9DCC4;
+}
+
+.container-player-tournament-pending .container-player-rank {
+    background-color: #FEC89A;
+}
+
+.container-player-tournament-cancelled .container-tourn-info {
+    background-color: #FFE3E0;
+}
+
+.container-player-tournament-cancelled .container-player-games {
+    background-color: #E39695;
+}
+
+.container-player-tournament-cancelled .container-player-rank {
+    background-color: #DF7373;
+}
+
+    .container-player-tournament-pending {
+        margin: 2em;
+        width: 80%;
+        border-radius: 15px;
+    }
+
+.container-player-tournament-finished {
+    margin: 2em;
+    width: 80%;
+    border-radius: 15px;
+}
+
+.container-player-tournament-cancelled {
+    margin: 2em;
+    width: 80%;
     border-radius: 15px;
 }
 
@@ -436,7 +438,7 @@ a {
 }
 
 .container-player-games th, td {
-    border: 1px solid white;
+    border: 1px solid black;
     border-collapse: collaplse;
 }
 
@@ -463,7 +465,7 @@ a {
     display: flex;
     align-items: center;
     flex-direction: column;
-    border-bottom: solid 1px black;
+    border-bottom: solid 30px black;
 }
 
 
@@ -560,6 +562,7 @@ a {
     text-align: center;
     border-radius: 15px;
     max-width: 15em;
+    margin: auto;
 }
 
 .cancelled {
@@ -567,6 +570,7 @@ a {
     text-align: center;
     border-radius: 15px;
     max-width: 15em;
+    margin: auto;
 }
 
 .ongoing {
@@ -574,6 +578,7 @@ a {
     text-align: center;
     border-radius: 15px;
     max-width: 15em;
+    margin: auto;
 }
 
 .open {
@@ -581,36 +586,39 @@ a {
     text-align: center;
     border-radius: 15px;
     max-width: 15em;
+    margin: auto;
 }
+
 .finished {
     background-color: plum;
     text-align: center;
     border-radius: 15px;
     max-width: 15em;
+    margin: auto;
 }
 
 
-.pending p{
-   margin: 0;
-   padding: 3%;
-}
-
-.cancelled p{
+.pending p {
     margin: 0;
     padding: 3%;
 }
 
-.ongoing p{
+.cancelled p {
     margin: 0;
     padding: 3%;
 }
 
-.open p{
+.ongoing p {
     margin: 0;
     padding: 3%;
 }
 
-.finished p{
+.open p {
+    margin: 0;
+    padding: 3%;
+}
+
+.finished p {
     margin: 0;
     padding: 3%;
 }
@@ -655,10 +663,11 @@ a {
     font-size: 1em;
 }
 
-.border-container h4{
-    font-size: 1.2em;
-}
-.message{
+    .border-container h4 {
+        font-size: 1.2em;
+    }
+
+.message {
     color: lightgreen;
 }
 
@@ -666,7 +675,7 @@ a {
 
 /*Register page*/
 
-.register_form_container{
+.register_form_container {
     display: flex;
     justify-content: center;
 }
@@ -682,7 +691,7 @@ a {
     color: lightcoral;
 }
 
-.container input{
+.container input {
     border-radius: 15px;
 }
 
