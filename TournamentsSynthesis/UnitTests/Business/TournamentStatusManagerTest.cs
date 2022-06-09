@@ -19,7 +19,7 @@ namespace UnitTests
             tournament1.Status = Status.ongoing;
 
             List<Tournament> tournamentsPassed = new List<Tournament>() { tournament1 };
-            FakeTournamentRepository fakeRepo = new FakeTournamentRepository(tournamentsPassed);
+            FakeTournamentStatusRepository fakeRepo = new FakeTournamentStatusRepository(tournamentsPassed);
 
             TournamentsStatusManager tournamentStatusManager = new TournamentsStatusManager(fakeRepo);
             tournamentStatusManager.ChangeTournamentStatus(1, Status.finished);
@@ -34,7 +34,7 @@ namespace UnitTests
             tournament1.Status = Status.open;
 
             List<Tournament> tournamentsPassed = new List<Tournament>() { tournament1 };
-            FakeTournamentRepository fakeRepo = new FakeTournamentRepository(tournamentsPassed);
+            FakeTournamentStatusRepository fakeRepo = new FakeTournamentStatusRepository(tournamentsPassed);
 
             TournamentsStatusManager tournamentStatusManager = new TournamentsStatusManager(fakeRepo);
             tournamentStatusManager.ChangeTournamentStatus(1, Status.pending);
@@ -49,7 +49,7 @@ namespace UnitTests
             tournament1.Status = Status.open;
 
             List<Tournament> tournamentsPassed = new List<Tournament>() { tournament1 };
-            FakeTournamentRepository fakeRepo = new FakeTournamentRepository(tournamentsPassed);
+            FakeTournamentStatusRepository fakeRepo = new FakeTournamentStatusRepository(tournamentsPassed);
 
             TournamentsStatusManager tournamentStatusManager = new TournamentsStatusManager(fakeRepo);
             tournamentStatusManager.ChangeTournamentStatus(1, Status.cancelled);
@@ -64,7 +64,7 @@ namespace UnitTests
             tournament1.Status = Status.ongoing;
 
             List<Tournament> tournamentsPassed = new List<Tournament>() { tournament1 };
-            FakeTournamentRepository fakeRepo = new FakeTournamentRepository(tournamentsPassed);
+            FakeTournamentStatusRepository fakeRepo = new FakeTournamentStatusRepository(tournamentsPassed);
 
             TournamentsStatusManager tournamentStatusManager = new TournamentsStatusManager(fakeRepo);
             tournamentStatusManager.ChangeTournamentStatus(2, Status.finished);
@@ -88,7 +88,7 @@ namespace UnitTests
             tournamentAvaialblePlaces.Add(2, 6);
             
 
-            FakeTournamentRepository fakeRepo = new FakeTournamentRepository(tournamentAvaialblePlaces);
+            FakeTournamentStatusRepository fakeRepo = new FakeTournamentStatusRepository(tournamentAvaialblePlaces);
             TournamentsStatusManager tournamentStatusManager = new TournamentsStatusManager(fakeRepo);
             tournamentStatusManager.CheckStatusesOfTournaments(tournamentsPassed);
 
@@ -111,7 +111,7 @@ namespace UnitTests
             tournamentAvaialblePlaces.Add(1, 3);
             tournamentAvaialblePlaces.Add(2, 6);
 
-            FakeTournamentRepository fakeRepo = new FakeTournamentRepository(tournamentAvaialblePlaces);
+            FakeTournamentStatusRepository fakeRepo = new FakeTournamentStatusRepository(tournamentAvaialblePlaces);
             TournamentsStatusManager tournamentStatusManager = new TournamentsStatusManager(fakeRepo);
             tournamentStatusManager.CheckStatusesOfTournaments(tournamentsPassed);
 

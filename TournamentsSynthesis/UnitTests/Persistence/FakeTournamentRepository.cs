@@ -38,7 +38,7 @@ namespace UnitTests.Persistence
             this.placesavailable = placesAvailable;
         }
 
-        //
+        //Key - User Id, Value-List of users
         public FakeTournamentRepository(Dictionary<int, User> namesOfOponents)
         {
             this.namesOfOponents = namesOfOponents;
@@ -132,20 +132,10 @@ namespace UnitTests.Persistence
             return result;
         }
 
-        public int GetNumberOfRegisteredPlayersForTournament(int id)
-        {
-            tournaments = new List<Tournament>();
-            tournaments.Add(new Tournament() { Id = id });
-            return placesavailable[id];
-        }
-
         public Dictionary<User, int> GetRankingForTournament(int id)
         {
             return rankingForTournament;
         }
-
-
-
         public List<Tournament> GetTournamentsForPlayer(int userId)
         {
             List<Tournament> tournamentsResult = new List<Tournament>();
@@ -198,17 +188,6 @@ namespace UnitTests.Persistence
                 if (tournaments[i].Id == tournament.Id)
                 {
                     tournaments[i] = tournament;
-                }
-            }
-        }
-
-        public void ChangeTournamentStatus(int id, Status status)
-        {
-            foreach (Tournament tournament  in tournaments)
-            {
-                if(tournament.Id == id)
-                {
-                    tournament.Status = status;
                 }
             }
         }
