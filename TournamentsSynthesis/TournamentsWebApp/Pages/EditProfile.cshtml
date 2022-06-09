@@ -1,0 +1,41 @@
+﻿@page
+@model TournamentsWebApp.Pages.EditProfileModel
+@{
+    Layout = "_Layout1";
+}
+@section scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
+<div class="register_form_container">
+    <form method="post">
+        <div class="container">
+            <h2 class="login_heading">Edit profile</h2>
+
+            <label asp-for="EditedUser.Email">E-mail:</label> <br />
+            <span asp-validation-for="EditedUser.Email"></span>
+            <input asp-for="EditedUser.Email" type="text" value="@Model.loggedUser.Email">
+
+            <label asp-for="EditedUser.Password">Password:</label> <br />
+            <span asp-validation-for="EditedUser.Password"></span>
+            <input asp-for="EditedUser.Password" type="password" value="@Model.loggedUser.Password">
+
+            <label asp-for="EditedUser.FirstName">First Name:</label> <br />
+            <span asp-validation-for="EditedUser.FirstName"></span>
+            <input asp-for="EditedUser.FirstName" type="text" value="@Model.loggedUser.FirstName" required>
+
+            <label asp-for="EditedUser.LastName">Last Name:</label> <br />
+            <span asp-validation-for="EditedUser.LastName"></span>
+            <input asp-for="EditedUser.LastName" type="text" value="@Model.loggedUser.LastName" required>
+
+        </div>
+        <div class="login_buttons">
+            <input type="submit" value="Edit" class="loginbtn">
+            <button type="reset" class="cancelbtn" value="Cancel">Cancel</button>
+        </div>
+
+        <div class="sucessfull_message"> @ViewData["Success_Message"] </div>
+        <div class="error_message"> @ViewData["Fail_Message"] </div>
+
+    </form>

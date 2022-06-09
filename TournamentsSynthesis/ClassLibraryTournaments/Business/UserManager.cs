@@ -18,5 +18,24 @@ namespace ClassLibraryTournaments.Business
         {
             return userRepository.GetPlayerById(userId);
         }
+
+        public bool UpdateUser(string email, string password, string firstName, string lastName, int userId)
+        {
+            if (userRepository.CheckIfAnotherUsesWithSameEmail(email, userId))
+            {
+                User user = new User();
+                user.Email = email;
+                user.Password = password;
+                user.FirstName = firstName;
+                user.LastName = lastName;
+                user.Id = userId;
+                userRepository.UpdateUser(user);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

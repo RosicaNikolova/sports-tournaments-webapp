@@ -10,5 +10,7 @@ namespace ClassLibraryTournaments.Persistence
         public User GetPlayerById(int userId);
         public bool CheckIfUserExists(string email);
         public void RegisterUser(User user);
+        void UpdateUser(User user);
+        bool CheckIfAnotherUsesWithSameEmail(string email, int userId);
     }
 }

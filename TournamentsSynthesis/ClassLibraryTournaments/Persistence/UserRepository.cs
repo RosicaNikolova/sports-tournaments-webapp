@@ -49,7 +49,7 @@ namespace ClassLibraryTournaments.Persistence
             {
                 using (MySqlConnection conn = DatabaseConnection.CreateConnection())
                 {
-                    string sql = "select firstName, lastName,idUser, email from usertournaments where idUser=@idUser and role=@role;";
+                    string sql = "select firstName, lastName,idUser, email, password from usertournaments where idUser=@idUser and role=@role;";
 
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("idUser", userId);
@@ -66,6 +66,7 @@ namespace ClassLibraryTournaments.Persistence
                         user.FirstName = dateReader.GetString("firstName");
                         user.LastName = dateReader.GetString("lastName");
                         user.Email = dateReader.GetString("email");
+                        user.Password = dateReader.GetString("password");
                     }
                     return user;
                 }
@@ -124,6 +125,57 @@ namespace ClassLibraryTournaments.Persistence
             {
                 throw new DataBaseException();
             }
+        }
+
+        public void UpdateUser(User user)
+        {
+            //try
+            //{
+                using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+                {
+                    string sql = "update usertournaments set email=@email, password=@password, firstName=@firstName, lastName=@lastName where idUser=@idUser;";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("email", user.Email);
+                    cmd.Parameters.AddWithValue("password", user.Password);
+                    cmd.Parameters.AddWithValue("firstName", user.FirstName);
+                    cmd.Parameters.AddWithValue("lastName", user.LastName);
+                    cmd.Parameters.AddWithValue("idUser", user.Id);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+
+                }
+            //}
+            //catch (Exception)
+            //{
+            //    throw new DataBaseException();
+            //}
+        }
+
+        public bool CheckIfAnotherUsesWithSameEmail(string email, int userId)
+        {
+            //try
+            //{
+                using (MySqlConnection conn = DatabaseConnection.CreateConnection())
+                {
+                    string sql = "select email from usertournaments where email=@email and idUser NOT in (@idUser);";
+
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("email", email);
+                    cmd.Parameters.AddWithValue("idUser", userId);
+                    conn.Open();
+
+                    MySqlDataReader dateReader = cmd.ExecuteReader();
+                    if (dateReader.Read())
+                    {
+                        return false;
+                    }
+                    return true;
+                }
+            //}
+            //catch (Exception)
+            //{
+            //    throw new DataBaseException();
+            //}
         }
     }
 }

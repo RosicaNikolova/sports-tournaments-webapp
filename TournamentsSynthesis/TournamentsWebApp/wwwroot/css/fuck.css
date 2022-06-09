@@ -97,6 +97,20 @@ a {
     text-decoration: none;
 }
 
+
+/*Error messages*/
+
+.sucessfull_message{
+    text-align: center;
+    margin-top: 4%;
+    color: lightgreen;
+}
+
+.error_message {
+    color: lightcoral;
+    text-align: center;
+    margin-top: 3%;
+}
 /*navigation*/
 .header {
     background-color: black;
@@ -695,6 +709,4 @@ a .nav-item:hover {
     border-radius: 15px;
 }
 
-.error_message {
-    color: lightcoral;
-}
+
