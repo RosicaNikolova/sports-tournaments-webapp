@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ClassLibraryTournaments.Business
 {
-    public class UserManager
+    public class UserManager : IUserManager
     {
         private IUserRepository userRepository;
 
